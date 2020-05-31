@@ -3,6 +3,7 @@
 
 #include "../../math/glm.h"
 #include "../../math/non_copyable.h"
+#include "../../physics/aabb.h"
 
 namespace labo::minecraft{
 
@@ -12,6 +13,7 @@ struct Entity: public labo::math::NonCopyable{
   glm::vec3 rotation;
   // 速度
   glm::vec3 velocity;
+  labo::physics::AABB box;
 };
 
 }
