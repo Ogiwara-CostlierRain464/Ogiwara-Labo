@@ -32,7 +32,7 @@ labo::app::Application::Application()
   if(!gladLoadGL()) exit(-1);
 
   window.setVerticalSyncEnabled(true);
-  window.setMouseCursorGrabbed(true);
+  //window.setMouseCursorGrabbed(true);
   window.setMouseCursorVisible(false);
 
   glViewport(0, 0, window.getSize().x, window.getSize().y);
@@ -45,6 +45,17 @@ labo::app::Application::Application()
 void labo::app::Application::mainLoop() {
   Clock dtTimer;
 
+  // test to print SFML drawable
+  sf::Font font;
+  if(!font.loadFromFile("res/rs.ttf")){
+    perror("Load font");
+    exit(-1);
+  }
+  sf::Text text("OpenGL Demo", font);
+  text.setCharacterSize(60);
+  text.setFillColor(sf::Color::Red);
+  text.setPosition(100,100);
+
   while(window.isOpen()){
     auto deltaTime = dtTimer.restart();
 
@@ -55,7 +66,18 @@ void labo::app::Application::mainLoop() {
 
     // render runs at here
 
-    renderMaster.finish(window, camera);
+    //renderMaster.finish(window, camera);
+
+    glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+    window.setActive(false);
+
+    window.pushGLStates();
+    window.draw(text);
+    window.popGLStates();
+
+    window.display();
 
   }
 }

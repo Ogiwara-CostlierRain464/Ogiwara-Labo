@@ -16,5 +16,5 @@ void labo::render::RenderMaster::finish(
   glEnable(GL_DEPTH_TEST);
   glEnable(GL_CULL_FACE);
 
-  sfmlRenderer.render(window);
+  //sfmlRenderer.render(window);
 }
