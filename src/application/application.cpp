@@ -1,4 +1,5 @@
 #include "application.h"
+#include <glad/glad.h>
 #include "input/toggle_key.h"
 #include <SFML/Graphics.hpp>
 #include "../minecraft/event/player_input_event.h"
@@ -9,9 +10,35 @@ using labo::render::Camera;
 using labo::render::CameraConfig;
 using labo::minecraft::PlayerInputEvent;
 
+namespace {
+  constexpr float windowX = 1200;
+  constexpr float windowY = 800;
+  constexpr float fov = 90;
+}
+
 labo::app::Application::Application()
-  : camera(Camera(CameraConfig{1200, 800, 90}))
+  : camera(Camera(CameraConfig{windowX, windowY, fov}))
 {
+
+  sf::ContextSettings settings{};
+  settings.majorVersion = 4;
+  settings.minorVersion = 1;
+  settings.depthBits = 24;
+  settings.stencilBits = 8;
+
+  sf::VideoMode winMode(windowX, windowY);
+  window.create(winMode, "Labo", sf::Style::Titlebar | sf::Style::Close, settings);
+
+  if(!gladLoadGL()) exit(-1);
+
+  window.setVerticalSyncEnabled(true);
+  window.setMouseCursorGrabbed(true);
+  window.setMouseCursorVisible(false);
+
+  glViewport(0, 0, window.getSize().x, window.getSize().y);
+  glCullFace(GL_BACK);
+  glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
   camera.hookPlayer(&level.getPlayer());
 }
 
@@ -34,8 +61,11 @@ void labo::app::Application::mainLoop() {
 }
 
 void labo::app::Application::handleGUIInput() {
-  auto keys = handleKeyboardInput();
-  auto mouseChange = handleMouseInput();
+
+  std::vector<sf::Keyboard::Key> keys;
+  handleKeyboardInput(keys);
+  sf::Vector2i mouseChange;
+  handleMouseInput(mouseChange);
 
   level.addEvent<PlayerInputEvent>(keys, mouseChange);
 
@@ -61,8 +91,7 @@ void labo::app::Application::handleGUIInput() {
   }
 }
 
-std::vector<sf::Keyboard::Key> &&labo::app::Application::handleKeyboardInput() {
-  std::vector<sf::Keyboard::Key> keys;
+void labo::app::Application::handleKeyboardInput(std::vector<sf::Keyboard::Key> &keys) {
 
   if(keyboard.isKeyDown(sf::Keyboard::W)){
     keys.push_back(sf::Keyboard::W);
@@ -79,13 +108,9 @@ std::vector<sf::Keyboard::Key> &&labo::app::Application::handleKeyboardInput() {
   if(keyboard.isKeyDown(sf::Keyboard::Space)) {
     keys.push_back(sf::Keyboard::Space);
   }
-
-  return std::move(keys);
 }
 
-sf::Vector2i &&labo::app::Application::handleMouseInput() {
+void labo::app::Application::handleMouseInput(sf::Vector2i  &mouseMove) {
   static auto lastMousePosition = sf::Mouse::getPosition(window);
-  auto change = sf::Mouse::getPosition() - lastMousePosition;
-
-  return std::move(change);
+  mouseMove = sf::Mouse::getPosition() - lastMousePosition;
 }

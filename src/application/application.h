@@ -16,10 +16,8 @@ public:
   void handleGUIInput();
 
 private:
-  [[nodiscard]]
-  std::vector<sf::Keyboard::Key> &&handleKeyboardInput();
-  [[nodiscard]]
-  sf::Vector2i &&handleMouseInput();
+  void handleKeyboardInput(std::vector<sf::Keyboard::Key> &keys);
+  void handleMouseInput(sf::Vector2i &mouseMove);
 
   labo::render::Camera camera;
   labo::render::RenderMaster renderMaster;
