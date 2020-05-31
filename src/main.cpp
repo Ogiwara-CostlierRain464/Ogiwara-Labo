@@ -1,4 +1,3 @@
-#include <GL/glew>
 #include "application/application.h"
 
 using namespace labo::app;
