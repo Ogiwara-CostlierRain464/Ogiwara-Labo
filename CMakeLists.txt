@@ -10,7 +10,6 @@ add_subdirectory(vendor/glfw)
 add_subdirectory(vendor/glm)
 add_subdirectory(vendor/SFML)
 
-
 file(GLOB_RECURSE VENDORS_SOURCES vendor/glad/src/glad.c)
 file(GLOB_RECURSE PROJECT_SOURCES src/*.cpp)
 file(GLOB_RECURSE PROJECT_HEADERS src/*.h)
@@ -23,7 +22,6 @@ add_executable(${PROJECT_NAME}
 
 target_link_libraries(${PROJECT_NAME}
         glfw
-        glew
         ${GLFW_LIBRARIES}
         sfml-system
         sfml-window
@@ -35,7 +33,6 @@ include_directories(
         vendor/glfw
         vendor/glad/include
         vendor/SFML/include
-        vendor/glew/include
 )
 
 
