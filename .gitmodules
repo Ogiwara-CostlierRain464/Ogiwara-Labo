@@ -13,4 +13,4 @@
 	url = git@github.com:SFML/SFML.git
 [submodule "vendor/glew"]
 	path = vendor/glew
-	url = git@github.com:nigels-com/glew.git
+	url = git@github.com:Perlmint/glew-cmake.git
