@@ -3,6 +3,7 @@
 #include "config.h"
 #include "../render/camera.h"
 #include "../render/render_master.h"
+#include "../minecraft/level/level.h"
 #include <SFML/Graphics.hpp>
 
 namespace labo::app{
@@ -19,6 +20,8 @@ private:
   labo::render::Camera camera;
   labo::render::RenderMaster renderMaster;
   sf::RenderWindow window;
+
+  labo::minecraft::Level level;
 };
 
 }
