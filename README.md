@@ -6,16 +6,18 @@
 - submoduleをinstall
 - `cd cmake-build-debug && cmake ..`
 
-# TODO
-ドメイン駆動設計を行うので
+# NOTE
+多層アーキテクチャ
+App -> Render -> Minecraft -> Physics -> Math
 
-- infra: render
-- domain: minecraft, physics
-- application
+App: Application, Config, SFML, Window Manager
+Render: OpenGL, Camera
+Minecraft: Player, Level, Entity, Event
+Physics: AABB
+Math: glm, Noise, Random, or other utility
 
-問題点: infraとpresentationの違いが以前はわかりにくかった
+# Coding rule
+ファイル名はsnake_came
+メンバはcamelCase
 
-minecraft
-physics
-
-application
+PMMPのコードを積極的に真似ていこう
