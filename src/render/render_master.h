@@ -1,10 +1,13 @@
 #ifndef LABO_RENDER_MASTER_H
 #define LABO_RENDER_MASTER_H
 
+#include <SFML/Graphics.hpp>
+#include "camera.h"
+
 namespace labo::render{
-class render_master {
+class RenderMaster {
 public:
-  void finishRender();
+  void finish(sf::RenderWindow &window, const Camera &camera);
 };
 }
 

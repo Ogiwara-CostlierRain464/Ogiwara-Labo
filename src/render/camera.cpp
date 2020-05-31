@@ -6,6 +6,7 @@ using glm::perspective;
 using glm::radians;
 using glm::rotate;
 using glm::translate; // Tr
+using labo::minecraft::Player;
 
 mat4 labo::render::Camera::makeProjectionMat(){
   return perspective(radians(config.fov), config.windowX / config.windowY, 0.1f, 2000.f);
@@ -30,19 +31,19 @@ labo::render::Camera::Camera(CameraConfig conf)
 }
 
 void labo::render::Camera::update() {
-  assert(hookedEntity);
+  assert(hookedPlayer);
 
   position = {
-    hookedEntity->position.x,
-    hookedEntity->position.y,
-    hookedEntity->position.z
+    hookedPlayer->position.x,
+    hookedPlayer->position.y + Player::height,
+    hookedPlayer->position.z
   };
 
-  rotation = hookedEntity->rotation;
-
+  rotation = hookedPlayer->rotation;
+  projectionMatrix = projectionMatrix * viewMatrix;
 
 }
 
-void labo::render::Camera::hookEntity(const labo::minecraft::Entity *entity) {
-  hookedEntity = entity;
+void labo::render::Camera::hookPlayer(const labo::minecraft::Player *player) {
+  hookedPlayer = player;
 }

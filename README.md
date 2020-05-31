@@ -21,3 +21,5 @@ Math: glm, Noise, Random, or other utility
 メンバはcamelCase
 
 PMMPのコードを積極的に真似ていこう
+
+Level holds for player.

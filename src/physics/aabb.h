@@ -7,7 +7,7 @@ struct AABB {
   // AABBのoffset
   glm::vec3 position;
   // 原点に対する幅
-  const glm::vec3 dimensions;
+  glm::vec3 dimensions;
 
   void updatePosition(const glm::vec3 &pos) {
     position = pos;

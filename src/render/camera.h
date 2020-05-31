@@ -2,6 +2,7 @@
 #define LABO_CAMERA_H
 
 #include "../minecraft/entity/entity.h"
+#include "../minecraft/player.h"
 
 namespace labo::render{
 
@@ -11,12 +12,12 @@ struct CameraConfig{
   float fov;
 };
 
-class Camera{
+class Camera: public labo::math::NonCopyable{
 public:
   explicit Camera(CameraConfig conf);
 
   void update();
-  void hookEntity(const labo::minecraft::Entity *entity);
+  void hookPlayer(const labo::minecraft::Player *player);
 
   [[nodiscard]]
   const glm::mat4 &getViewMatrix() const noexcept{
@@ -37,12 +38,14 @@ private:
   glm::mat4 makeProjectionMat();
   glm::mat4 makeViewMat();
 
-  const labo::minecraft::Entity *hookedEntity;
+  const labo::minecraft::Player *hookedPlayer;
   glm::vec3 position;
   // オイラー角
   glm::vec3 rotation;
 
   CameraConfig config;
+
+  // Buffer
   glm::mat4 projectionMatrix;
   glm::mat4 viewMatrix;
   glm::mat4 projViewMatrix;
