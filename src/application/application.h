@@ -4,6 +4,7 @@
 #include "../render/camera.h"
 #include "../render/render_master.h"
 #include "../minecraft/level/level.h"
+#include "input/keyboard.h"
 #include <SFML/Graphics.hpp>
 
 namespace labo::app{
@@ -16,10 +17,14 @@ public:
   void handleGUIInput();
 
 private:
+  void handleKeyboardInput();
+  void handleMouseInput();
+
   const Config &config;
   labo::render::Camera camera;
   labo::render::RenderMaster renderMaster;
   sf::RenderWindow window;
+  Keyboard keyboard;
 
   labo::minecraft::Level level;
 };
