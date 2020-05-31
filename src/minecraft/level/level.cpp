@@ -7,3 +7,7 @@ labo::minecraft::Level::Level():
 {
 
 }
+
+void labo::minecraft::Level::update(float deltaTime) {
+  player.update(deltaTime);
+}

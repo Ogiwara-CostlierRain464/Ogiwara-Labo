@@ -5,12 +5,15 @@
 
 namespace labo::app{
 
+/**
+ * オン/オフを表現するために、一定時間間隔でのボタン操作
+ * を提供するトグルボタン
+ */
 class ToggleKey{
 public:
   explicit ToggleKey(sf::Keyboard::Key key)
     : key(key)
-  {
-  }
+  {}
 
   bool isKeyPressed(){
     if(delayTimer.getElapsedTime().asSeconds() > 0.2){

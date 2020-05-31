@@ -5,6 +5,10 @@
 #include <array>
 
 namespace labo::app{
+
+/**
+ * キーボードを表す。各キーのオン/オフ状態を管理する
+ */
 class Keyboard{
 public:
   Keyboard(){

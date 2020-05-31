@@ -13,9 +13,18 @@ namespace labo::minecraft{
 class Level: public labo::math::NonCopyable {
 public:
   Level();
-  ~Level();
 
   void update(float deltaTime);
+
+  [[nodiscard]]
+  Player &getPlayer(){
+    return player;
+  }
+
+  template <typename T, typename... Args>
+  void addEvent(Args &&... args){
+    events.push_back(std::make_unique<T>(std::forward<Args>(args)...));
+  }
 
 private:
   Player player;

@@ -12,7 +12,6 @@ public:
   explicit Player(glm::vec3 spawnPoint);
   void update(float deltaTime);
 
-private:
   glm::vec3 acceleration;
 
 };
