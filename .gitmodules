@@ -11,3 +11,6 @@
 [submodule "vendor/SFML"]
 	path = vendor/SFML
 	url = git@github.com:SFML/SFML.git
+[submodule "vendor/glew"]
+	path = vendor/glew
+	url = git@github.com:nigels-com/glew.git
