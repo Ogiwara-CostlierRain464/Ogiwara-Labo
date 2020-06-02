@@ -6,6 +6,7 @@
 #include <utility>
 #include <vector>
 #include <SFML/Graphics.hpp>
+#include <iostream>
 
 using glm::cos;
 using glm::sin;
@@ -68,6 +69,8 @@ public:
     } else if(player.rotation.y < 0){
       player.rotation.y = 360;
     }
+
+    std::cout << mouseMove.x << std::endl;
   }
 
 private:

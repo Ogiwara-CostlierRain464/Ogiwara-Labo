@@ -20,8 +20,7 @@ private:
   void handleMouseInput(sf::Vector2i &mouseMove);
 
   labo::render::Camera camera;
-  labo::render::RenderMaster renderMaster;
-  sf::RenderWindow window;
+  sf::Window window;
   Keyboard keyboard;
 
   labo::minecraft::Level level;

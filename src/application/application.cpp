@@ -29,11 +29,11 @@ labo::app::Application::Application()
   sf::VideoMode winMode(windowX, windowY);
   window.create(winMode, "Labo", sf::Style::Titlebar | sf::Style::Close, settings);
 
-  if(!gladLoadGL()) exit(-1);
-
   window.setVerticalSyncEnabled(true);
   //window.setMouseCursorGrabbed(true);
   window.setMouseCursorVisible(false);
+
+  if(!gladLoadGL()) exit(-1);
 
   glViewport(0, 0, window.getSize().x, window.getSize().y);
   glCullFace(GL_BACK);
@@ -44,6 +44,8 @@ labo::app::Application::Application()
 
 void labo::app::Application::mainLoop() {
   Clock dtTimer;
+
+  labo::render::RenderMaster renderMaster;
 
   while(window.isOpen()){
     auto deltaTime = dtTimer.restart();

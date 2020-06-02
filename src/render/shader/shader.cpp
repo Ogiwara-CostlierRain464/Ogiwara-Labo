@@ -4,8 +4,8 @@
 labo::render::Shader::Shader(
   const std::string &vertexFile,
   const std::string &fragmentFile)
-  : id(loadShaders(vertexFile, fragmentFile))
 {
+  id = loadShaders(vertexFile, fragmentFile);
   useProgram();
 }
 

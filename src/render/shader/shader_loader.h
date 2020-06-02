@@ -1,10 +1,10 @@
 #ifndef LABO_SHADER_LOADER_H
 #define LABO_SHADER_LOADER_H
 
-#include <glad/glad.h>
 #include <string>
 #include "../opengl_debug.h"
 #include "../../math/file.h"
+#include <glad/glad.h>
 
 namespace labo::render{
 
@@ -34,7 +34,7 @@ GLuint loadShaders(
   auto vertexSource =
     labo::math::getFileContents("shaders/" + vertexShader + ".vert");
   auto fragmentSource =
-    labo::math::getFileContents("shaders/" + fragmentShader + ".vert");
+    labo::math::getFileContents("shaders/" + fragmentShader + ".frag");
 
   auto vertexShaderID =
     compileShader(vertexSource.c_str(), GL_VERTEX_SHADER);
