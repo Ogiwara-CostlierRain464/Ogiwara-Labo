@@ -26,7 +26,6 @@ target_link_libraries(${PROJECT_NAME}
         sfml-system
         sfml-window
         sfml-graphics
-        glew
         )
 
 include_directories(
@@ -34,7 +33,6 @@ include_directories(
         vendor/glfw
         vendor/glad/include
         vendor/SFML/include
-        vendor/glew-2.2.0/include
 )
 
 
