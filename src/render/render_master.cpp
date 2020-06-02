@@ -5,7 +5,7 @@
 
 
 void labo::render::RenderMaster::finish(
-  sf::RenderWindow &window,
+  sf::Window &window,
   const labo::render::Camera &camera) {
   glClearColor(0.f, 0.f, 0.f, 1.f);
   glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
@@ -13,5 +13,8 @@ void labo::render::RenderMaster::finish(
   glEnable(GL_DEPTH_TEST);
   glEnable(GL_CULL_FACE);
 
-  //sfmlRenderer.render(window);
+  glDisable(GL_CULL_FACE);
+  skyBoxRenderer.render(camera);
+
+  window.display();
 }

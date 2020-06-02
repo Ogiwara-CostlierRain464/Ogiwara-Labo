@@ -3,12 +3,16 @@
 
 #include <SFML/Graphics.hpp>
 #include "camera.h"
+#include "renderer/sky_box_renderer.h"
 
 namespace labo::render{
 class RenderMaster {
 public:
-  void finish(sf::RenderWindow &window, const Camera &camera);
+  void finish(sf::Window &window, const Camera &camera);
 
+
+private:
+  SkyBoxRenderer skyBoxRenderer;
 };
 }
 
