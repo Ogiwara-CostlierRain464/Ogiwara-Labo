@@ -9,7 +9,6 @@ option(GLFW_BUILD_TESTS OFF)
 add_subdirectory(vendor/glfw)
 add_subdirectory(vendor/glm)
 add_subdirectory(vendor/SFML)
-add_subdirectory(vendor/glew-2.2.0/build/cmake)
 
 file(GLOB_RECURSE VENDORS_SOURCES vendor/glad/src/glad.c)
 file(GLOB_RECURSE PROJECT_SOURCES src/*.cpp)
