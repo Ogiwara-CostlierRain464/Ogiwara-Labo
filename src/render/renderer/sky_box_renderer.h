@@ -3,6 +3,7 @@
 
 #include "../camera.h"
 #include "../mesh.h"
+#include "../shader/sky_box_shader.h"
 
 namespace labo::render{
 
@@ -17,7 +18,7 @@ public:
 
 private:
   MeshCompound skyCube;
-
+  SkyBoxShader shader;
 };
 
 }

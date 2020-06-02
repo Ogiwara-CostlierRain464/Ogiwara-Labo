@@ -17,13 +17,14 @@ public:
   virtual ~Shader();
 
   void useProgram();
-  void loadInt(GLuint location, int value);
-  void loadFloat(GLuint location, float value);
 
-  void loadVector2(GLuint location, const glm::vec2 &vec);
-  void loadVector3(GLuint location, const glm::vec3 &vec);
-  void loadVector4(GLuint location, const glm::vec4 &vec);
-  void loadMatrix4(GLuint location, const glm::mat4 &matrix);
+
+  static void loadInt(GLuint location, int value);
+  static void loadFloat(GLuint location, float value);
+  static void loadVector2(GLuint location, const glm::vec2 &vec);
+  static void loadVector3(GLuint location, const glm::vec3 &vec);
+  static void loadVector4(GLuint location, const glm::vec4 &vec);
+  static void loadMatrix4(GLuint location, const glm::mat4 &matrix);
 
 protected:
   virtual void getUniforms() = 0;
