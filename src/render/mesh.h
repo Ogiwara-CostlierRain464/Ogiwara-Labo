@@ -36,18 +36,29 @@ public:
     }
   };
 
+  MeshCompound() = default;
   explicit MeshCompound(const Mesh &mesh);
 
   void addMesh(const Mesh &mesh);
   void clean();
 
-private:
   void genVAO();
   void addEBO(const std::vector<GLuint> &indices);
   void addVBO(int dimensions, const std::vector<GLfloat> &data);
   // 現在のコンテキストにVAOを設定する
   void bindVAO() const;
 
+  [[nodiscard]]
+  int getIndicesCount()const {
+    return renderInfo.indicesCount;
+  }
+
+  [[nodiscard]]
+  const RenderInfo &getRenderInfo()const {
+    return renderInfo;
+  }
+
+private:
   RenderInfo renderInfo;
   int vboCount = 0;
   std::vector<GLuint> vboBuffer;

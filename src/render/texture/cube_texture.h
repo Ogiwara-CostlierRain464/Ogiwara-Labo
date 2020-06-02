@@ -11,6 +11,7 @@ namespace labo::render{
 
 class CubeTexture: public math::NonCopyable{
 public:
+  CubeTexture() = default;
   explicit CubeTexture(const std::array<std::string, 6> &files){
     loadFromFiles(files);
   }
@@ -60,7 +61,7 @@ public:
   }
 
 private:
-  GLuint textureId;
+  GLuint textureId = 0;
 };
 
 }
