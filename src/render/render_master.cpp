@@ -3,9 +3,6 @@
 #include <glad/glad.h>
 
 
-void labo::render::RenderMaster::drawSFML(const sf::Drawable &drawable) {
-  sfmlRenderer.add(&drawable);
-}
 
 void labo::render::RenderMaster::finish(
   sf::RenderWindow &window,
