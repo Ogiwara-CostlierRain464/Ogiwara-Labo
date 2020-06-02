@@ -2,6 +2,7 @@
 #define LABO_SKY_BOX_RENDERER_H
 
 #include "../camera.h"
+#include "../mesh.h"
 
 namespace labo::render{
 
@@ -15,7 +16,8 @@ public:
   void render(const Camera &camera);
 
 private:
-  Model skyCube;
+  MeshCompound skyCube;
+
 };
 
 }
