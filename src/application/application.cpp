@@ -52,8 +52,8 @@ void labo::app::Application::mainLoop() {
 
     handleGUIInput();
 
-    level.update(deltaTime.asSeconds());
-    camera.update();
+   // level.update(deltaTime.asSeconds());
+    //camera.update();
 
     // render runs at here
 

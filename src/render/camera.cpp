@@ -40,6 +40,7 @@ void labo::render::Camera::update() {
   };
 
   rotation = hookedPlayer->rotation;
+  viewMatrix = makeViewMat();
   projectionMatrix = projectionMatrix * viewMatrix;
 
 }

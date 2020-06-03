@@ -12,8 +12,9 @@ void labo::render::RenderMaster::finish(
   glEnable(GL_DEPTH_TEST);
   glEnable(GL_CULL_FACE);
 
-  //skyBoxRenderer.render(camera);
+  skyBoxRenderer.render(camera);
   triangleRenderer.render();
+  //movingTriangleRenderer.render(camera);
 
   window.display();
 }
