@@ -4,6 +4,7 @@
 #include <SFML/Graphics.hpp>
 #include "camera.h"
 #include "renderer/sky_box_renderer.h"
+#include "renderer/triangle_renderer.h"
 
 namespace labo::render{
 class RenderMaster {
@@ -12,7 +13,8 @@ public:
 
 
 private:
-  SkyBoxRenderer skyBoxRenderer;
+  //SkyBoxRenderer skyBoxRenderer;
+  TriangleRenderer triangleRenderer;
 };
 }
 

@@ -27,7 +27,6 @@ void checkShaderError(GLuint shaderID){
     throw std::runtime_error("Error occurred while load shader: " + std::string(infoLog));
   }
 }
-
 }
 
 #endif //LABO_OPENGL_DEBUG_H

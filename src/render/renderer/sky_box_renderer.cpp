@@ -1,4 +1,5 @@
 #include "sky_box_renderer.h"
+#include "../opengl_debug.h"
 
 labo::render::SkyBoxRenderer::SkyBoxRenderer(){
   constexpr GLfloat SIZE = 500;
@@ -102,13 +103,13 @@ labo::render::SkyBoxRenderer::SkyBoxRenderer(){
   skyCube.addEBO(indices);
 
   cubeTexture.loadFromFiles({
-                               "dm",
-                               "dm",
-                               "dt",
-                               "db",
-                               "dm",
-                               "dm",
-                             });
+     "dm",
+     "dm",
+     "dt",
+     "db",
+     "dm",
+     "dm",
+   });
 }
 
 void labo::render::SkyBoxRenderer::render(const labo::render::Camera &camera) {
@@ -120,4 +121,5 @@ void labo::render::SkyBoxRenderer::render(const labo::render::Camera &camera) {
   shader.loadProjectionMatrix(camera.getProjMatrix());
 
   glDrawElements(GL_TRIANGLES, skyCube.getIndicesCount(), GL_UNSIGNED_INT, nullptr);
+  checkGLError();
 }

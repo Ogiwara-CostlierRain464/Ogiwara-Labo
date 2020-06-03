@@ -17,11 +17,11 @@ public:
     viewMatrix[3][0] = 0;
     viewMatrix[3][1] = 0;
     viewMatrix[3][2] = 0;
-    Shader::loadMatrix4(locationView, viewMatrix);
+    loadMatrix4(locationView, viewMatrix);
   }
 
   void loadProjectionMatrix(const glm::mat4 &proj){
-    Shader::loadMatrix4(locationProjection, proj);
+    loadMatrix4(locationProjection, proj);
   }
 
 private:

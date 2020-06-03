@@ -2,7 +2,7 @@
 #define LABO_SHADER_LOADER_H
 
 #include <string>
-#include "../opengl_debug.h"
+//#include "../opengl_debug.h"
 #include "../../math/file.h"
 #include <glad/glad.h>
 
@@ -14,7 +14,7 @@ GLuint compileShader(const GLchar *source, GLenum shaderType){
   glShaderSource(shaderId, 1, &source, nullptr);
   glCompileShader(shaderId);
 
-  checkShaderError(shaderId);
+//  checkShaderError(shaderId);
   return shaderId;
 }
 

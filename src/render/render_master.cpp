@@ -14,7 +14,8 @@ void labo::render::RenderMaster::finish(
   glEnable(GL_CULL_FACE);
 
   glDisable(GL_CULL_FACE);
-  skyBoxRenderer.render(camera);
+  //skyBoxRenderer.render(camera);
+  triangleRenderer.render();
 
   window.display();
 }
