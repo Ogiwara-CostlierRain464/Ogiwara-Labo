@@ -54,7 +54,7 @@ void labo::render::MeshCompound::addVBO(
     nullptr
     );
   glEnableVertexAttribArray(
-    static_cast<GLuint >(vboCount++)
+    static_cast<GLuint>(vboCount++)
     );
   vboBuffer.push_back(vbo);
 }
@@ -77,6 +77,10 @@ void labo::render::MeshCompound::clean() {
 
   vboCount = 0;
   renderInfo.reset();
+}
+
+labo::render::MeshCompound::~MeshCompound() {
+  clean();
 }
 
 

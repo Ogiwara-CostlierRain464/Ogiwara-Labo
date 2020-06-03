@@ -59,8 +59,6 @@ void labo::app::Application::mainLoop() {
 
     renderMaster.finish(window, camera);
 
-    window.display();
-
   }
 }
 

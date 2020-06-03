@@ -4,6 +4,7 @@
 #include <glad/glad.h>
 #include <vector>
 #include "../mesh.h"
+#include "../shader/triangle_shader.h"
 
 namespace labo::render{
 
@@ -14,9 +15,9 @@ class TriangleRenderer{
 public:
   TriangleRenderer(){
     std::vector<GLfloat> vertices{
-      0.f, 0.5f,
-      0.5f, -0.5f,
-      -0.5f, -0.5f
+      0.f, 0.5f, // 0
+      -0.5f, -0.5f, // 1
+      0.5f, -0.5f // 2
     };
 
     std::vector<GLuint> indices{
@@ -25,15 +26,18 @@ public:
 
     meshes.genVAO();
     meshes.addVBO(2, vertices);
+    meshes.addEBO(indices);
   }
 
   void render(){
+    shader.useProgram();
     meshes.bindVAO();
-    glDrawArrays(GL_TRIANGLES, 0, 3);
+    glDrawElements(GL_TRIANGLES, meshes.getIndicesCount(), GL_UNSIGNED_INT, nullptr);
   }
 
 private:
   MeshCompound meshes;
+  TriangleShader shader;
 };
 
 }

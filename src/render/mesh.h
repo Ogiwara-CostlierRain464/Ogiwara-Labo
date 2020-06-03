@@ -38,6 +38,7 @@ public:
 
   MeshCompound() = default;
   explicit MeshCompound(const Mesh &mesh);
+  ~MeshCompound();
 
   void addMesh(const Mesh &mesh);
   void clean();
