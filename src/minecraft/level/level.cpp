@@ -8,6 +8,15 @@ labo::minecraft::Level::Level():
 
 }
 
+
+labo::minecraft::Block labo::minecraft::Level::getBlock(int x, int y, int z) {
+  return labo::minecraft::Block();
+}
+
+void labo::minecraft::Level::setBlock(int x, int y, int z, labo::minecraft::Block block) {
+
+}
+
 void labo::minecraft::Level::update(float deltaTime) {
   player.update(deltaTime);
 

@@ -25,6 +25,7 @@ public:
     return player;
   }
 
+
   template <typename T, typename... Args>
   void addEvent(Args &&... args){
     events.push_back(std::make_unique<T>(std::forward<Args>(args)...));
