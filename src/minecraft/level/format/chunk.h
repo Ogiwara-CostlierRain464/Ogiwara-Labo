@@ -13,6 +13,7 @@ namespace labo::minecraft {
 
 class Chunk {
 public:
+  Chunk() = default;
   Chunk(Level *level, const sf::Vector2i &location);
 
   void update(float deltaTime);
@@ -20,6 +21,7 @@ public:
   void setBlock(int x, int y, int z, Block block);
   Block getBlockAt(int x, int y, int z);
 
+  [[nodiscard]]
   bool hasLoaded() const noexcept;
 
 private:

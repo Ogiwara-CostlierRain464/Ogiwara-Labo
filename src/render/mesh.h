@@ -15,10 +15,20 @@ struct Mesh{
   std::vector<GLfloat> vertexPositions;
   std::vector<GLfloat> textureCoords;
   std::vector<GLuint> indices;
+
+  void clearAll(){
+    vertexPositions.clear();
+    vertexPositions.shrink_to_fit();
+    textureCoords.clear();
+    textureCoords.shrink_to_fit();
+    indices.clear();
+    indices.shrink_to_fit();
+  }
 };
 
 /**
- * メッシュの集まりをあらわし、VAOやVBO、EBOを保持する
+ * VAO,VBO,EBOを保持するコンテナ
+ * NOTE: 適切な名前に変えよう
  *
  */
 class MeshCompound: public labo::math::NonCopyable{

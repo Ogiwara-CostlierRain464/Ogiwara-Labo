@@ -51,7 +51,7 @@ labo::minecraft::Block labo::minecraft::Chunk::getBlockAt(int x, int y, int z) {
 
 
 bool labo::minecraft::Chunk::hasLoaded() const noexcept {
-  return location;
+  return isLoaded;
 }
 
 void labo::minecraft::Chunk::addSubChunk() {
