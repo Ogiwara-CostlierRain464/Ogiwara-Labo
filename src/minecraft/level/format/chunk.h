@@ -24,6 +24,15 @@ public:
   [[nodiscard]]
   bool hasLoaded() const noexcept;
 
+  [[nodiscard]]
+  const sf::Vector2i &getLocation()const{
+    return location;
+  }
+
+  std::vector<SubChunk> &getSubChunks(){
+    return subChunks;
+  }
+
 private:
   void addSubChunk();
 

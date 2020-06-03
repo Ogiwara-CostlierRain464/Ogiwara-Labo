@@ -57,6 +57,7 @@ void labo::app::Application::mainLoop() {
 
     // render runs at here
 
+
     renderMaster.finish(window, camera);
 
   }

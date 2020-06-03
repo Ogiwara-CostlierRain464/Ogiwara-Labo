@@ -34,6 +34,11 @@ public:
     return projViewMatrix;
   }
 
+  [[nodiscard]]
+  glm::vec3 getPosition()const{
+    return position;
+  }
+
 private:
   glm::mat4 makeProjectionMat();
   glm::mat4 makeViewMat();

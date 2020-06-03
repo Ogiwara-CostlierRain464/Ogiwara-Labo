@@ -6,6 +6,7 @@
 #include "../event/event.h"
 #include "../block/block.h"
 #include "../../math/vector_xz.h"
+#include "chunk_manager.h"
 #include <vector>
 #include <memory>
 
@@ -40,9 +41,16 @@ public:
     events.push_back(std::make_unique<T>(std::forward<Args>(args)...));
   }
 
+  ChunkManager &getChunkManager(){
+    return chunkManager;
+  }
+
 private:
+
+  ChunkManager chunkManager;
   Player player;
   std::vector<std::unique_ptr<Event>> events;
+
 
 };
 }
