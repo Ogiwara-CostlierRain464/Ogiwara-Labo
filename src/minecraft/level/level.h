@@ -5,6 +5,7 @@
 #include "../player.h"
 #include "../event/event.h"
 #include "../block/block.h"
+#include "../../math/vector_xz.h"
 #include <vector>
 #include <memory>
 
@@ -25,6 +26,14 @@ public:
     return player;
   }
 
+  /**
+   * Chunk内のlocal座標に変換
+   */
+  static labo::math::VectorXZ getChunkLocalCoordinate(int x, int z);
+  /**
+   * Chunk自体のLocationを返す
+   */
+  static labo::math::VectorXZ getChunkLocation(int x, int z);
 
   template <typename T, typename... Args>
   void addEvent(Args &&... args){
