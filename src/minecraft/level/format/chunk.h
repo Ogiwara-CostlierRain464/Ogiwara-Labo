@@ -20,6 +20,8 @@ public:
   void setBlock(int x, int y, int z, Block block);
   Block getBlockAt(int x, int y, int z);
 
+  bool hasLoaded() const noexcept;
+
 private:
   void addSubChunk();
 

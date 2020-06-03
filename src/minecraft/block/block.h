@@ -12,7 +12,7 @@ enum BlockMeshType{
 };
 
 enum BlockShaderType{
-  Chunk, Liquid, Flora
+  Chunk_, Liquid, Flora
 };
 
 struct BlockMetaData{
@@ -49,7 +49,7 @@ const Block Air = Block(math::Id<Block>{0}, BlockMetaData{
   sf::Vector2i(0,0),
   sf::Vector2i(0,0),
 
-  Cube, Chunk,
+  Cube, Chunk_,
 
   false, false
 });
@@ -59,7 +59,7 @@ const Block Stone = Block(math::Id<Block>{3}, BlockMetaData{
   sf::Vector2i(3,0),
   sf::Vector2i(3,0),
 
-  Cube, Chunk,
+  Cube, Chunk_,
 
   true, true
 });
