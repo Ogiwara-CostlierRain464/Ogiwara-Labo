@@ -18,7 +18,7 @@ public:
   void render(const Camera &camera);
 
 private:
-  MeshCompound skyCube;
+  MeshContainer skyCube;
   SkyBoxShader shader;
   CubeTexture cubeTexture;
 };

@@ -31,7 +31,7 @@ struct Mesh{
  * NOTE: 適切な名前に変えよう
  *
  */
-class MeshCompound: public labo::math::NonCopyable{
+class MeshContainer: public labo::math::NonCopyable{
 public:
   /**
    * 描画に必要な情報を格納
@@ -46,9 +46,9 @@ public:
     }
   };
 
-  MeshCompound() = default;
-  explicit MeshCompound(const Mesh &mesh);
-  ~MeshCompound();
+  MeshContainer() = default;
+  explicit MeshContainer(const Mesh &mesh);
+  ~MeshContainer();
 
   void addMesh(const Mesh &mesh);
   void clean();

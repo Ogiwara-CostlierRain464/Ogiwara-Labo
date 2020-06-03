@@ -36,7 +36,7 @@ public:
   }
 
 private:
-  MeshCompound meshes;
+  MeshContainer meshes;
   TriangleShader shader;
 };
 

@@ -65,7 +65,7 @@ public:
   }
 
 private:
-  MeshCompound meshes;
+  MeshContainer meshes;
   MovingTriangleShader shader;
 };
 

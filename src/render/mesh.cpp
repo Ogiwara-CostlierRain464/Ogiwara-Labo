@@ -1,10 +1,10 @@
 #include "mesh.h"
 
-labo::render::MeshCompound::MeshCompound(const labo::render::Mesh &mesh) {
+labo::render::MeshContainer::MeshContainer(const labo::render::Mesh &mesh) {
   addMesh(mesh);
 }
 
-void labo::render::MeshCompound::addMesh(const labo::render::Mesh &mesh) {
+void labo::render::MeshContainer::addMesh(const labo::render::Mesh &mesh) {
   genVAO();
 
   addVBO(3, mesh.vertexPositions);
@@ -12,7 +12,7 @@ void labo::render::MeshCompound::addMesh(const labo::render::Mesh &mesh) {
   addEBO(mesh.indices);
 }
 
-void labo::render::MeshCompound::genVAO() {
+void labo::render::MeshContainer::genVAO() {
   if(renderInfo.vao != 0){
     clean();
   }
@@ -21,7 +21,7 @@ void labo::render::MeshCompound::genVAO() {
   glBindVertexArray(renderInfo.vao);
 }
 
-void labo::render::MeshCompound::addEBO(const std::vector<GLuint> &indices) {
+void labo::render::MeshContainer::addEBO(const std::vector<GLuint> &indices) {
   renderInfo.indicesCount = static_cast<GLuint>(indices.size());
   GLuint ebo;
   glGenBuffers(1, &ebo);
@@ -34,7 +34,7 @@ void labo::render::MeshCompound::addEBO(const std::vector<GLuint> &indices) {
     );
 }
 
-void labo::render::MeshCompound::addVBO(
+void labo::render::MeshContainer::addVBO(
   int dimensions,
   const std::vector<GLfloat> &data) {
   GLuint vbo;
@@ -59,11 +59,11 @@ void labo::render::MeshCompound::addVBO(
   vboBuffer.push_back(vbo);
 }
 
-void labo::render::MeshCompound::bindVAO() const {
+void labo::render::MeshContainer::bindVAO() const {
   glBindVertexArray(renderInfo.vao);
 }
 
-void labo::render::MeshCompound::clean() {
+void labo::render::MeshContainer::clean() {
   if(renderInfo.vao){
     glDeleteVertexArrays(1, &renderInfo.vao);
   }
@@ -79,7 +79,7 @@ void labo::render::MeshCompound::clean() {
   renderInfo.reset();
 }
 
-labo::render::MeshCompound::~MeshCompound() {
+labo::render::MeshContainer::~MeshContainer() {
   clean();
 }
 

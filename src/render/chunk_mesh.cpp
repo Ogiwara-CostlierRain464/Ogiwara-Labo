@@ -52,13 +52,13 @@ void labo::render::ChunkMesh::addFace(
 }
 
 void labo::render::ChunkMesh::bufferMesh() {
-  meshCompound.addMesh(mesh);
-  meshCompound.addVBO(1, light);
+  meshContainer.addMesh(mesh);
+  meshContainer.addVBO(1, light);
 
   mesh.clearAll();
   indexOffset = 0;
 }
 
 void labo::render::ChunkMesh::clean() {
-  meshCompound.clean();
+  meshContainer.clean();
 }

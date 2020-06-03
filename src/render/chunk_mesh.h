@@ -22,6 +22,12 @@ public:
     );
 
   void bufferMesh();
+
+  [[nodiscard]]
+  const MeshContainer &getContainer() const{
+    return meshContainer;
+  }
+
   void clean();
 
 
@@ -29,7 +35,7 @@ private:
   int faces = 0;
   // ここでは各座標をBufferするものとして働く
   Mesh mesh;
-  MeshCompound meshCompound;
+  MeshContainer meshContainer;
   std::vector<GLfloat> light;
   // NOTE: rename better name
   GLuint indexOffset = 0;
