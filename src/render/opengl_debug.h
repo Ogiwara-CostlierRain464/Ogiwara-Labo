@@ -9,6 +9,9 @@
  */
 namespace labo::render{
 
+/**
+ * @see https://www.khronos.org/opengl/wiki/OpenGL_Error
+ */
 void checkGLError(){
   GLenum err;
   while((err = glGetError())!= GL_NO_ERROR )

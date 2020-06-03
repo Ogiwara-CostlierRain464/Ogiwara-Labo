@@ -38,7 +38,7 @@ private:
   glm::mat4 makeProjectionMat();
   glm::mat4 makeViewMat();
 
-  const labo::minecraft::Player *hookedPlayer;
+  const labo::minecraft::Player *hookedPlayer = nullptr;
   glm::vec3 position;
   // オイラー角
   glm::vec3 rotation;

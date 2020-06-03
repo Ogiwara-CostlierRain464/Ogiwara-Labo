@@ -31,7 +31,7 @@ labo::app::Application::Application()
 
   window.setVerticalSyncEnabled(true);
   //window.setMouseCursorGrabbed(true);
-  window.setMouseCursorVisible(false);
+  //window.setMouseCursorVisible(false);
 
   if(!gladLoadGL()) exit(-1);
 
@@ -52,8 +52,8 @@ void labo::app::Application::mainLoop() {
 
     handleGUIInput();
 
-   // level.update(deltaTime.asSeconds());
-    //camera.update();
+    level.update(deltaTime.asSeconds());
+    camera.update();
 
     // render runs at here
 
@@ -115,4 +115,6 @@ void labo::app::Application::handleKeyboardInput(std::vector<sf::Keyboard::Key> 
 void labo::app::Application::handleMouseInput(sf::Vector2i  &mouseMove) {
   static auto lastMousePosition = sf::Mouse::getPosition(window);
   mouseMove = sf::Mouse::getPosition() - lastMousePosition;
+
+  lastMousePosition = sf::Mouse::getPosition();
 }

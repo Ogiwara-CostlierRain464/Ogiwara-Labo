@@ -9,7 +9,7 @@
 namespace labo::render{
 
 /**
- *
+ * ユーザーの周りに空を描画する
  */
 class SkyBoxRenderer {
 public:

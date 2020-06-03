@@ -33,6 +33,7 @@ include_directories(
         vendor/glfw
         vendor/glad/include
         vendor/SFML/include
+        vendor/glText
 )
 
 

@@ -14,6 +14,6 @@ void labo::minecraft::Level::update(float deltaTime) {
   for(auto &event: events){
     event->handle(*this);
   }
-
+  events.clear();
 
 }

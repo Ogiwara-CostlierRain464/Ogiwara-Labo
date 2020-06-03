@@ -1,5 +1,6 @@
 #include "player.h"
 #include "../physics/aabb.h"
+#include <iostream>
 
 using glm::vec3;
 using labo::physics::AABB;
@@ -25,5 +26,7 @@ void labo::minecraft::Player::update(float deltaTime) {
 
   box.updatePosition(position);
   velocity.x *= 0.95;
+  velocity.y *= 0.95;
   velocity.z *= 0.95;
+
 }

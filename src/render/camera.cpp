@@ -1,5 +1,6 @@
 #include "camera.h"
 #include "../math/glm.h"
+#include <iostream>
 
 using glm::mat4;
 using glm::perspective;
@@ -41,8 +42,9 @@ void labo::render::Camera::update() {
 
   rotation = hookedPlayer->rotation;
   viewMatrix = makeViewMat();
-  projectionMatrix = projectionMatrix * viewMatrix;
+  projViewMatrix = projectionMatrix * viewMatrix;
 
+  std::cout << "x"<< (int) position.x << "y" << (int) position.y << "z" << (int) position.z << std::endl;
 }
 
 void labo::render::Camera::hookPlayer(const labo::minecraft::Player *player) {

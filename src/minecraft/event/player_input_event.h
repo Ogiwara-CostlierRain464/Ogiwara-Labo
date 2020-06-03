@@ -69,8 +69,6 @@ public:
     } else if(player.rotation.y < 0){
       player.rotation.y = 360;
     }
-
-    std::cout << mouseMove.x << std::endl;
   }
 
 private:

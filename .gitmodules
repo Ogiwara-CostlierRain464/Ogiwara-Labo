@@ -11,3 +11,6 @@
 [submodule "vendor/SFML"]
 	path = vendor/SFML
 	url = git@github.com:SFML/SFML.git
+[submodule "vendor/glText"]
+	path = vendor/glText
+	url = git@github.com:vallentin/glText.git

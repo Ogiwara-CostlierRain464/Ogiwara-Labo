@@ -112,7 +112,7 @@ labo::render::SkyBoxRenderer::SkyBoxRenderer(){
    });
 }
 
-void labo::render::SkyBoxRenderer::render(const labo::render::Camera &camera) {
+void labo::render::SkyBoxRenderer::render(const Camera &camera) {
   shader.useProgram();
   skyCube.bindVAO();
   cubeTexture.bindTexture();
