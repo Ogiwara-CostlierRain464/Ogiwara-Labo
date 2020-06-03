@@ -4,6 +4,7 @@
 #include "../../math/non_copyable.h"
 #include "../player.h"
 #include "../event/event.h"
+#include "../block/block.h"
 #include <vector>
 #include <memory>
 
@@ -13,6 +14,9 @@ namespace labo::minecraft{
 class Level: public labo::math::NonCopyable {
 public:
   Level();
+
+  Block getBlock(int x, int y, int z);
+  void setBlock(int x, int y, int z, Block block);
 
   void update(float deltaTime);
 
