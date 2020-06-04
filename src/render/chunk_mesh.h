@@ -30,9 +30,9 @@ public:
 
   void clean();
 
+  int faces = 0;
 
 private:
-  int faces = 0;
   // ここでは各座標をBufferするものとして働く
   Mesh mesh;
   MeshContainer meshContainer;
