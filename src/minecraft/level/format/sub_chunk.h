@@ -46,6 +46,11 @@ public:
     return location;
   }
 
+  /**
+   * 再描画が必要であるとマークする
+   */
+  void markNeedRender();
+
 private:
   [[nodiscard]]
   sf::Vector3i toGlobalPosition(int x, int y, int z) const;
@@ -66,6 +71,7 @@ private:
   sf::Vector3i location;
 
   Level *level;
+  bool needRender = false;
 };
 
 }

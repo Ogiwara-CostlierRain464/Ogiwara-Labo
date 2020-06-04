@@ -41,6 +41,10 @@ labo::minecraft::Block labo::minecraft::SubChunk::getBlock(
   return blocks[getIndex(x,y,z)];
 }
 
+void labo::minecraft::SubChunk::markNeedRender(){
+  needRender = true;
+}
+
 sf::Vector3i labo::minecraft::SubChunk::toGlobalPosition(int x, int y, int z) const{
   return {
     location.x * CHUNK_SIZE + x,

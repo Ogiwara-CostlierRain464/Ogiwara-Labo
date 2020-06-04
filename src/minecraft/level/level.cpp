@@ -47,6 +47,8 @@ void labo::minecraft::Level::update(float deltaTime) {
   for(auto &chunk : chunkManager.getChunks()){
     chunk.second.update(deltaTime);
   }
+
+  updateSubChunks();
 }
 
 void labo::minecraft::Level::markNeedUpdate(int blockX, int blockY, int blockZ) {
@@ -161,6 +163,13 @@ labo::math::VectorXZ labo::minecraft::Level::getChunkLocalCoordinate(int x, int 
 
 labo::math::VectorXZ labo::minecraft::Level::getChunkLocation(int x, int z) {
   return {x / CHUNK_SIZE, z / CHUNK_SIZE};
+}
+
+void labo::minecraft::Level::updateSubChunks() {
+  for(auto &c : chunkUpdates){
+    c.second->markNeedRender();
+  }
+  chunkUpdates.clear();
 }
 
 

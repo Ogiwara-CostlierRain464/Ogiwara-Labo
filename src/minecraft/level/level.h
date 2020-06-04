@@ -54,6 +54,7 @@ public:
   }
 
 private:
+  void updateSubChunks();
 
   ChunkManager chunkManager;
   Player player;
