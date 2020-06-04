@@ -60,7 +60,6 @@ private:
   std::vector<std::unique_ptr<Event>> events;
   std::unordered_map<sf::Vector3i, SubChunk *> chunkUpdates;
 
-
 };
 }
 

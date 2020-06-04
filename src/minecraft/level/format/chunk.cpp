@@ -54,6 +54,17 @@ bool labo::minecraft::Chunk::hasLoaded() const noexcept {
   return isLoaded;
 }
 
+labo::minecraft::SubChunk
+&labo::minecraft::Chunk::getSubChunk(int index){
+  static SubChunk errorSubChunk({444,444,444}, level);
+
+  if(index >= subChunks.size() || index < 0){
+    return errorSubChunk;
+  }
+
+  return subChunks[index];
+}
+
 void labo::minecraft::Chunk::addSubChunk() {
   int y = subChunks.size();
   subChunks.emplace_back(

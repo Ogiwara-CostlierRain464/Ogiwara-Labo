@@ -50,9 +50,109 @@ void labo::minecraft::Level::update(float deltaTime) {
 }
 
 void labo::minecraft::Level::markNeedUpdate(int blockX, int blockY, int blockZ) {
-  auto addChunkToUpdateBatch = [&](const sf::Vector3i &key, SubChunk &subChunk){
-
+  auto addChunkToUpdateBatch = [&](
+    const sf::Vector3i &key,
+    SubChunk *subChunk){
+    chunkUpdates.emplace(key, subChunk);
   };
+
+  auto chunkLocation = getChunkLocation(blockX, blockZ);
+  auto subChunkIndex = blockY / CHUNK_SIZE;
+
+  sf::Vector3i key(
+    chunkLocation.x,
+    subChunkIndex,
+    chunkLocation.z);
+  addChunkToUpdateBatch(
+    key,
+    &chunkManager
+    .getChunk(chunkLocation.x, chunkLocation.z)
+    .getSubChunk(subChunkIndex)
+    );
+
+  auto subChunkLocalCoordinate = getChunkLocalCoordinate(blockX, blockZ);
+  auto inSubChunkHeight = blockY % CHUNK_SIZE;
+
+  // もしチャンクの端(x方向)なら、更新キューに加える
+  if(subChunkLocalCoordinate.x == 0){
+    sf::Vector3i newKey(
+      chunkLocation.x - 1,
+      subChunkIndex,
+      chunkLocation.z);
+    addChunkToUpdateBatch(
+      newKey,
+      &chunkManager
+      .getChunk(newKey.x, newKey.z)
+      .getSubChunk(newKey.y)
+      );
+  }
+  // もしチャンクの端(x方向側面)なら、更新キューに加える
+  else if(subChunkLocalCoordinate.x == CHUNK_SIZE - 1){
+    sf::Vector3i newKey(
+      chunkLocation.x + 1,
+      subChunkIndex,
+      chunkLocation.z);
+    addChunkToUpdateBatch(
+      newKey,
+      &chunkManager
+        .getChunk(newKey.x, newKey.z)
+        .getSubChunk(newKey.y)
+    );
+  }
+
+  // もしチャンクの端(下面)なら、更新キューに加える
+  if(inSubChunkHeight == 0){
+    sf::Vector3i newKey(
+      chunkLocation.x ,
+      subChunkIndex - 1,
+      chunkLocation.z);
+    addChunkToUpdateBatch(
+      newKey,
+      &chunkManager
+        .getChunk(newKey.x, newKey.z)
+        .getSubChunk(newKey.y)
+    );
+  } else if(inSubChunkHeight == CHUNK_SIZE - 1){
+    sf::Vector3i newKey(
+      chunkLocation.x ,
+      subChunkIndex + 1,
+      chunkLocation.z);
+    addChunkToUpdateBatch(
+      newKey,
+      &chunkManager
+        .getChunk(newKey.x, newKey.z)
+        .getSubChunk(newKey.y)
+    );
+  }
+
+  // もしチャンクの端(z側面)なら、更新キューに加える
+  if(subChunkLocalCoordinate.z == 0){
+    sf::Vector3i newKey(
+      chunkLocation.x ,
+      subChunkIndex,
+      chunkLocation.z - 1);
+    addChunkToUpdateBatch(
+      newKey,
+      &chunkManager
+        .getChunk(newKey.x, newKey.z)
+        .getSubChunk(newKey.y)
+    );
+  }
+    // もしチャンクの端(z側面)なら、更新キューに加える
+  else if(subChunkLocalCoordinate.z == CHUNK_SIZE - 1){
+    sf::Vector3i newKey(
+      chunkLocation.x,
+      subChunkIndex,
+      chunkLocation.z + 1);
+    addChunkToUpdateBatch(
+      newKey,
+      &chunkManager
+        .getChunk(newKey.x, newKey.z)
+        .getSubChunk(newKey.y)
+    );
+  }
+
+
 }
 
 labo::math::VectorXZ labo::minecraft::Level::getChunkLocalCoordinate(int x, int z) {

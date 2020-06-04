@@ -25,6 +25,8 @@ public:
   [[nodiscard]]
   bool hasLoaded() const noexcept;
 
+  SubChunk &getSubChunk(int index);
+
   [[nodiscard]]
   const sf::Vector2i &getLocation()const{
     return location;
