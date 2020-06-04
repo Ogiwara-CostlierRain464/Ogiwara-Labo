@@ -49,6 +49,12 @@ void labo::minecraft::Level::update(float deltaTime) {
   }
 }
 
+void labo::minecraft::Level::markNeedUpdate(int blockX, int blockY, int blockZ) {
+  auto addChunkToUpdateBatch = [&](const sf::Vector3i &key, SubChunk &subChunk){
+
+  };
+}
+
 labo::math::VectorXZ labo::minecraft::Level::getChunkLocalCoordinate(int x, int z) {
   return {x % CHUNK_SIZE, z % CHUNK_SIZE};
 }

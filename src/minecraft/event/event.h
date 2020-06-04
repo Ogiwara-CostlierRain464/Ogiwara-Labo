@@ -6,6 +6,7 @@ namespace labo::minecraft{
 class Level;
 
 struct Event{
+  virtual ~Event() = default;
   virtual void handle(Level &level) = 0;
 };
 

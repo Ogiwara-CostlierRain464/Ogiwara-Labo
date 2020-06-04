@@ -2,15 +2,19 @@
 #define LABO_LEVEL_H
 
 #include "../../math/non_copyable.h"
-#include "../player.h"
 #include "../event/event.h"
 #include "../block/block.h"
 #include "../../math/vector_xz.h"
 #include "chunk_manager.h"
 #include <vector>
 #include <memory>
+#include <unordered_map>
+#include <SFML/Graphics.hpp>
+#include "../player.h"
 
 namespace labo::minecraft{
+
+class SubChunk;
 
 // In Minecraft, World is called Level
 class Level: public labo::math::NonCopyable {
@@ -21,6 +25,10 @@ public:
   void setBlock(int x, int y, int z, Block block);
 
   void update(float deltaTime);
+  /**
+   * ブロックの設置などによって更新が必要になったChunkにマークをする
+   */
+  void markNeedUpdate(int blockX, int blockY, int blockZ);
 
   [[nodiscard]]
   Player &getPlayer(){
@@ -50,6 +58,7 @@ private:
   ChunkManager chunkManager;
   Player player;
   std::vector<std::unique_ptr<Event>> events;
+  std::unordered_map<sf::Vector3i, SubChunk *> chunkUpdates;
 
 
 };

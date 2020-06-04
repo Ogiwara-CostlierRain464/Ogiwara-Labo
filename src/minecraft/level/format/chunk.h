@@ -3,13 +3,14 @@
 
 #include <SFML/Graphics.hpp>
 #include <vector>
-#include "../level.h"
 #include "../../block/block.h"
 #include "sub_chunk.h"
 #include "../../../math/array_2d.h"
 
 
 namespace labo::minecraft {
+
+class Level;
 
 class Chunk {
 public:

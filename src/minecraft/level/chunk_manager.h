@@ -3,11 +3,12 @@
 
 #include <unordered_map>
 
-#include "level.h"
+#include "format/chunk.h"
+#include "../../math/vector_xz.h"
 
 namespace labo::minecraft{
 
-class Chunk;
+class Level;
 
 class ChunkManager{
 public:
