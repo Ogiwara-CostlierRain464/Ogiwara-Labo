@@ -3,6 +3,7 @@
 
 #include "../minecraft/entity/entity.h"
 #include "../minecraft/player.h"
+#include "frustum.h"
 
 namespace labo::render{
 
@@ -39,6 +40,11 @@ public:
     return position;
   }
 
+  [[nodiscard]]
+  const ViewFrustum &getFrustum() const noexcept {
+    return frustum;
+  }
+
 private:
   glm::mat4 makeProjectionMat();
   glm::mat4 makeViewMat();
@@ -49,6 +55,7 @@ private:
   glm::vec3 rotation;
 
   CameraConfig config;
+  ViewFrustum frustum;
 
   // Buffer
   glm::mat4 projectionMatrix;

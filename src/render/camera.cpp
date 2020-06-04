@@ -44,7 +44,7 @@ void labo::render::Camera::update() {
   viewMatrix = makeViewMat();
   projViewMatrix = projectionMatrix * viewMatrix;
 
-  std::cout << "x"<< (int) position.x << "y" << (int) position.y << "z" << (int) position.z << std::endl;
+  frustum.update(projViewMatrix);
 }
 
 void labo::render::Camera::hookPlayer(const labo::minecraft::Player *player) {

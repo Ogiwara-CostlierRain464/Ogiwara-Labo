@@ -45,6 +45,34 @@ void labo::minecraft::SubChunk::markNeedRender(){
   needRender = true;
 }
 
+const labo::minecraft::SubChunk::Layer
+&labo::minecraft::SubChunk::getLayer(int y) const {
+  if(y <= -1){
+    assert(false);
+    return level->getChunkManager()
+    .getChunk(location.x, location.z)
+    .getSubChunk(location.y - 1)
+    .getLayer(CHUNK_SIZE - 1);
+  } else if(y >= CHUNK_SIZE){
+    assert(false);
+    return level->getChunkManager()
+    .getChunk(location.x, location.z)
+    .getSubChunk(location.y + 1)
+    .getLayer(0);
+  } else{
+    return layers[y];
+  }
+}
+
+labo::minecraft::SubChunk &labo::minecraft::SubChunk::getAdjacentSubChunk(int dx, int dz) {
+  int newX = location.x + dx;
+  int newZ = location.z + dz;
+
+  return level->getChunkManager()
+    .getChunk(newX, newZ)
+    .getSubChunk(location.y);
+}
+
 sf::Vector3i labo::minecraft::SubChunk::toGlobalPosition(int x, int y, int z) const{
   return {
     location.x * CHUNK_SIZE + x,
@@ -63,3 +91,4 @@ int labo::minecraft::SubChunk::getIndex(int x, int y, int z) {
   y * CHUNK_SIZE * CHUNK_SIZE +
   z * CHUNK_SIZE * CHUNK_SIZE * CHUNK_SIZE;
 }
+

@@ -46,10 +46,28 @@ public:
     return location;
   }
 
+  [[nodiscard]]
+  bool isNeedRender()const{
+    return needRender;
+  }
+
   /**
    * 再描画が必要であるとマークする
    */
   void markNeedRender();
+
+  [[nodiscard]]
+  const Layer &getLayer(int y) const;
+  SubChunk &getAdjacentSubChunk(int dx, int dz);
+
+  [[nodiscard]]
+  const physics::AABB &getAABB()const{
+    return aabb;
+  }
+
+  const Block *blocksFirstPtr(){
+    return &blocks[0];
+  }
 
 private:
   [[nodiscard]]

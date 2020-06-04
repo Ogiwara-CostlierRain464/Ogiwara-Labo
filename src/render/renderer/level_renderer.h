@@ -6,17 +6,55 @@
 #include "../../math/vector_xz.h"
 #include "../camera.h"
 #include "../render_master.h"
+#include "../chunk_mesh.h"
 
 namespace labo::render{
+
+struct AdjacentBlockPositions{
+  sf::Vector3i up;
+  sf::Vector3i down;
+  sf::Vector3i left;
+  sf::Vector3i right;
+  sf::Vector3i front;
+  sf::Vector3i back;
+
+  void update(int x, int y, int z){
+    up = {x, y + 1, z};
+    down = {x, y - 1, z};
+    left = {x - 1, y, z};
+    right = {x + 1, y, z};
+    front = {x, y, z + 1};
+    back = {x, y, z - 1};
+  }
+};
+
+void tryDrawSubChunk(
+  RenderMaster &renderMaster,
+  labo::minecraft::SubChunk &subChunk
+  ){
+//  // make mesh
+//  ChunkMeshCollection meshCollection;
+//
+//  // buildMesh() come here
+//  AdjacentBlockPositions directions;
+//  int faces = 0;
+//  auto blockPtr = subChunk.blocksFirstPtr();
+//  for(int i =0; i < labo::minecraft::CHUNK_VOLUME; i++){
+//    int x = i % labo::minecraft::CHUNK_VOLUME;
+//    int y = i / (labo::minecraft::CHUNK_AREA);
+//    int z = (i / labo::minecraft::CHUNK_SIZE) % labo::minecraft::CHUNK_SIZE;
+//
+//
+//  }
+
+}
 
 void tryDrawChunks(
   labo::minecraft::Chunk &chunk,
   RenderMaster &renderMater,
-  Camera &camera
+  const Camera &camera
 ){
   for(auto &subChunk: chunk.getSubChunks()){
-    // meshを構成する代わりに、need_renderとかで置き換えよう
-
     // 更新必要なら
       // バッファされてないなら
         // バッファする
@@ -27,6 +65,11 @@ void tryDrawChunks(
     // Meshを作るべき条件
     // ブロックの更新があったsection
     // すでに上でマークされておらず、カメラの視野体に入るsub chunk
+    if(subChunk.isNeedRender()){
+      if(camera.getFrustum().isBoxInFrustum(subChunk.getAABB())){
+        tryDrawSubChunk(renderMater, subChunk);
+      }
+    }
 
   }
 }

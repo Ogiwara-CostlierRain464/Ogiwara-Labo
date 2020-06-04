@@ -62,7 +62,7 @@ void labo::render::ViewFrustum::update(
   }
 }
 
-bool labo::render::ViewFrustum::isBoxInFrustum(const labo::physics::AABB &box) {
+bool labo::render::ViewFrustum::isBoxInFrustum(const labo::physics::AABB &box) const noexcept {
   for(auto &plane: planes){
     if(plane.distanceToPoint(box.getVP(plane.normal)) < 0){
       return false;
