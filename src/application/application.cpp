@@ -3,12 +3,14 @@
 #include "input/toggle_key.h"
 #include <SFML/Graphics.hpp>
 #include "../minecraft/event/player_input_event.h"
+#include "../render/renderer/level_renderer.h"
 
 using sf::Clock;
 using sf::Time;
 using labo::render::Camera;
 using labo::render::CameraConfig;
 using labo::minecraft::PlayerInputEvent;
+using labo::render::tryRender;
 
 namespace {
   constexpr float windowX = 1200;
@@ -55,8 +57,8 @@ void labo::app::Application::mainLoop() {
     level.update(deltaTime.asSeconds());
     camera.update();
 
+    tryRender(level, camera, 8, renderMaster);
     // render runs at here
-
 
     renderMaster.finish(window, camera);
 

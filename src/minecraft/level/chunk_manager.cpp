@@ -8,6 +8,10 @@ labo::minecraft::ChunkManager::ChunkManager(
   labo::minecraft::Level &level)
   : level(level)
 {
+//  //とりあえず適用なChunkを作る
+//  Chunk chunk(&level, {0,0});
+//  chunk.getSubChunks()[0].setBlock(1,1,1,Stone);
+//  chunks.emplace(VectorXZ{0,0}, chunk);
 }
 
 labo::minecraft::Chunk &labo::minecraft::ChunkManager::getChunk(int x, int z) {

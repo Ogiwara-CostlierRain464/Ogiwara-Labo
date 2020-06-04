@@ -23,7 +23,7 @@ void labo::minecraft::SubChunk::setBlock(
   if(isOutOfBounds(x) || isOutOfBounds(y) || isOutOfBounds(z)){
     auto globalPos = toGlobalPosition(x,y,z);
     level->setBlock(globalPos.x, globalPos.y, globalPos.z, block);
-    return;;
+    return;
   }
 
   layers[y].update(block);
