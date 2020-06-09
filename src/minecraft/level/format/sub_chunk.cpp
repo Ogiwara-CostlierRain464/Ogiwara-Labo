@@ -86,9 +86,6 @@ bool labo::minecraft::SubChunk::isOutOfBounds(int coordinate){
 }
 
 int labo::minecraft::SubChunk::getIndex(int x, int y, int z) {
-  return
-  x +
-  y * CHUNK_SIZE * CHUNK_SIZE +
-  z * CHUNK_SIZE * CHUNK_SIZE * CHUNK_SIZE;
+  return x + z * CHUNK_SIZE + y * CHUNK_SIZE * CHUNK_SIZE;
 }
 

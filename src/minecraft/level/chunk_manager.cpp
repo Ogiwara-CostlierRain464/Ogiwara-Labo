@@ -39,7 +39,7 @@ bool labo::minecraft::ChunkManager::isChunkExistAt(int x, int z) const {
 
 void labo::minecraft::ChunkManager::loadChunk(
   int x, int z) {
-  getChunk(x, z).
+  getChunk(x, z).load(*generator);
 }
 
 
