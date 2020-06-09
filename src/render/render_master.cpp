@@ -30,7 +30,7 @@ void labo::render::RenderMaster::finish(
   //triangleRenderer.render();
   //textRenderer.render();
 
-//  chunkRenderer.render(camera);
+  chunkRenderer.render(camera);
 
   skyBoxRenderer.render(camera);
   movingTriangleRenderer.render(camera);
