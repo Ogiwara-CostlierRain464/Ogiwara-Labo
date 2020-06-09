@@ -1,5 +1,4 @@
 #include "sky_box_renderer.h"
-#include "../opengl_debug.h"
 
 labo::render::SkyBoxRenderer::SkyBoxRenderer(){
   constexpr GLfloat SIZE = 500;
@@ -121,5 +120,4 @@ void labo::render::SkyBoxRenderer::render(const Camera &camera) {
   shader.loadProjectionMatrix(camera.getProjMatrix());
 
   glDrawElements(GL_TRIANGLES, skyCube.getIndicesCount(), GL_UNSIGNED_INT, nullptr);
-  checkGLError();
 }

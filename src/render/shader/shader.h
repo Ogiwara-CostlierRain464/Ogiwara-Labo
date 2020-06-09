@@ -25,9 +25,10 @@ public:
   void loadVector4(GLuint location, const glm::vec4 &vec);
   void loadMatrix4(GLuint location, const glm::mat4 &matrix);
 
+  GLuint id;
 protected:
   virtual void getUniforms() = 0;
-  GLuint id;
+//  GLuint id;
 };
 
 }

@@ -24,6 +24,12 @@ public:
   bool isChunkExistAt(int x, int z) const;
 
   void loadChunk(int x, int z);
+  void unloadChunk(int x, int z);
+
+  [[nodiscard]]
+  const TerrainGenerator &getTerrainGenerator()const noexcept{
+    return *generator;
+  }
 
 private:
   std::unordered_map<labo::math::VectorXZ, Chunk> chunks;

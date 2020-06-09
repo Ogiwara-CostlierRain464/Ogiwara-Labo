@@ -50,6 +50,8 @@ void tryDrawSubChunk(
   ChunkMeshCollection meshCollection;
   ChunkMeshBuilder(&subChunk, &meshCollection).buildMesh();
 
+  meshCollection.solidMesh.bufferMesh();
+
   renderMaster.drawChunk(meshCollection);
 }
 
@@ -71,12 +73,11 @@ void tryDrawChunks(
     // ブロックの更新があったsection
     // すでに上でマークされておらず、カメラの視野体に入るsub chunk
     if(subChunk.isNeedRender()){
-      tryDrawSubChunk(renderMater, subChunk);
 
-//      if(camera.getFrustum().isBoxInFrustum(subChunk.getAABB())){
-//
-//        tryDrawSubChunk(renderMater, subChunk);
-//      }
+      if(camera.getFrustum().isBoxInFrustum(subChunk.getAABB())){
+
+        tryDrawSubChunk(renderMater, subChunk);
+      }
     }
 
   }

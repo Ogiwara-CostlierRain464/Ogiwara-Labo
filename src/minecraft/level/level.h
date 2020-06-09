@@ -55,6 +55,7 @@ public:
 
 private:
   void updateSubChunks();
+  void setSpawnPoint();
 
   ChunkManager chunkManager;
   Player player;

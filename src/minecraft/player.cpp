@@ -20,7 +20,7 @@ void labo::minecraft::Player::update(float deltaTime) {
   acceleration = {0,0,0};
 
   position.x += velocity.x * deltaTime;
-  position.y += velocity.y * deltaTime;
+  //position.y += velocity.y * deltaTime;
   position.z += velocity.z * deltaTime;
 
 

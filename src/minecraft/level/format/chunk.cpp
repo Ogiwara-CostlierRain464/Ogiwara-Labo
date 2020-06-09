@@ -50,6 +50,9 @@ labo::minecraft::Block labo::minecraft::Chunk::getBlockAt(int x, int y, int z) {
   return subChunks[y / CHUNK_SIZE].getBlock(x, bY, z);
 }
 
+int labo::minecraft::Chunk::getHeightAt(int x, int z) {
+  return highestBlocks.get(x, z);
+}
 
 bool labo::minecraft::Chunk::hasLoaded() const noexcept {
   return isLoaded;
@@ -101,5 +104,6 @@ bool labo::minecraft::Chunk::isOutOfBound(
 
   return false;
 }
+
 
 

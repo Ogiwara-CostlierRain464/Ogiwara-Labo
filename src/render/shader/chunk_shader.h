@@ -15,18 +15,14 @@ public:
     loadMatrix4(locationProjViewMat, pvMat);
   }
 
-  void loadModelMatrix(const glm::mat4 &mat){
-    loadMatrix4(locationModelMat, mat);
-  }
-
 private:
   void getUniforms()override {
-    locationProjViewMat = glGetUniformLocation(id, "projViewMatrix");
-    locationModelMat = glGetUniformLocation(id, "modelMatrix");
+    //useProgram();
+    locationProjViewMat =
+      glGetUniformLocation(id, "projViewMatrix");
   }
 
   GLuint locationProjViewMat;
-  GLuint locationModelMat;
 };
 
 }

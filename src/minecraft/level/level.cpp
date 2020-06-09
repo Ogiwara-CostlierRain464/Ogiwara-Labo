@@ -8,12 +8,9 @@ using glm::vec3;
 
 labo::minecraft::Level::Level()
  : chunkManager(*this)
- , player(Player({1,1,1}))
+ , player(Player({1,3,1}))
 {
-  chunkManager.loadChunk(0,0);
-  chunkManager.loadChunk(0,1);
-  chunkManager.loadChunk(1,0);
-  chunkManager.loadChunk(1,1);
+  setSpawnPoint();
 }
 
 
@@ -40,6 +37,7 @@ void labo::minecraft::Level::setBlock(int x, int y, int z, labo::minecraft::Bloc
 }
 
 void labo::minecraft::Level::update(float deltaTime) {
+
   player.update(deltaTime);
 
   for(auto &event: events){
@@ -173,6 +171,37 @@ void labo::minecraft::Level::updateSubChunks() {
     c.second->markNeedRender();
   }
   chunkUpdates.clear();
+}
+
+void labo::minecraft::Level::setSpawnPoint() {
+//  int attempts = 0;
+//  int chunkX = -1;
+//  int chunkZ = -1;
+//  int blockX = 0;
+//  int blockZ = 0;
+//  int blockY = 0;
+//
+//  auto h = chunkManager.getTerrainGenerator().getMinimumSpawnHeight();
+//
+//  while (blockY <= h){
+//    chunkManager.unloadChunk(chunkX, chunkZ);
+//    chunkX = 100;
+//    chunkZ = 150;
+//    blockX = 10;
+//    blockZ = 10;
+//
+//    chunkManager.loadChunk(chunkX, chunkZ);
+//    blockY = chunkManager
+//      .getChunk(chunkX, chunkZ)
+//      .getHeightAt(blockX, blockZ);
+//    attempts++;
+//  }
+  chunkManager.loadChunk(0,0);
+  chunkManager.loadChunk(CHUNK_SIZE+1,1);
+  chunkManager.loadChunk(1,CHUNK_SIZE+1);
+  chunkManager.loadChunk(CHUNK_SIZE+1,CHUNK_SIZE+1);
+
+  //player.position = {1,3,1};
 }
 
 

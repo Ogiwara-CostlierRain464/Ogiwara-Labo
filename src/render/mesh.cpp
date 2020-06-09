@@ -1,6 +1,7 @@
 #include "mesh.h"
 
-labo::render::MeshContainer::MeshContainer(const labo::render::Mesh &mesh) {
+labo::render::MeshContainer::
+MeshContainer(const labo::render::Mesh &mesh) {
   addMesh(mesh);
 }
 

@@ -11,29 +11,22 @@ namespace labo::render{
 
 class MovingTriangleShader: public Shader{
 public:
-  MovingTriangleShader(): Shader("MoveTri", "MoveTri"){
+  MovingTriangleShader()
+  : Shader("MoveTri", "MoveTri"){
     getUniforms();
   }
 
-  void loadViewMatrix(glm::mat4 viewMatrix){
-    viewMatrix[3][0] = 0;
-    viewMatrix[3][1] = 0;
-    viewMatrix[3][2] = 0;
-    loadMatrix4(locationView, viewMatrix);
-  }
-
-  void loadProjectionMatrix(const glm::mat4 &proj){
-    loadMatrix4(locationProjection, proj);
+  void loadProjViewMatrix(const glm::mat4 &pvMat){
+    loadMatrix4(locationProjViewMat, pvMat);
   }
 
 private:
   void getUniforms()override {
-    locationProjection = glGetUniformLocation(id, "projectionMatrix");
-    locationView = glGetUniformLocation(id, "viewMatrix");
+    locationProjViewMat =
+      glGetUniformLocation(id, "projViewMatrix");
   }
 
-  GLuint locationProjection = 0;
-  GLuint locationView = 0;
+  GLuint locationProjViewMat = 0;
 };
 
 class MovingTriangleRenderer{
@@ -56,10 +49,9 @@ public:
 
   void render(const Camera &camera){
     shader.useProgram();
-    meshes.bindVAO();
+    shader.loadProjViewMatrix(camera.getProjectionViewMatrix());
 
-    shader.loadViewMatrix(camera.getViewMatrix());
-    shader.loadProjectionMatrix(camera.getProjMatrix());
+    meshes.bindVAO();
 
     glDrawElements(GL_TRIANGLES, meshes.getIndicesCount(), GL_UNSIGNED_INT, nullptr);
   }

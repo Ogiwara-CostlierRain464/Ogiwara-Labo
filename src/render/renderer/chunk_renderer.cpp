@@ -1,28 +1,35 @@
 #include "chunk_renderer.h"
+#include "../opengl_debug.h"
 
 void labo::render::ChunkRenderer::add(
   const labo::render::ChunkMesh &mesh) {
 
   chunks.push_back(&mesh.getContainer().getRenderInfo());
+
 }
 
 void labo::render::ChunkRenderer::render(
-  const labo::render::Camera &camera) {
+  const Camera &camera) {
 
   if(chunks.empty()){
     return;
   }
 
   glDisable(GL_BLEND);
-  glEnable(GL_CULL_FACE);
+  //glEnable(GL_CULL_FACE);
 
   shader.useProgram();
   shader.loadProjViewMatrix(camera.getProjectionViewMatrix());
+
+  //checkGLError();
+  //checkShaderError(shader.id);
 
   for(auto &mesh : chunks) {
     glBindVertexArray(mesh->vao);
     glDrawElements(GL_TRIANGLES, mesh->indicesCount, GL_UNSIGNED_INT, nullptr);
   }
+
+  //checkGLError();
 
   chunks.clear();
 }

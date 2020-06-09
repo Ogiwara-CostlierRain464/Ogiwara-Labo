@@ -16,18 +16,29 @@ void checkGLError(){
   GLenum err;
   while((err = glGetError())!= GL_NO_ERROR )
   {
-    throw std::runtime_error("OpenGL error: ");
+    std::string message = "OpenGL error: " + std::to_string(err);
+    throw std::runtime_error(message);
   }
 }
 
 void checkShaderError(GLuint shaderID){
   GLint isSuccess = 0;
-  GLchar infoLog[512];
 
   glGetShaderiv(shaderID, GL_COMPILE_STATUS, &isSuccess);
   if(!isSuccess){
-    glGetShaderInfoLog(shaderID, 512, nullptr, infoLog);
-    throw std::runtime_error("Error occurred while load shader: " + std::string(infoLog));
+    GLint maxLength = 0;
+    glGetShaderiv(shaderID, GL_INFO_LOG_LENGTH, &maxLength);
+
+    // The maxLength includes the NULL character
+    std::vector<GLchar> errorLog(maxLength);
+    glGetShaderInfoLog(shaderID, maxLength, &maxLength, &errorLog[0]);
+
+    std::string s(errorLog.begin(), errorLog.end());
+
+    perror(s.c_str());
+    throw std::runtime_error(
+      "Error occurred while load shader: " + s
+      );
   }
 }
 }

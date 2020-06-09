@@ -22,6 +22,7 @@ public:
 
   void setBlock(int x, int y, int z, Block block);
   Block getBlockAt(int x, int y, int z);
+  int getHeightAt(int x, int z);
 
   [[nodiscard]]
   bool hasLoaded() const noexcept;

@@ -42,6 +42,12 @@ void labo::minecraft::ChunkManager::loadChunk(
   getChunk(x, z).load(*generator);
 }
 
+void labo::minecraft::ChunkManager::unloadChunk(int x, int z) {
+  if(isChunkExistAt(x,z)){
+    chunks.erase({x,z});
+  }
+}
+
 
 
 
