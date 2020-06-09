@@ -5,6 +5,7 @@
 
 #include "format/chunk.h"
 #include "../../math/vector_xz.h"
+#include "generator/generator.h"
 
 namespace labo::minecraft{
 
@@ -22,8 +23,11 @@ public:
   [[nodiscard]]
   bool isChunkExistAt(int x, int z) const;
 
+  void loadChunk(int x, int z);
+
 private:
   std::unordered_map<labo::math::VectorXZ, Chunk> chunks;
+  std::unique_ptr<TerrainGenerator> generator;
 
   Level &level;
 };

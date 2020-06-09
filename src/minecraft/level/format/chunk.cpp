@@ -1,4 +1,5 @@
 #include "chunk.h"
+#include "../generator/generator.h"
 
 labo::minecraft::Chunk::Chunk(
   labo::minecraft::Level *level,
@@ -52,6 +53,15 @@ labo::minecraft::Block labo::minecraft::Chunk::getBlockAt(int x, int y, int z) {
 
 bool labo::minecraft::Chunk::hasLoaded() const noexcept {
   return isLoaded;
+}
+
+void labo::minecraft::Chunk::load(TerrainGenerator &generator){
+  if(hasLoaded()){
+    return;
+  }
+
+  generator.generateTerrainFor(*this);
+  isLoaded = true;
 }
 
 labo::minecraft::SubChunk

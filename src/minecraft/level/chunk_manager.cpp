@@ -1,5 +1,6 @@
 #include "chunk_manager.h"
 #include "format/chunk.h"
+#include "generator/experimental_space_generator.h"
 
 using labo::math::VectorXZ;
 using labo::minecraft::Chunk;
@@ -8,6 +9,7 @@ labo::minecraft::ChunkManager::ChunkManager(
   labo::minecraft::Level &level)
   : level(level)
 {
+  generator = std::make_unique<ExperimentalSpaceGenerator>();
 }
 
 labo::minecraft::Chunk &labo::minecraft::ChunkManager::getChunk(int x, int z) {
@@ -33,6 +35,11 @@ bool labo::minecraft::ChunkManager::isChunkLoadedAt(int x, int z) const {
 
 bool labo::minecraft::ChunkManager::isChunkExistAt(int x, int z) const {
   return chunks.find({x,z}) != chunks.end();
+}
+
+void labo::minecraft::ChunkManager::loadChunk(
+  int x, int z) {
+  getChunk(x, z).
 }
 
 

@@ -5,12 +5,12 @@ namespace labo::minecraft{
 
 class Chunk;
 
-class Generator{
+class TerrainGenerator{
 public:
   virtual void generateTerrainFor(Chunk &chunk) = 0;
   virtual int getMinimumSpawnHeight() const noexcept = 0;
 
-  virtual ~Generator() = default;
+  virtual ~TerrainGenerator() = default;
 };
 
 }

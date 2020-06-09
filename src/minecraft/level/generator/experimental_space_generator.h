@@ -5,7 +5,7 @@
 
 namespace labo::minecraft{
 
-class ExperimentalSpaceGenerator: public Generator{
+class ExperimentalSpaceGenerator: public TerrainGenerator{
 public:
   void generateTerrainFor(Chunk &chunk) override;
   int getMinimumSpawnHeight() const noexcept override;

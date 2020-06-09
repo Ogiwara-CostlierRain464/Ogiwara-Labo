@@ -11,6 +11,7 @@
 namespace labo::minecraft {
 
 class Level;
+class TerrainGenerator;
 
 class Chunk {
 public:
@@ -24,6 +25,7 @@ public:
 
   [[nodiscard]]
   bool hasLoaded() const noexcept;
+  void load(TerrainGenerator &generator);
 
   SubChunk &getSubChunk(int index);
 
