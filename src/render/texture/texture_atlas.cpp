@@ -5,7 +5,7 @@ labo::render::TextureAtlas::TextureAtlas(
   const std::string &textureFileName) :
   BasicTexture(textureFileName) {
   sf::Image i;
-  if(i.loadFromFile("res/textures/" + textureFileName + ".png")){
+  if(!i.loadFromFile("res/textures/" + textureFileName + ".png")){
     throw std::runtime_error("Unable to open image: " + textureFileName);
   }
   loadFromImage(i);

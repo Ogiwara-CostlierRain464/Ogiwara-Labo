@@ -196,10 +196,11 @@ void labo::minecraft::Level::setSpawnPoint() {
 //      .getHeightAt(blockX, blockZ);
 //    attempts++;
 //  }
-  chunkManager.loadChunk(0,0);
-  chunkManager.loadChunk(CHUNK_SIZE+1,1);
-  chunkManager.loadChunk(1,CHUNK_SIZE+1);
-  chunkManager.loadChunk(CHUNK_SIZE+1,CHUNK_SIZE+1);
+  for(int i = 0; i <= CHUNK_SIZE * 4; i += CHUNK_SIZE){
+    for(int j = 0; j <= CHUNK_SIZE * 4; j += CHUNK_SIZE){
+      chunkManager.loadChunk(i, j);
+    }
+  }
 
   //player.position = {1,3,1};
 }

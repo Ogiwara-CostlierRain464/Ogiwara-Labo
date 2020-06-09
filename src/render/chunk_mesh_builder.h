@@ -5,6 +5,7 @@
 #include <SFML/Graphics.hpp>
 #include "../minecraft/block/block.h"
 #include "../minecraft/level/format/sub_chunk.h"
+#include "block/block_appearance.h"
 
 namespace labo::render{
 
@@ -33,16 +34,18 @@ private:
     );
 
   bool shouldMakeFace(
-    const sf::Vector3i &blockPosition
+    const sf::Vector3i &blockPosition,
+    const BlockAppearance &blockAppear
   );
 
   bool shouldMakeLayer(int y);
 
   int faces = 0;
-  const labo::minecraft::Block *block;
-  labo::minecraft::SubChunk *subChunk;
-  ChunkMeshCollection *collection;
-  ChunkMesh *activeMesh;
+  const labo::minecraft::Block *blockPtr = nullptr;
+  labo::minecraft::SubChunk *subChunk = nullptr;
+  ChunkMeshCollection *collection = nullptr;
+  ChunkMesh *activeMesh = nullptr;
+  const BlockAppearance *blockAppearPtr = nullptr;
 };
 }
 

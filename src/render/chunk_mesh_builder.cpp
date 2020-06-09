@@ -101,7 +101,7 @@ labo::render::ChunkMeshBuilder::ChunkMeshBuilder(
 
 void labo::render::ChunkMeshBuilder::buildMesh() {
   AdjacentBlockPositions directions;
-  auto blockPtr = subChunk->blocksFirstPtr();
+  blockPtr = subChunk->blocksFirstPtr();
   faces = 0;
   for(int i =0; i < CHUNK_SIZE; i++){
     int x = i % CHUNK_SIZE;
@@ -124,6 +124,8 @@ void labo::render::ChunkMeshBuilder::buildMesh() {
     if(block_.id == Air.id){
       continue;
     }
+
+    blockAppearPtr = &appearance;
 
     if(appearance.meshType == BlockMeshType::X){
       addXBlockToMesh(appearance.texTopCoord, position);
@@ -177,6 +179,7 @@ void labo::render::ChunkMeshBuilder::buildMesh() {
       directions.back,
       LIGHT_Z
     );
+
   }
 }
 
@@ -198,13 +201,12 @@ void labo::render::ChunkMeshBuilder::setActiveMesh(
   }
 }
 
-void
-labo::render::ChunkMeshBuilder::addXBlockToMesh(
+void labo::render::ChunkMeshBuilder::addXBlockToMesh(
   const sf::Vector2i &textureCoords,
   const sf::Vector3i &blockPosition) {
   faces++;
-  // TODO: get texture from texture atlas
-  array<GLfloat, 8> texCoords{};
+  auto texCoords =
+    BlockDatabase::get().textureAtlas.getTexture(textureCoords);
 
   activeMesh->addFace(
     xFace1, texCoords,
@@ -227,9 +229,10 @@ void labo::render::ChunkMeshBuilder::tryAddFaceToMesh(
   const sf::Vector3i &blockPosition,
   const sf::Vector3i &blockFacing,
   GLfloat cardinalLight) {
-  if(shouldMakeFace(blockFacing)){
+  if(shouldMakeFace(blockFacing, *blockAppearPtr)){
     faces++;
-    array<GLfloat, 8> texCoords{};
+    auto texCoords =
+      BlockDatabase::get().textureAtlas.getTexture(textureCoords);
 
     activeMesh->addFace(
       blockFace,
@@ -242,12 +245,14 @@ void labo::render::ChunkMeshBuilder::tryAddFaceToMesh(
 }
 
 bool labo::render::ChunkMeshBuilder::shouldMakeFace(
-  const sf::Vector3i &adjBlock) {
+  const sf::Vector3i &adjBlock,
+  const BlockAppearance &blockAppear
+) {
   auto block_ = subChunk->getBlock(adjBlock.x, adjBlock.y, adjBlock.z);
 
   if(block_.id == Air.id){
     return true;
-  } else if((!block_.isOpaque && (block_.id != this->block->id))){
+  } else if((!block_.isOpaque && (block_.id != blockPtr->id))){
     return true;
   }
   return false;

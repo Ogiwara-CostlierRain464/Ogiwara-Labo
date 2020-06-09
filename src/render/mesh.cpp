@@ -5,6 +5,29 @@ MeshContainer(const labo::render::Mesh &mesh) {
   addMesh(mesh);
 }
 
+
+labo::render::MeshContainer::MeshContainer(
+  labo::render::MeshContainer &&other)
+  : renderInfo(other.renderInfo)
+  , vboCount(other.vboCount)
+  , vboBuffer(std::move(other.vboBuffer))
+{
+  other.renderInfo.reset();
+  other.vboCount = 0;
+}
+
+labo::render::MeshContainer
+&labo::render::MeshContainer::operator=(MeshContainer &&other) {
+  renderInfo = other.renderInfo;
+  vboCount = other.vboCount;
+  vboBuffer = std::move(other.vboBuffer);
+
+  other.renderInfo.reset();
+  other.vboCount = 0;
+
+  return *this;
+}
+
 void labo::render::MeshContainer::addMesh(const labo::render::Mesh &mesh) {
   genVAO();
 
@@ -83,5 +106,8 @@ void labo::render::MeshContainer::clean() {
 labo::render::MeshContainer::~MeshContainer() {
   clean();
 }
+
+
+
 
 

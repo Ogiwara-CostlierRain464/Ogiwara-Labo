@@ -12,7 +12,7 @@ public:
   void render(const Camera &camera);
 
 private:
-  std::vector<const MeshContainer::RenderInfo *> chunks;
+  std::vector<MeshContainer::RenderInfo> chunks;
 
   ChunkShader shader;
 };

@@ -47,12 +47,11 @@ void tryDrawSubChunk(
 //
 //
 //  }
-  ChunkMeshCollection meshCollection;
-  ChunkMeshBuilder(&subChunk, &meshCollection).buildMesh();
+  ChunkMeshBuilder(&subChunk, &subChunk.meshes).buildMesh();
 
-  meshCollection.solidMesh.bufferMesh();
+  subChunk.meshes.solidMesh.bufferMesh();
 
-  renderMaster.drawChunk(meshCollection);
+  renderMaster.drawChunk(subChunk.meshes);
 }
 
 void tryDrawChunks(
@@ -60,6 +59,7 @@ void tryDrawChunks(
   RenderMaster &renderMater,
   const Camera &camera
 ){
+
   for(auto &subChunk: chunk.getSubChunks()){
 
     // 更新必要なら
@@ -74,13 +74,16 @@ void tryDrawChunks(
     // すでに上でマークされておらず、カメラの視野体に入るsub chunk
     if(subChunk.isNeedRender()){
 
-      if(camera.getFrustum().isBoxInFrustum(subChunk.getAABB())){
+      tryDrawSubChunk(renderMater, subChunk);
 
-        tryDrawSubChunk(renderMater, subChunk);
-      }
+//      if(camera.getFrustum().isBoxInFrustum(subChunk.getAABB())){
+//
+//        tryDrawSubChunk(renderMater, subChunk);
+//      }
     }
 
   }
+
 }
 
 void tryRender(
@@ -93,32 +96,36 @@ void tryRender(
   auto &chunkManager = level.getChunkManager();
   auto &chunkMap = chunkManager.getChunks();
 
-  for(auto itr = chunkMap.begin(); itr != chunkMap.end();){
-    auto &chunk = itr->second;
-
-    int cameraX = camera.getPosition().x;
-    int cameraZ = camera.getPosition().z;
-
-    int minX = (cameraX / labo::minecraft::CHUNK_SIZE) - renderDistance;
-    int minZ = (cameraZ / labo::minecraft::CHUNK_SIZE) - renderDistance;
-    int maxX = (cameraX / labo::minecraft::CHUNK_SIZE) + renderDistance;
-    int maxZ = (cameraZ / labo::minecraft::CHUNK_SIZE) + renderDistance;
-
-    auto location = chunk.getLocation();
-
-    if(minX > location.x
-    || minZ > location.y
-    || maxZ < location.y
-    || maxX < location.x){
-      itr = chunkMap.erase(itr);
-      continue;
-    }else{
-      // render chunk
-      tryDrawChunks(chunk, renderMater, camera);
-
-      itr++;
-    }
+  for(auto &pair: chunkMap){
+    tryDrawChunks(pair.second, renderMater, camera);
   }
+
+//  for(auto itr = chunkMap.begin(); itr != chunkMap.end();){
+//    auto &chunk = itr->second;
+//
+//    int cameraX = camera.getPosition().x;
+//    int cameraZ = camera.getPosition().z;
+//
+//    int minX = (cameraX / labo::minecraft::CHUNK_SIZE) - renderDistance;
+//    int minZ = (cameraZ / labo::minecraft::CHUNK_SIZE) - renderDistance;
+//    int maxX = (cameraX / labo::minecraft::CHUNK_SIZE) + renderDistance;
+//    int maxZ = (cameraZ / labo::minecraft::CHUNK_SIZE) + renderDistance;
+//
+//    auto location = chunk.getLocation();
+//
+//    if(minX > location.x
+//    || minZ > location.y
+//    || maxZ < location.y
+//    || maxX < location.x){
+//      itr = chunkMap.erase(itr);
+//      continue;
+//    }else{
+//      // render chunk
+//      tryDrawChunks(chunk, renderMater, camera);
+//
+//      itr++;
+//    }
+//  }
 }
 
 }

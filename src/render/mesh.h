@@ -50,6 +50,9 @@ public:
   explicit MeshContainer(const Mesh &mesh);
   ~MeshContainer();
 
+  MeshContainer(MeshContainer &&other);
+  MeshContainer &operator=(MeshContainer &&other);
+
   void addMesh(const Mesh &mesh);
   void clean();
 
@@ -65,7 +68,7 @@ public:
   }
 
   [[nodiscard]]
-  const RenderInfo &getRenderInfo()const {
+  RenderInfo getRenderInfo()const {
     return renderInfo;
   }
 

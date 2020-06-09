@@ -4,6 +4,7 @@
 #include "../../block/block.h"
 #include "../const.h"
 #include "../../../physics/aabb.h"
+#include "../../../render/chunk_mesh.h"
 #include <SFML/Graphics.hpp>
 #include <array>
 
@@ -69,6 +70,7 @@ public:
     return &blocks[0];
   }
 
+  labo::render::ChunkMeshCollection meshes;
 private:
   [[nodiscard]]
   sf::Vector3i toGlobalPosition(int x, int y, int z) const;
@@ -91,6 +93,7 @@ private:
   Level *level;
   // まずはRenderして、一旦falseにし、アップデートがあったらまたフラグ
   bool needRender = true;
+
 };
 
 }

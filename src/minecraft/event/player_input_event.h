@@ -39,11 +39,11 @@ public:
       player.acceleration.x += cos(radians(player.rotation.y + 90)) * speed;
       player.acceleration.z += sin(radians(player.rotation.y + 90)) * speed;
     }
-    if(std::count(keys.begin(), keys.end(), sf::Keyboard::W)){
+    if(std::count(keys.begin(), keys.end(), sf::Keyboard::A)){
       player.acceleration.x += -cos(radians(player.rotation.y)) * speed;
       player.acceleration.z += -sin(radians(player.rotation.y)) * speed;
     }
-    if(std::count(keys.begin(), keys.end(), sf::Keyboard::W)){
+    if(std::count(keys.begin(), keys.end(), sf::Keyboard::D)){
       player.acceleration.x += cos(radians(player.rotation.y)) * speed;
       player.acceleration.z += sin(radians(player.rotation.y)) * speed;
     }
