@@ -27,6 +27,13 @@ struct BlockMetaData{
   bool isCollidable;
 };
 
+// BlockについてMinecraft layer
+// とRender layerに分けよう
+// Domain:
+// Name, Id, Opaque, Collidable
+// Render:
+// TexTop, TexSide, TexBottom, MeshType, ShaderType
+
 struct Block {
   Block() = default;
 
