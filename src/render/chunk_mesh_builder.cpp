@@ -1,13 +1,14 @@
 #include "chunk_mesh_builder.h"
 #include "chunk_mesh.h"
+#include "block/block_database.h"
 
 using labo::minecraft::CHUNK_SIZE;
 using labo::minecraft::CHUNK_VOLUME;
 using labo::minecraft::Block;
 using labo::minecraft::SubChunk;
 using labo::minecraft::Air;
-using labo::minecraft::BlockMeshType;
-using labo::minecraft::BlockShaderType ;
+using labo::render::BlockDatabase;
+using labo::render::BlockAppearance;
 using std::array;
 
 namespace {
@@ -112,6 +113,9 @@ void labo::render::ChunkMeshBuilder::buildMesh() {
     }
 
     Block block_ = *blockPtr;
+    BlockAppearance appearance = BlockDatabase::get()
+      .getBlockAppearance(block_.id);
+
     blockPtr++;
 
     sf::Vector3i position(x,y,z);
@@ -121,8 +125,8 @@ void labo::render::ChunkMeshBuilder::buildMesh() {
       continue;
     }
 
-    if(block_.metaData.meshType == BlockMeshType::X){
-      addXBlockToMesh(block_.metaData.texTopCoord, position);
+    if(appearance.meshType == BlockMeshType::X){
+      addXBlockToMesh(appearance.texTopCoord, position);
       continue;
     }
 
@@ -132,7 +136,7 @@ void labo::render::ChunkMeshBuilder::buildMesh() {
     if(subChunk->getLocation().y != 0 || y != 0){
       tryAddFaceToMesh(
         bottomFace,
-        block_.metaData.texBottomCoord,
+        appearance.texBottomCoord,
         position,
         directions.down,
         LIGHT_BOT
@@ -140,35 +144,35 @@ void labo::render::ChunkMeshBuilder::buildMesh() {
     }
     tryAddFaceToMesh(
       topFace,
-      block_.metaData.texTopCoord,
+      appearance.texTopCoord,
       position,
       directions.up,
       LIGHT_TOP
       );
     tryAddFaceToMesh(
       leftFace,
-      block_.metaData.texSideCoord,
+      appearance.texSideCoord,
       position,
       directions.left,
       LIGHT_X
     );
     tryAddFaceToMesh(
       rightFace,
-      block_.metaData.texSideCoord,
+      appearance.texSideCoord,
       position,
       directions.right,
       LIGHT_X
     );
     tryAddFaceToMesh(
       frontFace,
-      block_.metaData.texSideCoord,
+      appearance.texSideCoord,
       position,
       directions.front,
       LIGHT_Z
     );
     tryAddFaceToMesh(
       backFace,
-      block_.metaData.texSideCoord,
+      appearance.texSideCoord,
       position,
       directions.back,
       LIGHT_Z
@@ -178,7 +182,10 @@ void labo::render::ChunkMeshBuilder::buildMesh() {
 
 void labo::render::ChunkMeshBuilder::setActiveMesh(
   labo::minecraft::Block block_) {
-  switch(block_.metaData.shaderType){
+  BlockAppearance appearance = BlockDatabase::get()
+    .getBlockAppearance(block_.id);
+
+  switch(appearance.shaderType){
     case BlockShaderType::Chunk_:
       activeMesh = &collection->solidMesh;
       break;
@@ -240,7 +247,7 @@ bool labo::render::ChunkMeshBuilder::shouldMakeFace(
 
   if(block_.id == Air.id){
     return true;
-  } else if((!block_.isOpaque() && (block_.id.value != this->block->id.value))){
+  } else if((!block_.isOpaque && (block_.id != this->block->id))){
     return true;
   }
   return false;

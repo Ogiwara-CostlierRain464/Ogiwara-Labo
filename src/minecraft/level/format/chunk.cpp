@@ -32,7 +32,7 @@ void labo::minecraft::Chunk::setBlock(
 
   if(y == highestBlocks.get(x,z)){
     auto highBlock = getBlockAt(x, y--, z);
-    while (!highBlock.isOpaque()){
+    while (!highBlock.isOpaque){
       highBlock = getBlockAt(x, y--, z);
     }
   }else if(y > highestBlocks.get(x,z)){

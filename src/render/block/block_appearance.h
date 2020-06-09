@@ -41,6 +41,8 @@ const BlockAppearance StoneAppear = BlockAppearance{
   BlockShaderType::Chunk_
 };
 
+
+
 }
 
 #endif //LABO_BLOCK_APPEARANCE_H

@@ -17,7 +17,7 @@ class SubChunk {
   class Layer{
   public:
     void update(const Block &block){
-      if(block.isOpaque()){
+      if(block.isOpaque){
         solidBlockCount--;
       }else{
         solidBlockCount++;
