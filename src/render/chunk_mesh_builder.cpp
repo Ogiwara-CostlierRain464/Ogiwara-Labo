@@ -111,18 +111,18 @@ void labo::render::ChunkMeshBuilder::buildMesh() {
       continue;
     }
 
-    Block block = *blockPtr;
+    Block block_ = *blockPtr;
     blockPtr++;
 
     sf::Vector3i position(x,y,z);
-    setActiveMesh(block);
+    setActiveMesh(block_);
 
-    if(block.id == Air.id){
+    if(block_.id == Air.id){
       continue;
     }
 
-    if(block.metaData.meshType == BlockMeshType::X){
-      addXBlockToMesh(block.metaData.texTopCoord, position);
+    if(block_.metaData.meshType == BlockMeshType::X){
+      addXBlockToMesh(block_.metaData.texTopCoord, position);
       continue;
     }
 
@@ -132,7 +132,7 @@ void labo::render::ChunkMeshBuilder::buildMesh() {
     if(subChunk->getLocation().y != 0 || y != 0){
       tryAddFaceToMesh(
         bottomFace,
-        block.metaData.texBottomCoord,
+        block_.metaData.texBottomCoord,
         position,
         directions.down,
         LIGHT_BOT
@@ -140,35 +140,35 @@ void labo::render::ChunkMeshBuilder::buildMesh() {
     }
     tryAddFaceToMesh(
       topFace,
-      block.metaData.texTopCoord,
+      block_.metaData.texTopCoord,
       position,
       directions.up,
       LIGHT_TOP
       );
     tryAddFaceToMesh(
       leftFace,
-      block.metaData.texSideCoord,
+      block_.metaData.texSideCoord,
       position,
       directions.left,
       LIGHT_X
     );
     tryAddFaceToMesh(
       rightFace,
-      block.metaData.texSideCoord,
+      block_.metaData.texSideCoord,
       position,
       directions.right,
       LIGHT_X
     );
     tryAddFaceToMesh(
       frontFace,
-      block.metaData.texSideCoord,
+      block_.metaData.texSideCoord,
       position,
       directions.front,
       LIGHT_Z
     );
     tryAddFaceToMesh(
       backFace,
-      block.metaData.texSideCoord,
+      block_.metaData.texSideCoord,
       position,
       directions.back,
       LIGHT_Z
@@ -177,8 +177,8 @@ void labo::render::ChunkMeshBuilder::buildMesh() {
 }
 
 void labo::render::ChunkMeshBuilder::setActiveMesh(
-  labo::minecraft::Block block) {
-  switch(block.metaData.shaderType){
+  labo::minecraft::Block block_) {
+  switch(block_.metaData.shaderType){
     case BlockShaderType::Chunk_:
       activeMesh = &collection->solidMesh;
       break;

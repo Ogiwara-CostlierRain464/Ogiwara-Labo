@@ -89,7 +89,8 @@ private:
   sf::Vector3i location;
 
   Level *level;
-  bool needRender = false;
+  // まずはRenderして、一旦falseにし、アップデートがあったらまたフラグ
+  bool needRender = true;
 };
 
 }

@@ -29,6 +29,7 @@ class ViewFrustum{
 public:
   void update(const glm::mat4 & projViewMatrix) noexcept;
 
+  [[nodiscard]]
   bool isBoxInFrustum(const labo::physics::AABB &box) const noexcept;
 
 private:
