@@ -25,6 +25,22 @@ struct BlockAppearance{
   BlockShaderType shaderType;
 };
 
+const BlockAppearance AirAppear = BlockAppearance{
+  {0,0},
+  {0,0},
+  {0,0},
+  BlockMeshType::Cube,
+  BlockShaderType::Chunk_
+};
+
+const BlockAppearance StoneAppear = BlockAppearance{
+  {3,0},
+  {3,0},
+  {3,0},
+  BlockMeshType::Cube,
+  BlockShaderType::Chunk_
+};
+
 }
 
 #endif //LABO_BLOCK_APPEARANCE_H
