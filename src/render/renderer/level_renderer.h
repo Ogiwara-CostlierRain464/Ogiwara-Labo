@@ -30,8 +30,6 @@ void tryDrawSubChunk(
 
   ptr->solidMesh.bufferMesh();
 
-  //subChunk.meshes.solidMesh.bufferMesh();
-
   renderMaster.drawChunk(*ptr.get());
 }
 
@@ -43,21 +41,50 @@ void tryDrawChunks(
 
   for(auto &subChunk: chunk.getSubChunks()){
 
-    // 更新必要なら
-      // バッファされてないなら
-        // バッファする
-     // 描画範囲内なら
-      // 描画chunkリストについか
-      // さて、消費されるQueueなのか固定されるQueueなのか意識しないとね
+    // 更新があると、再度Bufferする必要がある
+    // 結局のところ、毎回VAOを元にrender命令を出せばよいだけ
+    /**
+     * - has_mesh: 常にtrue
+     * - has_buffered_mesh: 更新があるとfalseに
+     *
+     * レンダリング時に
+     *
+     * 更新があると:
+     * - has_buffered_meshがfalseになっているので
+     * - バッファされ、
+     * - has_buffered_meshがtrueに
+     *
+     * 更新がないと:
+     * - has_buffered_meshがtrueになっているので、そのままrenderする
+     *
+     * これを変えると
+     * SubChunkにはisUpdatedを作り
+     *
+     * ChunkMeshCollectionを管理し、
+     *
+     * - isUpdated==true:
+     * - バッファする
+     * - isUpdated = false
+     * - render
+     *
+     * - isUpdated==false:
+     * - render
+     */
 
-    // Meshを作るべき条件
-    // ブロックの更新があったsection
-    // すでに上でマークされておらず、カメラの視野体に入るsub chunk
-    if(subChunk.isNeedRender()){
-      if(camera.getFrustum().isBoxInFrustum(subChunk.getAABB())){
+    if(meshCollections.count(subChunk.getLocation()) == 0){
+      auto ptr = std::make_unique<ChunkMeshCollection>();
+      meshCollections.emplace(subChunk.getLocation(), std::move(ptr));
+    }
 
-        tryDrawSubChunk(renderMater, subChunk);
-      }
+    if(subChunk.needRender){
+      auto &ptr = meshCollections.at(subChunk.getLocation());
+      ChunkMeshBuilder(&subChunk, ptr.get()).buildMesh();
+      ptr->solidMesh.bufferMesh();
+      subChunk.needRender = false;
+    }
+
+    if(camera.getFrustum().isBoxInFrustum(subChunk.getAABB())){
+      tryDrawSubChunk(renderMater, subChunk);
     }
 
   }
