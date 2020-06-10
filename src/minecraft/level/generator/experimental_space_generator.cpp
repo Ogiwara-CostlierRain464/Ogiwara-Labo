@@ -7,9 +7,9 @@ void labo::minecraft::ExperimentalSpaceGenerator
     for(int z = 0; z < CHUNK_SIZE; z++){
       chunk.setBlock(x, 0, z, Stone);
       chunk.setBlock(x, 1, z, Stone);
-      chunk.setBlock(x, 2, z, Stone);
-      chunk.setBlock(x, 3, z, Stone);
-      chunk.setBlock(x, 4, z, Stone);
+      chunk.setBlock(x, 2, z, Dirt);
+      chunk.setBlock(x, 3, z, Dirt);
+      chunk.setBlock(x, 4, z, Grass);
     }
   }
 }
