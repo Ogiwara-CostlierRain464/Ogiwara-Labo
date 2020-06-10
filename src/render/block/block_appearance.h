@@ -57,6 +57,94 @@ const BlockAppearance StoneAppear = BlockAppearance{
   BlockShaderType::Chunk_
 };
 
+const BlockAppearance OakBarkAppear = BlockAppearance{
+  {5,0},
+  {4,0},
+  {5,0},
+  BlockMeshType::Cube,
+  BlockShaderType::Chunk_
+};
+
+const BlockAppearance OakLeafAppear = BlockAppearance{
+  {6,0},
+  {6,0},
+  {6,0},
+  BlockMeshType::Cube,
+  BlockShaderType::Flora
+};
+
+const BlockAppearance SandAppear = BlockAppearance{
+  {7,0},
+  {7,0},
+  {7,0},
+  BlockMeshType::Cube,
+  BlockShaderType::Chunk_
+};
+
+const BlockAppearance WaterAppear = BlockAppearance{
+  {8,0},
+  {8,0},
+  {8,0},
+  BlockMeshType::Cube,
+  BlockShaderType::Liquid
+};
+
+const BlockAppearance CactusAppear = BlockAppearance{
+  {9,0},
+  {9,1},
+  {9,0},
+  BlockMeshType::Cube,
+  BlockShaderType::Chunk_
+};
+
+const BlockAppearance RoseAppear = BlockAppearance{
+  {10,0},
+  {10,0},
+  {10,0},
+  BlockMeshType::X,
+  BlockShaderType::Flora
+};
+
+const BlockAppearance TallGrassAppear = BlockAppearance{
+  {11,0},
+  {11,0},
+  {11,0},
+  BlockMeshType::X,
+  BlockShaderType::Flora
+};
+
+const BlockAppearance DeadShrubAppear = BlockAppearance{
+  {12,0},
+  {12,0},
+  {12,0},
+  BlockMeshType::X,
+  BlockShaderType::Flora
+};
+
+const BlockAppearance OakSaplingAppear = BlockAppearance{
+  {12,0},
+  {12,0},
+  {12,0},
+  BlockMeshType::X,
+  BlockShaderType::Flora
+};
+
+
+const BlockAppearance CobbleStoneAppear = BlockAppearance{
+  {3,1},
+  {3,1},
+  {3,1},
+  BlockMeshType::Cube,
+  BlockShaderType::Chunk_
+};
+
+const BlockAppearance GlassAppear = BlockAppearance{
+  {7,1},
+  {7,1},
+  {7,1},
+  BlockMeshType::Cube,
+  BlockShaderType::Chunk_
+};
 
 
 }

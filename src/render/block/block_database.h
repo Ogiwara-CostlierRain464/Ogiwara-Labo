@@ -29,6 +29,28 @@ public:
         return DirtAppear;
       case 3:
         return StoneAppear;
+      case 4:
+        return OakBarkAppear;
+      case 5:
+        return OakLeafAppear;
+      case 6:
+        return SandAppear;
+      case 7:
+        return WaterAppear;
+      case 8:
+        return CactusAppear;
+      case 9:
+        return RoseAppear;
+      case 10:
+        return TallGrassAppear;
+      case 11:
+        return DeadShrubAppear;
+      case 12:
+        return OakSaplingAppear;
+      case 13:
+        return CobbleStoneAppear;
+      case 14:
+        return GlassAppear;
       default:
         throw std::runtime_error("NOT IMPLEMENTED");
     }
