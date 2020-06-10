@@ -11,16 +11,23 @@ labo::minecraft::Player::Player(vec3 spawnPoint)
   position = spawnPoint;
   rotation = {0,0,0};
   velocity = {0,0,0};
+  acceleration = {0,0,0};
   box = AABB{spawnPoint, {0.3, 1, 0.3}};
 
 }
 
 void labo::minecraft::Player::update(float deltaTime) {
+  bool isFlying = true;
+
   velocity += acceleration;
   acceleration = {0,0,0};
 
+  if(position.y <= 0 && isFlying){
+    position.y = 300;
+  }
+
   position.x += velocity.x * deltaTime;
-  //position.y += velocity.y * deltaTime;
+  position.y += velocity.y * deltaTime;
   position.z += velocity.z * deltaTime;
 
 

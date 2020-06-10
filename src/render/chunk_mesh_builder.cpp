@@ -103,7 +103,7 @@ void labo::render::ChunkMeshBuilder::buildMesh() {
   AdjacentBlockPositions directions;
   blockPtr = subChunk->blocksFirstPtr();
   faces = 0;
-  for(int i =0; i < CHUNK_SIZE; i++){
+  for(int i =0; i < CHUNK_VOLUME; i++){
     int x = i % CHUNK_SIZE;
     int y = i / (CHUNK_SIZE * CHUNK_SIZE);
     int z = (i / CHUNK_SIZE) % CHUNK_SIZE;

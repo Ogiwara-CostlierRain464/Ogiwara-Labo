@@ -8,7 +8,7 @@ using glm::vec3;
 
 labo::minecraft::Level::Level()
  : chunkManager(*this)
- , player(Player({1,3,1}))
+ , player(Player({1,4,1}))
 {
   setSpawnPoint();
 }

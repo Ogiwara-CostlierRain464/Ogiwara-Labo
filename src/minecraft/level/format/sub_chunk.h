@@ -71,6 +71,9 @@ public:
   }
 
   labo::render::ChunkMeshCollection meshes;
+
+  // まずはRenderして、一旦falseにし、アップデートがあったらまたフラグ
+  bool needRender = true;
 private:
   [[nodiscard]]
   sf::Vector3i toGlobalPosition(int x, int y, int z) const;
@@ -91,8 +94,6 @@ private:
   sf::Vector3i location;
 
   Level *level;
-  // まずはRenderして、一旦falseにし、アップデートがあったらまたフラグ
-  bool needRender = true;
 
 };
 

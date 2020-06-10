@@ -57,9 +57,8 @@ void labo::app::Application::mainLoop() {
     level.update(deltaTime.asSeconds());
     camera.update();
 
-    tryRender(level, camera, 8, renderMaster);
+    tryRender(level, camera, 16, renderMaster);
     // render runs at here
-
     renderMaster.finish(window, camera);
 
   }

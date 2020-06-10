@@ -17,7 +17,7 @@ void labo::render::ChunkRenderer::render(
   }
 
   glDisable(GL_BLEND);
-  //glEnable(GL_CULL_FACE);
+  glEnable(GL_CULL_FACE);
 
   shader.useProgram();
   shader.loadProjViewMatrix(camera.getProjectionViewMatrix());
@@ -30,8 +30,6 @@ void labo::render::ChunkRenderer::render(
     glBindVertexArray(mesh.vao);
     glDrawElements(GL_TRIANGLES, mesh.indicesCount, GL_UNSIGNED_INT, nullptr);
   }
-
-  //checkGLError();
 
   chunks.clear();
 }
