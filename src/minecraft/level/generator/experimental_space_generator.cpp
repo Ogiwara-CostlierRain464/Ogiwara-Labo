@@ -15,5 +15,5 @@ void labo::minecraft::ExperimentalSpaceGenerator
 }
 
 int labo::minecraft::ExperimentalSpaceGenerator::getMinimumSpawnHeight() const noexcept {
-  return 2;
+  return 5;
 }

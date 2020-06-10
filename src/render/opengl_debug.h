@@ -12,7 +12,7 @@ namespace labo::render{
 /**
  * @see https://www.khronos.org/opengl/wiki/OpenGL_Error
  */
-void checkGLError(){
+static void checkGLError(){
   GLenum err;
   while((err = glGetError())!= GL_NO_ERROR )
   {
@@ -21,7 +21,7 @@ void checkGLError(){
   }
 }
 
-void checkShaderError(GLuint shaderID){
+static void checkShaderError(GLuint shaderID){
   GLint isSuccess = 0;
 
   glGetShaderiv(shaderID, GL_COMPILE_STATUS, &isSuccess);

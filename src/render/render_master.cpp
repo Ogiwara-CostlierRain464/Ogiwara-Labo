@@ -1,4 +1,5 @@
 #include "render_master.h"
+#include "opengl_debug.h"
 
 #include <glad/glad.h>
 
@@ -10,7 +11,6 @@ void labo::render::RenderMaster::drawChunk(
   const auto &floraMesh = collection.floraMesh;
 
   if(solidMesh.faces > 0){
-
     chunkRenderer.add(solidMesh);
   }
   // Later, render water, flora
@@ -27,6 +27,8 @@ void labo::render::RenderMaster::finish(
 
   //triangleRenderer.render();
   //textRenderer.render();
+
+  checkGLError();
 
   chunkRenderer.render(camera);
 

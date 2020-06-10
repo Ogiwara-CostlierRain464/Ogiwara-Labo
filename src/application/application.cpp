@@ -60,7 +60,6 @@ void labo::app::Application::mainLoop() {
     camera.update();
 
     tryRender(level, camera, 16, renderMaster);
-    // render runs at here
     renderMaster.finish(window, camera);
 
   }

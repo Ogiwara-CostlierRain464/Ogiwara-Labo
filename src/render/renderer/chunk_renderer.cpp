@@ -23,7 +23,7 @@ void labo::render::ChunkRenderer::render(
   shader.loadProjViewMatrix(camera.getProjectionViewMatrix());
   BlockDatabase::get().textureAtlas.bindTexture();
 
-  //checkGLError();
+  checkGLError();
   //checkShaderError(shader.id);
 
   for(auto &mesh : chunks) {
