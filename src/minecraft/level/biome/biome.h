@@ -11,7 +11,7 @@ class Chunk;
 
 class Biome {
 public:
-  Biome(int treeFeq, int plantFreq, int seed);
+  Biome(const NoiseParameters &parameters, int treeFeq, int plantFreq, int seed);
   virtual  ~Biome() = default;
 
   virtual Block getPlant(labo::math::Random<std::minstd_rand> &rand) const = 0;

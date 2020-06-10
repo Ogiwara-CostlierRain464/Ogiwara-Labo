@@ -28,6 +28,10 @@ public:
     noiseParameters.roughness = 0.53;
   }
 
+  void setParameters(const NoiseParameters &parameters) noexcept {
+    noiseParameters = parameters;
+  }
+
   [[nodiscard]]
   double getHeight(
     int x, int z,
