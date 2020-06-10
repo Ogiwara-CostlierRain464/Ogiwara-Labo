@@ -113,6 +113,9 @@ void labo::app::Application::handleKeyboardInput(std::vector<sf::Keyboard::Key> 
   if(keyboard.isKeyDown(sf::Keyboard::Space)) {
     keys.push_back(sf::Keyboard::Space);
   }
+  if(keyboard.isKeyDown(sf::Keyboard::LShift)) {
+    keys.push_back(sf::Keyboard::LShift);
+  }
 }
 
 void labo::app::Application::handleMouseInput(sf::Vector2i  &mouseMove) {

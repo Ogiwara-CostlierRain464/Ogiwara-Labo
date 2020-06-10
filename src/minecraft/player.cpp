@@ -22,10 +22,6 @@ void labo::minecraft::Player::update(float deltaTime) {
   velocity += acceleration;
   acceleration = {0,0,0};
 
-  if(position.y <= 0 && isFlying){
-    position.y = 300;
-  }
-
   position.x += velocity.x * deltaTime;
   position.y += velocity.y * deltaTime;
   position.z += velocity.z * deltaTime;

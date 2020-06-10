@@ -28,7 +28,7 @@ public:
     // キーボードの入力とマウスの動きをコンストラクターにし、それをPlayer objectに反映
     auto &player = level.getPlayer();
 
-    float speed = 0.2;
+    float speed = 1;
 
     // handle keyboard
     if(std::count(keys.begin(), keys.end(), sf::Keyboard::W)){
@@ -48,7 +48,10 @@ public:
       player.acceleration.z += sin(radians(player.rotation.y)) * speed;
     }
     if(std::count(keys.begin(), keys.end(), sf::Keyboard::Space)){
-      player.acceleration.y += speed * 3;
+      player.acceleration.y += speed * 2;
+    }
+    if(std::count(keys.begin(), keys.end(), sf::Keyboard::LShift)){
+      player.acceleration.y -= speed * 2;
     }
 
     //handle mouse

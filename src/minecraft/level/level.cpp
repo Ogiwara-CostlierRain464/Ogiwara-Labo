@@ -182,11 +182,13 @@ labo::math::VectorXZ labo::minecraft::Level::getChunkLocation(int x, int z) {
 // 別Threadで実行される
 void labo::minecraft::Level::loadChunks() {
   while(isRunning){
-    bool isMeshMade = false;
+    // playerの移動に合わせてロードする
+    // configのRender distanceと同期し、いらないChunkはちゃんとUnloadする必要がある
+
     int cameraChunkX = (int) player.position.x / CHUNK_SIZE;
     int cameraChunkZ = (int) player.position.z / CHUNK_SIZE;
 
-    for(int i = 0; i < 2; i++){
+    for(int i = 0; i < 4; i++){
       std::this_thread::sleep_for(std::chrono::milliseconds(1));
       int minX = std::max(cameraChunkX - i, 0);
       int minZ = std::max(cameraChunkZ - i, 0);
