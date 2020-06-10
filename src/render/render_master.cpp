@@ -28,13 +28,13 @@ void labo::render::RenderMaster::finish(
   //triangleRenderer.render();
   //textRenderer.render();
 
-  checkGLError();
-
   chunkRenderer.render(camera);
 
   glDisable(GL_CULL_FACE);
   skyBoxRenderer.render(camera);
   movingTriangleRenderer.render(camera);
+
+  checkGLError();
 
   window.display();
 }

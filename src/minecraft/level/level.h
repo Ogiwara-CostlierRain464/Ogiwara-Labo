@@ -10,6 +10,8 @@
 #include <memory>
 #include <unordered_map>
 #include <SFML/Graphics.hpp>
+#include <mutex>
+#include <thread>
 #include "../player.h"
 
 namespace labo::minecraft{
@@ -20,6 +22,7 @@ class SubChunk;
 class Level: public labo::math::NonCopyable {
 public:
   Level();
+  ~Level();
 
   Block getBlock(int x, int y, int z);
   void setBlock(int x, int y, int z, Block block);
@@ -54,6 +57,10 @@ public:
   }
 
 private:
+  /**
+   * チャンクを読み込む(別スレッドで実行される)
+   */
+  void loadChunks();
   void updateSubChunks();
   void setSpawnPoint();
 
@@ -62,6 +69,9 @@ private:
   std::vector<std::unique_ptr<Event>> events;
   std::unordered_map<sf::Vector3i, SubChunk *> chunkUpdates;
 
+  bool isRunning = true;
+  std::mutex mainMutex;
+  std::vector<std::thread> chunkLoadThreads;
 };
 }
 

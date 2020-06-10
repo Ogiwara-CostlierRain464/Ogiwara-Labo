@@ -11,7 +11,7 @@ labo::minecraft::Chunk::Chunk(
 }
 
 void labo::minecraft::Chunk::update(float deltaTime) {
-  ;
+  ; // Entity update come at here!
 }
 
 void labo::minecraft::Chunk::setBlock(

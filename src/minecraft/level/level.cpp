@@ -3,16 +3,29 @@
 #include <utility>
 #include "const.h"
 #include "format/chunk.h"
+#include <thread>
+#include <chrono>
 
 using glm::vec3;
+using std::unique_lock;
+using std::mutex;
 
 labo::minecraft::Level::Level()
  : chunkManager(*this)
  , player(Player({1,4,1}))
 {
   setSpawnPoint();
+
+  std::this_thread::sleep_for(std::chrono::milliseconds(50));
+  chunkLoadThreads.emplace_back([&](){ loadChunks(); });
 }
 
+labo::minecraft::Level::~Level() {
+  isRunning = false;
+  for(auto &thread : chunkLoadThreads){
+    thread.join();
+  }
+}
 
 labo::minecraft::Block labo::minecraft::Level::getBlock(int x, int y, int z) {
   auto bp = getChunkLocalCoordinate(x,z);
@@ -166,6 +179,30 @@ labo::math::VectorXZ labo::minecraft::Level::getChunkLocation(int x, int z) {
   return {x / CHUNK_SIZE, z / CHUNK_SIZE};
 }
 
+// 別Threadで実行される
+void labo::minecraft::Level::loadChunks() {
+  while(isRunning){
+    bool isMeshMade = false;
+    int cameraChunkX = (int) player.position.x / CHUNK_SIZE;
+    int cameraChunkZ = (int) player.position.z / CHUNK_SIZE;
+
+    for(int i = 0; i < 2; i++){
+      std::this_thread::sleep_for(std::chrono::milliseconds(1));
+      int minX = std::max(cameraChunkX - i, 0);
+      int minZ = std::max(cameraChunkZ - i, 0);
+      int maxX = cameraChunkX + i;
+      int maxZ = cameraChunkZ + i;
+
+      for(int x = minX; x < maxX; x++){
+        for(int z = minZ; z < maxZ; z++){
+          unique_lock<mutex> lock(mainMutex);
+          chunkManager.loadChunk(x, z);
+        }
+      }
+    }
+  }
+}
+
 void labo::minecraft::Level::updateSubChunks() {
   for(auto &c : chunkUpdates){
     c.second->markNeedRender();
@@ -196,13 +233,16 @@ void labo::minecraft::Level::setSpawnPoint() {
 //      .getHeightAt(blockX, blockZ);
 //    attempts++;
 //  }
-  for(int i = 0; i <= 4; i++){
-    for(int j = 0; j <= 4; j++){
+  for(int i = 0; i <= 0; i++){
+    for(int j = 0; j <= 0; j++){
+      unique_lock<mutex> lock(mainMutex);
       chunkManager.loadChunk(i, j);
     }
   }
 
   //player.position = {1,3,1};
 }
+
+
 
 
