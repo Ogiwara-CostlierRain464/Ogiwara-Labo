@@ -5,7 +5,10 @@ namespace labo::minecraft{
 
 class Biome {
 public:
+  Biome(int treeFeq, int plantFreq, int seed);
+  virtual  ~Biome() = default;
 
+  virtual getPlant();
 };
 }
 

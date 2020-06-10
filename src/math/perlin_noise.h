@@ -22,6 +22,10 @@ static double lerp(double a, double b, double z){
   return (a * (1 - mu2) + b * mu2);
 }
 
+/**
+ * Perlin Noise
+ * @see https://en.wikipedia.org/wiki/Perlin_noise
+ */
 static double perlinNoise(double x, double z, int seed){
   auto floorX = (double)((int)x);
   auto floorZ = (double)((int)x);
