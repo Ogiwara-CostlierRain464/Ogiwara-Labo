@@ -4,6 +4,7 @@
 #include "../render/render_master.h"
 #include "../minecraft/level/level.h"
 #include "input/keyboard.h"
+#include "fps_counter.h"
 #include <SFML/Graphics.hpp>
 
 namespace labo::app{
@@ -22,6 +23,7 @@ private:
   labo::render::Camera camera;
   sf::Window window;
   Keyboard keyboard;
+  FPSCounter fpsCounter;
 
   labo::minecraft::Level level;
 };

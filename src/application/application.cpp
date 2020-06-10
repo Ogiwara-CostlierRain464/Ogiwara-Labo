@@ -52,6 +52,8 @@ void labo::app::Application::mainLoop() {
   while(window.isOpen()){
     auto deltaTime = dtTimer.restart();
 
+    fpsCounter.show();
+
     handleGUIInput();
 
     level.update(deltaTime.asSeconds());

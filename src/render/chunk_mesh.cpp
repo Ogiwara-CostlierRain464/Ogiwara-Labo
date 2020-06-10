@@ -56,6 +56,9 @@ void labo::render::ChunkMesh::bufferMesh() {
   meshContainer.addVBO(1, light);
 
   mesh.clearAll();
+  light.clear();
+  light.shrink_to_fit();
+
   indexOffset = 0;
 }
 
