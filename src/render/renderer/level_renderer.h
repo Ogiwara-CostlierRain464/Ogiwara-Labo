@@ -11,15 +11,28 @@
 
 namespace labo::render{
 
+// Method: MeshCollection vector per each sub chunk.
+std::unordered_map<
+  sf::Vector3i,
+  std::unique_ptr<ChunkMeshCollection>> meshCollections;
+
 void tryDrawSubChunk(
   RenderMaster &renderMaster,
   labo::minecraft::SubChunk &subChunk
   ){
-  ChunkMeshBuilder(&subChunk, &subChunk.meshes).buildMesh();
+  if(meshCollections.count(subChunk.getLocation()) == 0){
+    auto ptr = std::make_unique<ChunkMeshCollection>();
+    meshCollections.emplace(subChunk.getLocation(), std::move(ptr));
+  }
+  auto &ptr = meshCollections.at(subChunk.getLocation());
 
-  subChunk.meshes.solidMesh.bufferMesh();
+  ChunkMeshBuilder(&subChunk, ptr.get()).buildMesh();
 
-  renderMaster.drawChunk(subChunk.meshes);
+  ptr->solidMesh.bufferMesh();
+
+  //subChunk.meshes.solidMesh.bufferMesh();
+
+  renderMaster.drawChunk(*ptr.get());
 }
 
 void tryDrawChunks(
