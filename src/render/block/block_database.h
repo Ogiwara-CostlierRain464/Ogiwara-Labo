@@ -23,6 +23,10 @@ public:
     switch (id.value){
       case 0:
         return AirAppear;
+      case 1:
+        return GrassAppear;
+      case 2:
+        return DirtAppear;
       case 3:
         return StoneAppear;
       default:

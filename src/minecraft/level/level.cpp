@@ -196,8 +196,8 @@ void labo::minecraft::Level::setSpawnPoint() {
 //      .getHeightAt(blockX, blockZ);
 //    attempts++;
 //  }
-  for(int i = 0; i <= CHUNK_SIZE * 4; i += CHUNK_SIZE){
-    for(int j = 0; j <= CHUNK_SIZE * 4; j += CHUNK_SIZE){
+  for(int i = 0; i <= 4; i++){
+    for(int j = 0; j <= 4; j++){
       chunkManager.loadChunk(i, j);
     }
   }

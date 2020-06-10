@@ -16,23 +16,6 @@ std::unordered_map<
   sf::Vector3i,
   std::unique_ptr<ChunkMeshCollection>> meshCollections;
 
-void tryDrawSubChunk(
-  RenderMaster &renderMaster,
-  labo::minecraft::SubChunk &subChunk
-  ){
-  if(meshCollections.count(subChunk.getLocation()) == 0){
-    auto ptr = std::make_unique<ChunkMeshCollection>();
-    meshCollections.emplace(subChunk.getLocation(), std::move(ptr));
-  }
-  auto &ptr = meshCollections.at(subChunk.getLocation());
-
-  ChunkMeshBuilder(&subChunk, ptr.get()).buildMesh();
-
-  ptr->solidMesh.bufferMesh();
-
-  renderMaster.drawChunk(*ptr.get());
-}
-
 void tryDrawChunks(
   labo::minecraft::Chunk &chunk,
   RenderMaster &renderMater,
@@ -76,17 +59,18 @@ void tryDrawChunks(
       meshCollections.emplace(subChunk.getLocation(), std::move(ptr));
     }
 
+
+    auto &ptr = meshCollections.at(subChunk.getLocation());
+
     if(subChunk.needRender){
-      auto &ptr = meshCollections.at(subChunk.getLocation());
       ChunkMeshBuilder(&subChunk, ptr.get()).buildMesh();
       ptr->solidMesh.bufferMesh();
       subChunk.needRender = false;
     }
 
     if(camera.getFrustum().isBoxInFrustum(subChunk.getAABB())){
-      tryDrawSubChunk(renderMater, subChunk);
+      renderMater.drawChunk(*ptr.get());
     }
-
   }
 
 }

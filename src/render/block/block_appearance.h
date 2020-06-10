@@ -33,6 +33,22 @@ const BlockAppearance AirAppear = BlockAppearance{
   BlockShaderType::Chunk_
 };
 
+const BlockAppearance GrassAppear = BlockAppearance{
+  {0,0},
+  {1,0},
+  {2,0},
+  BlockMeshType::Cube,
+  BlockShaderType::Chunk_
+};
+
+const BlockAppearance DirtAppear = BlockAppearance{
+  {2,0},
+  {2,0},
+  {2,0},
+  BlockMeshType::Cube,
+  BlockShaderType::Chunk_
+};
+
 const BlockAppearance StoneAppear = BlockAppearance{
   {3,0},
   {3,0},

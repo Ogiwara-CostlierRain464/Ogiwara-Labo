@@ -70,8 +70,6 @@ public:
     return &blocks[0];
   }
 
-  labo::render::ChunkMeshCollection meshes;
-
   // まずはRenderして、一旦falseにし、アップデートがあったらまたフラグ
   bool needRender = true;
 private:
