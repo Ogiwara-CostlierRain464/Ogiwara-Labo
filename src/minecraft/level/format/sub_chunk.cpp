@@ -48,13 +48,11 @@ void labo::minecraft::SubChunk::markNeedRender(){
 const labo::minecraft::SubChunk::Layer
 &labo::minecraft::SubChunk::getLayer(int y) const {
   if(y <= -1){
-    assert(false);
     return level->getChunkManager()
     .getChunk(location.x, location.z)
     .getSubChunk(location.y - 1)
     .getLayer(CHUNK_SIZE - 1);
   } else if(y >= CHUNK_SIZE){
-    assert(false);
     return level->getChunkManager()
     .getChunk(location.x, location.z)
     .getSubChunk(location.y + 1)

@@ -8,9 +8,9 @@
 namespace labo::minecraft {
 
 struct Block {
-  labo::math::Id<Block> id;
-  bool isOpaque; // 不透明
-  bool isCollidable; // 衝突判定
+  labo::math::Id<Block> id{0};
+  bool isOpaque{false}; // 不透明
+  bool isCollidable{false}; // 衝突判定
 };
 
 const Block Air = Block{
