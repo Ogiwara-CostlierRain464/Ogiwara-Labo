@@ -3,7 +3,7 @@
 
 #include <ctime>
 #include <random>
-#include "Singleton.h"
+#include "singleton.h"
 
 namespace labo::math{
 

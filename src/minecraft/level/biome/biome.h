@@ -17,7 +17,7 @@ public:
   virtual Block getPlant(labo::math::Random<std::minstd_rand> &rand) const = 0;
   virtual Block getTopBlock(labo::math::Random<std::minstd_rand> &rand) const = 0;
   virtual Block getUnderWaterBlock(labo::math::Random<std::minstd_rand> &rand) const = 0;
-  virtual Block getBeachBlock(labo::math::Random<std::minstd_rand> &rand) const = 0;
+  virtual Block getBeachBlock(labo::math::Random<std::minstd_rand> &rand) const;
   virtual void makeTree(labo::math::Random<std::minstd_rand> &rand, Chunk &chunk, int x, int y, int z) const = 0;
 
   int getHeight(int x, int z, int chunkX, int chunkZ) const;

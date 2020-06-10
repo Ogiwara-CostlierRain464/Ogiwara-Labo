@@ -21,3 +21,7 @@ int labo::minecraft::Biome::getTreeFrequency() const noexcept {
 int labo::minecraft::Biome::getPlantFrequency() const noexcept {
   return plantFreq;
 }
+
+labo::minecraft::Block labo::minecraft::Biome::getBeachBlock(labo::math::Random<std::minstd_rand> &rand) const {
+  return Sand;
+}
