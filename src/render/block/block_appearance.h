@@ -2,6 +2,7 @@
 #define LABO_BLOCK_APPEARANCE_H
 
 #include <SFML/Graphics.hpp>
+#include "../../minecraft/block/block.h"
 
 /**
  * Blockの具体的な見た目について
@@ -17,6 +18,8 @@ enum BlockShaderType{
 };
 
 struct BlockAppearance{
+  labo::math::Id<labo::minecraft::Block> id;
+
   sf::Vector2i texTopCoord;
   sf::Vector2i texSideCoord;
   sf::Vector2i texBottomCoord;
@@ -26,6 +29,7 @@ struct BlockAppearance{
 };
 
 const BlockAppearance AirAppear = BlockAppearance{
+  {0},
   {0,0},
   {0,0},
   {0,0},
@@ -34,6 +38,7 @@ const BlockAppearance AirAppear = BlockAppearance{
 };
 
 const BlockAppearance GrassAppear = BlockAppearance{
+  {1},
   {0,0},
   {1,0},
   {2,0},
@@ -42,6 +47,7 @@ const BlockAppearance GrassAppear = BlockAppearance{
 };
 
 const BlockAppearance DirtAppear = BlockAppearance{
+  {2},
   {2,0},
   {2,0},
   {2,0},
@@ -50,6 +56,7 @@ const BlockAppearance DirtAppear = BlockAppearance{
 };
 
 const BlockAppearance StoneAppear = BlockAppearance{
+  {3},
   {3,0},
   {3,0},
   {3,0},
@@ -58,6 +65,7 @@ const BlockAppearance StoneAppear = BlockAppearance{
 };
 
 const BlockAppearance OakBarkAppear = BlockAppearance{
+  {4},
   {5,0},
   {4,0},
   {5,0},
@@ -66,6 +74,7 @@ const BlockAppearance OakBarkAppear = BlockAppearance{
 };
 
 const BlockAppearance OakLeafAppear = BlockAppearance{
+  {5},
   {6,0},
   {6,0},
   {6,0},
@@ -74,6 +83,7 @@ const BlockAppearance OakLeafAppear = BlockAppearance{
 };
 
 const BlockAppearance SandAppear = BlockAppearance{
+  {6},
   {7,0},
   {7,0},
   {7,0},
@@ -82,6 +92,7 @@ const BlockAppearance SandAppear = BlockAppearance{
 };
 
 const BlockAppearance WaterAppear = BlockAppearance{
+  {7},
   {8,0},
   {8,0},
   {8,0},
@@ -90,6 +101,7 @@ const BlockAppearance WaterAppear = BlockAppearance{
 };
 
 const BlockAppearance CactusAppear = BlockAppearance{
+  {8},
   {9,0},
   {9,1},
   {9,0},
@@ -98,6 +110,7 @@ const BlockAppearance CactusAppear = BlockAppearance{
 };
 
 const BlockAppearance RoseAppear = BlockAppearance{
+  {9},
   {10,0},
   {10,0},
   {10,0},
@@ -106,6 +119,7 @@ const BlockAppearance RoseAppear = BlockAppearance{
 };
 
 const BlockAppearance TallGrassAppear = BlockAppearance{
+  {10},
   {11,0},
   {11,0},
   {11,0},
@@ -114,6 +128,7 @@ const BlockAppearance TallGrassAppear = BlockAppearance{
 };
 
 const BlockAppearance DeadShrubAppear = BlockAppearance{
+  {11},
   {12,0},
   {12,0},
   {12,0},
@@ -122,6 +137,7 @@ const BlockAppearance DeadShrubAppear = BlockAppearance{
 };
 
 const BlockAppearance OakSaplingAppear = BlockAppearance{
+  {12},
   {12,0},
   {12,0},
   {12,0},
@@ -131,6 +147,7 @@ const BlockAppearance OakSaplingAppear = BlockAppearance{
 
 
 const BlockAppearance CobbleStoneAppear = BlockAppearance{
+  {13},
   {3,1},
   {3,1},
   {3,1},
@@ -139,6 +156,7 @@ const BlockAppearance CobbleStoneAppear = BlockAppearance{
 };
 
 const BlockAppearance GlassAppear = BlockAppearance{
+  {14},
   {7,1},
   {7,1},
   {7,1},

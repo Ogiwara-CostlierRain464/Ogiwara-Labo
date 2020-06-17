@@ -122,6 +122,7 @@ void labo::render::ChunkMeshBuilder::buildMesh() {
     setActiveMesh(block_);
 
     if(block_.id == Air.id){
+      // 描画する必要無し
       continue;
     }
 
@@ -252,7 +253,7 @@ bool labo::render::ChunkMeshBuilder::shouldMakeFace(
 
   if(block_.id == Air.id){
     return true;
-  } else if((!block_.isOpaque && (block_.id != blockPtr->id))){
+  } else if((!block_.isOpaque && (block_.id != blockAppearPtr->id))){
     return true;
   }
   return false;
