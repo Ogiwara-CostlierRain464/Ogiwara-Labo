@@ -1,5 +1,6 @@
 #include "shader.h"
 #include "shader_loader.h"
+#include "../opengl_debug.h"
 
 labo::render::Shader::Shader(
   const std::string &vertexFile,

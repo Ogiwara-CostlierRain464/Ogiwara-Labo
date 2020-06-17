@@ -35,8 +35,9 @@ void labo::render::RenderMaster::finish(
   //textRenderer.render();
 
   chunkRenderer.render(camera);
-  //waterRenderer.render(camera, elapsedTime);
-  //floraRenderer.render(camera, elapsedTime);
+  waterRenderer.render(camera, elapsedTime);
+  floraRenderer.render(camera, elapsedTime);
+
 
   glDisable(GL_CULL_FACE);
   skyBoxRenderer.render(camera);

@@ -2,6 +2,7 @@
 #define LABO_OPENGL_DEBUG_H
 
 #include <glad/glad.h>
+#include <vector>
 #include <stdexcept>
 #include <string>
 /**
@@ -25,7 +26,7 @@ static void checkShaderError(GLuint shaderID){
   GLint isSuccess = 0;
 
   glGetShaderiv(shaderID, GL_COMPILE_STATUS, &isSuccess);
-  if(!isSuccess){
+  if(isSuccess == GL_FALSE){
     GLint maxLength = 0;
     glGetShaderiv(shaderID, GL_INFO_LOG_LENGTH, &maxLength);
 

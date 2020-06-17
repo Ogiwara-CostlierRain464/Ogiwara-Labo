@@ -4,6 +4,7 @@
 #include <string>
 //#include "../opengl_debug.h"
 #include "../../math/file.h"
+#include "../opengl_debug.h"
 #include <glad/glad.h>
 
 namespace labo::render{
@@ -14,7 +15,7 @@ GLuint compileShader(const GLchar *source, GLenum shaderType){
   glShaderSource(shaderId, 1, &source, nullptr);
   glCompileShader(shaderId);
 
-//  checkShaderError(shaderId);
+  checkShaderError(shaderId);
   return shaderId;
 }
 
@@ -41,12 +42,12 @@ GLuint loadShaders(
   auto fragmentShaderID =
     compileShader(fragmentSource.c_str(), GL_FRAGMENT_SHADER);
 
-  auto shaderID = linkProgram(vertexShaderID, fragmentShaderID);
+  auto programID = linkProgram(vertexShaderID, fragmentShaderID);
 
   glDeleteShader(vertexShaderID);
   glDeleteShader(fragmentShaderID);
 
-  return shaderID;
+  return programID;
 }
 
 }

@@ -2,6 +2,7 @@
 #define LABO_CHUNK_SHADER_H
 
 #include "shader.h"
+#include "../opengl_debug.h"
 
 namespace labo::render{
 class ChunkShader: public Shader{
@@ -17,7 +18,6 @@ public:
 
 private:
   void getUniforms()override {
-    //useProgram();
     locationProjViewMat =
       glGetUniformLocation(id, "projViewMatrix");
   }

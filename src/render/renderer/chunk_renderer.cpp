@@ -1,5 +1,6 @@
 #include "chunk_renderer.h"
 #include "../block/block_database.h"
+#include "../opengl_debug.h"
 
 void labo::render::ChunkRenderer::add(
   const labo::render::ChunkMesh &mesh) {
@@ -19,6 +20,7 @@ void labo::render::ChunkRenderer::render(
   glEnable(GL_CULL_FACE);
 
   shader.useProgram();
+
   shader.loadProjViewMatrix(camera.getProjectionViewMatrix());
   BlockDatabase::get().textureAtlas.bindTexture();
 

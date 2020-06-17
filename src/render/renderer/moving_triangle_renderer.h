@@ -13,6 +13,7 @@ class MovingTriangleShader: public Shader{
 public:
   MovingTriangleShader()
   : Shader("MoveTri", "MoveTri"){
+
     getUniforms();
   }
 

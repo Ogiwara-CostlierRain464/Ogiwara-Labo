@@ -25,12 +25,12 @@ public:
 
 
 private:
+  MovingTriangleRenderer movingTriangleRenderer;
   ChunkRenderer chunkRenderer;
   FloraRenderer floraRenderer;
   WaterRenderer waterRenderer;
   SkyBoxRenderer skyBoxRenderer;
   TriangleRenderer triangleRenderer;
-  MovingTriangleRenderer movingTriangleRenderer;
   TextRenderer textRenderer;
 
 };
