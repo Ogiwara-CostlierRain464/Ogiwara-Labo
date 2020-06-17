@@ -49,7 +49,7 @@ void labo::minecraft::Level::setBlock(int x, int y, int z, labo::minecraft::Bloc
 
 void labo::minecraft::Level::update(float deltaTime) {
 
-  player.update(deltaTime);
+  player.update(deltaTime, *this);
 
   for(auto &event: events){
     event->handle(*this);
