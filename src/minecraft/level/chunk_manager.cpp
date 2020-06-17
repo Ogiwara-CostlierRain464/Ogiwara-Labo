@@ -28,7 +28,7 @@ std::unordered_map<labo::math::VectorXZ, Chunk> &labo::minecraft::ChunkManager::
 }
 
 bool labo::minecraft::ChunkManager::isChunkLoadedAt(int x, int z) const {
-  if(isChunkExistAt(x,z))
+  if(!isChunkExistAt(x,z))
     return false;
 
   return chunks.at({x,z}).hasLoaded();

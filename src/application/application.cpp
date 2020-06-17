@@ -160,6 +160,8 @@ void labo::app::Application::handleMouseInput(sf::Vector2i  &mouseMove) {
         if(sf::Mouse::isButtonPressed(sf::Mouse::Left)){
           timer.restart();
           level.addEvent<BlockBreakEvent>(ray.getEnd(), &player);
+
+          break;
         }
       }
     }
