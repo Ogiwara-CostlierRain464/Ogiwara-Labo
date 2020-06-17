@@ -4,6 +4,7 @@
 #include <SFML/Graphics.hpp>
 #include "../minecraft/event/player_input_event.h"
 #include "../render/renderer/level_renderer.h"
+#include "../render/builder/level_mesh_builder.h"
 
 using sf::Clock;
 using sf::Time;
@@ -11,11 +12,13 @@ using labo::render::Camera;
 using labo::render::CameraConfig;
 using labo::minecraft::PlayerInputEvent;
 using labo::render::tryRender;
+using labo::render::LevelMeshBuilder;
 
 namespace {
   constexpr float windowX = 1200;
   constexpr float windowY = 800;
   constexpr float fov = 90;
+  constexpr int renderDistance = 8;
 }
 
 labo::app::Application::Application()
@@ -48,6 +51,7 @@ void labo::app::Application::mainLoop() {
   Clock dtTimer;
 
   labo::render::RenderMaster renderMaster;
+  LevelMeshBuilder levelMeshBuilder;
 
   while(window.isOpen()){
     auto deltaTime = dtTimer.restart();
@@ -60,7 +64,9 @@ void labo::app::Application::mainLoop() {
     level.update(timeElapsed);
     camera.update();
 
-    tryRender(level, camera, 16, renderMaster);
+    //tryRender(level, camera, 16, renderMaster);
+    levelMeshBuilder.buildAndPushToRenderer(
+      level,renderDistance, camera, renderMaster);
     renderMaster.finish(window, camera, timeElapsed);
   }
 }
