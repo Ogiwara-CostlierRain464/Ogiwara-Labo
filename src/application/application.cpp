@@ -51,17 +51,17 @@ void labo::app::Application::mainLoop() {
 
   while(window.isOpen()){
     auto deltaTime = dtTimer.restart();
+    float timeElapsed = deltaTime.asSeconds();
 
     fpsCounter.show();
 
     handleGUIInput();
 
-    level.update(deltaTime.asSeconds());
+    level.update(timeElapsed);
     camera.update();
 
     tryRender(level, camera, 16, renderMaster);
-    renderMaster.finish(window, camera);
-
+    renderMaster.finish(window, camera, timeElapsed);
   }
 }
 

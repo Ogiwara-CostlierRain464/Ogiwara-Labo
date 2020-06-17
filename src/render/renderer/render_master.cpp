@@ -1,5 +1,5 @@
 #include "render_master.h"
-#include "opengl_debug.h"
+#include "../opengl_debug.h"
 
 #include <glad/glad.h>
 
@@ -13,13 +13,19 @@ void labo::render::RenderMaster::drawChunk(
   if(solidMesh.faces > 0){
     chunkRenderer.add(solidMesh);
   }
-  // Later, render water, flora
+  if(waterMesh.faces > 0){
+    waterRenderer.add(waterMesh);
+  }
+  if(floraMesh.faces > 0){
+    floraRenderer.add(floraMesh);
+  }
 }
 
 
 void labo::render::RenderMaster::finish(
   sf::Window &window,
-  const Camera &camera) {
+  const Camera &camera,
+  float elapsedTime) {
   glClearColor(0.f, 0.f, 0.f, 1.f);
   glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
   glEnable(GL_DEPTH_TEST);
@@ -29,6 +35,8 @@ void labo::render::RenderMaster::finish(
   //textRenderer.render();
 
   chunkRenderer.render(camera);
+  //waterRenderer.render(camera, elapsedTime);
+  //floraRenderer.render(camera, elapsedTime);
 
   glDisable(GL_CULL_FACE);
   skyBoxRenderer.render(camera);

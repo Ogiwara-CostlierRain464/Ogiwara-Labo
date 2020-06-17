@@ -1,7 +1,7 @@
 #ifndef LABO_APPLICATION_H
 #define LABO_APPLICATION_H
 #include "../render/camera.h"
-#include "../render/render_master.h"
+#include "../render/renderer/render_master.h"
 #include "../minecraft/level/level.h"
 #include "input/keyboard.h"
 #include "fps_counter.h"

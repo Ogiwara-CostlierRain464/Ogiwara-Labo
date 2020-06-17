@@ -5,7 +5,7 @@
 #include "../../minecraft/level/format/chunk.h"
 #include "../../math/vector_xz.h"
 #include "../camera.h"
-#include "../render_master.h"
+#include "render_master.h"
 #include "../chunk_mesh.h"
 #include "../builder/chunk_mesh_builder.h"
 
