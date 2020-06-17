@@ -14,8 +14,6 @@ labo::minecraft::Level::Level()
  : chunkManager(*this)
  , player(Player({1,4,1}))
 {
-  setSpawnPoint();
-
   std::this_thread::sleep_for(std::chrono::milliseconds(50));
   chunkLoadThreads.emplace_back([&](){ loadChunks(); });
 }
@@ -210,39 +208,6 @@ void labo::minecraft::Level::updateSubChunks() {
     c.second->isUpdated = true;
   }
   chunkUpdates.clear();
-}
-
-void labo::minecraft::Level::setSpawnPoint() {
-//  int attempts = 0;
-//  int chunkX = -1;
-//  int chunkZ = -1;
-//  int blockX = 0;
-//  int blockZ = 0;
-//  int blockY = 0;
-//
-//  auto h = chunkManager.getTerrainGenerator().getMinimumSpawnHeight();
-//
-//  while (blockY <= h){
-//    chunkManager.unloadChunk(chunkX, chunkZ);
-//    chunkX = 100;
-//    chunkZ = 150;
-//    blockX = 10;
-//    blockZ = 10;
-//
-//    chunkManager.loadChunk(chunkX, chunkZ);
-//    blockY = chunkManager
-//      .getChunk(chunkX, chunkZ)
-//      .getHeightAt(blockX, blockZ);
-//    attempts++;
-//  }
-  for(int i = 0; i <= 0; i++){
-    for(int j = 0; j <= 0; j++){
-      unique_lock<mutex> lock(mainMutex);
-      chunkManager.loadChunk(i, j);
-    }
-  }
-
-  //player.position = {1,3,1};
 }
 
 

@@ -64,7 +64,6 @@ void labo::app::Application::mainLoop() {
     level.update(timeElapsed);
     camera.update();
 
-    //tryRender(level, camera, 16, renderMaster);
     levelMeshBuilder.buildAndPushToRenderer(
       level,renderDistance, camera, renderMaster);
     renderMaster.finish(window, camera, timeElapsed);
