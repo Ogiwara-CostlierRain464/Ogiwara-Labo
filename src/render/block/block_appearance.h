@@ -103,7 +103,7 @@ const BlockAppearance WaterAppear = BlockAppearance{
 const BlockAppearance CactusAppear = BlockAppearance{
   {8},
   {9,0},
-  {9,1},
+  {9,0},
   {9,0},
   BlockMeshType::Cube,
   BlockShaderType::Chunk_

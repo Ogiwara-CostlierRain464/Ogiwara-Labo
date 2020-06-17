@@ -6,7 +6,7 @@
 namespace labo::math{
 template <typename T>
 struct Id{
-  int value;
+  size_t value;
 
   bool operator==(const Id<T> &id)const{
     return value == id.value;

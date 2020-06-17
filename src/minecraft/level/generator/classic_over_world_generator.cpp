@@ -4,7 +4,7 @@
 
 namespace {
   // 適当に固定
-  const int seed = 325035;
+  const int seed = 4763;
 }
 
 labo::minecraft::ClassicOverWorldGenerator::ClassicOverWorldGenerator()

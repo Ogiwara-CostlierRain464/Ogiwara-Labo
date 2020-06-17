@@ -52,7 +52,8 @@ public:
       case 14:
         return GlassAppear;
       default:
-        throw std::runtime_error("NOT IMPLEMENTED");
+        return AirAppear;
+        //throw std::runtime_error("NOT IMPLEMENTED");
     }
   }
 
