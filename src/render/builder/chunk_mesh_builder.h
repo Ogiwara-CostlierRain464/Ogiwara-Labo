@@ -3,9 +3,9 @@
 
 #include <glad/glad.h>
 #include <SFML/Graphics.hpp>
-#include "../minecraft/block/block.h"
-#include "../minecraft/level/format/sub_chunk.h"
-#include "block/block_appearance.h"
+#include "../../minecraft/block/block.h"
+#include "../../minecraft/level/format/sub_chunk.h"
+#include "../block/block_appearance.h"
 
 namespace labo::render{
 

@@ -1,6 +1,6 @@
 #include "chunk_mesh_builder.h"
-#include "chunk_mesh.h"
-#include "block/block_database.h"
+#include "../chunk_mesh.h"
+#include "../block/block_database.h"
 
 using labo::minecraft::CHUNK_SIZE;
 using labo::minecraft::CHUNK_VOLUME;

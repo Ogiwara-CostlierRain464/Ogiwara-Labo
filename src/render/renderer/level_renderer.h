@@ -7,7 +7,7 @@
 #include "../camera.h"
 #include "../render_master.h"
 #include "../chunk_mesh.h"
-#include "../chunk_mesh_builder.h"
+#include "../builder/chunk_mesh_builder.h"
 
 namespace labo::render{
 
