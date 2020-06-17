@@ -15,8 +15,6 @@ labo::minecraft::SubChunk::SubChunk(
   });
 }
 
-
-
 void labo::minecraft::SubChunk::setBlock(
   int x, int y, int z, Block block){
 
