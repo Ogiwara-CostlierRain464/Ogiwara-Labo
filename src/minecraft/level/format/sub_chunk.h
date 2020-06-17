@@ -60,7 +60,11 @@ public:
     return &blocks[0];
   }
 
-  // まずはRenderして、一旦falseにし、アップデートがあったらまたフラグ
+  /**
+   * ブロックが更新されたか
+   *
+   * もしブロックが更新されたなら、Meshを再生成する必要がある
+   */
   bool isUpdated = true;
 private:
   [[nodiscard]]
