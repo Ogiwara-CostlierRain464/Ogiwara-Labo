@@ -48,7 +48,11 @@ public:
       player.acceleration.z += sin(radians(player.rotation.y)) * speed;
     }
     if(std::count(keys.begin(), keys.end(), sf::Keyboard::Space)){
-      player.acceleration.y += speed * 3;
+      //player.acceleration.y += speed * 3;
+      if(player.isOnGround){
+        player.isOnGround = false;
+        player.acceleration.y += speed * 50;
+      }
     }
     if(std::count(keys.begin(), keys.end(), sf::Keyboard::LShift)){
       player.acceleration.y -= speed * 2;

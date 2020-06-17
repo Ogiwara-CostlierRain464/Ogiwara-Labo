@@ -41,7 +41,7 @@ void labo::minecraft::Player::update(float deltaTime, Level &level) {
 
   box.updatePosition(position);
   velocity.x *= 0.95;
-  velocity.y *= 0.95;
+  //velocity.y *= 0.95;
   velocity.z *= 0.95;
 
 }
