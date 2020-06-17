@@ -34,7 +34,7 @@ labo::minecraft::Block labo::minecraft::Level::getBlock(int x, int y, int z) {
   .getBlockAt(bp.x, y, bp.z);
 }
 
-void labo::minecraft::Level::setBlock(int x, int y, int z, labo::minecraft::Block block) {
+void labo::minecraft::Level::setBlock(int x, int y, int z, const labo::minecraft::Block &block) {
   if(y <= 0){
     return;
   }
@@ -44,7 +44,7 @@ void labo::minecraft::Level::setBlock(int x, int y, int z, labo::minecraft::Bloc
 
   chunkManager
   .getChunk(chunkLocation.x, chunkLocation.z)
-  .setBlock(bp.x, y, bp.z, std::move(block));
+  .setBlock(bp.x, y, bp.z, block);
 }
 
 void labo::minecraft::Level::update(float deltaTime) {

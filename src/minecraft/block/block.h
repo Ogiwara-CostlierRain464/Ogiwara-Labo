@@ -11,6 +11,14 @@ struct Block {
   labo::math::Id<Block> id{0};
   bool isOpaque{false}; // 不透明
   bool isCollidable{false}; // 衝突判定
+
+  bool operator==(const Block &other)const{
+    return id == other.id;
+  }
+
+  bool operator!=(const Block &other)const{
+    return id != other.id;
+  }
 };
 
 const Block Air = Block{

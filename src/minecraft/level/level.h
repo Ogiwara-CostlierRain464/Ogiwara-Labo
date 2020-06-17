@@ -25,7 +25,7 @@ public:
   ~Level();
 
   Block getBlock(int x, int y, int z);
-  void setBlock(int x, int y, int z, Block block);
+  void setBlock(int x, int y, int z, const Block &block);
 
   void update(float deltaTime);
   /**

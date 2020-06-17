@@ -5,6 +5,8 @@
 #include "../minecraft/event/player_input_event.h"
 #include "../render/renderer/level_renderer.h"
 #include "../render/builder/level_mesh_builder.h"
+#include "../math/ray.h"
+#include "../minecraft/block/block.h"
 
 using sf::Clock;
 using sf::Time;
@@ -13,6 +15,9 @@ using labo::render::CameraConfig;
 using labo::minecraft::PlayerInputEvent;
 using labo::render::tryRender;
 using labo::render::LevelMeshBuilder;
+using labo::math::Ray;
+using labo::minecraft::Air;
+using labo::minecraft::Water;
 
 namespace {
   constexpr float windowX = 1200;
@@ -128,4 +133,31 @@ void labo::app::Application::handleMouseInput(sf::Vector2i  &mouseMove) {
   mouseMove = sf::Mouse::getPosition() - lastMousePosition;
 
   lastMousePosition = sf::Mouse::getPosition();
+
+
+
+  static sf::Clock timer;
+  glm::vec3 lastPosition;
+
+  auto &player = level.getPlayer();
+
+  for(Ray ray(
+    {player.position.x,
+     player.position.y + player.height,
+     player.position.z},player.rotation);
+     ray.getLength() < 6;
+     ray.step(0.05f)){
+    int x = static_cast<int>(ray.getEnd().x);
+    int y = static_cast<int>(ray.getEnd().y);
+    int z = static_cast<int>(ray.getEnd().z);
+
+    auto block = level.getBlock(x, y, z);
+
+    if(block != Air && block != Water){
+      if(timer.getElapsedTime().asSeconds() > 0.2){
+        ///
+      }
+    }
+
+  }
 }
