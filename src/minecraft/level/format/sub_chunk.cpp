@@ -41,10 +41,6 @@ labo::minecraft::Block labo::minecraft::SubChunk::getBlock(
   return blocks[getIndex(x,y,z)];
 }
 
-void labo::minecraft::SubChunk::markNeedRender(){
-  needRender = true;
-}
-
 const labo::minecraft::SubChunk::Layer
 &labo::minecraft::SubChunk::getLayer(int y) const {
   if(y <= -1){

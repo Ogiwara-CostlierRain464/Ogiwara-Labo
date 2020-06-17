@@ -62,10 +62,10 @@ void tryDrawChunks(
 
     auto &ptr = meshCollections.at(subChunk.getLocation());
 
-    if(subChunk.needRender){
+    if(subChunk.isUpdated){
       ChunkMeshBuilder(&subChunk, ptr.get()).buildMesh();
       ptr->solidMesh.bufferMesh();
-      subChunk.needRender = false;
+      subChunk.isUpdated = false;
     }
 
     if(camera.getFrustum().isBoxInFrustum(subChunk.getAABB())){

@@ -207,7 +207,7 @@ void labo::minecraft::Level::loadChunks() {
 
 void labo::minecraft::Level::updateSubChunks() {
   for(auto &c : chunkUpdates){
-    c.second->markNeedRender();
+    c.second->isUpdated = true;
   }
   chunkUpdates.clear();
 }

@@ -48,16 +48,6 @@ public:
   }
 
   [[nodiscard]]
-  bool isNeedRender()const{
-    return needRender;
-  }
-
-  /**
-   * 再描画が必要であるとマークする
-   */
-  void markNeedRender();
-
-  [[nodiscard]]
   const Layer &getLayer(int y) const;
   SubChunk &getAdjacentSubChunk(int dx, int dz);
 
@@ -71,7 +61,7 @@ public:
   }
 
   // まずはRenderして、一旦falseにし、アップデートがあったらまたフラグ
-  bool needRender = true;
+  bool isUpdated = true;
 private:
   [[nodiscard]]
   sf::Vector3i toGlobalPosition(int x, int y, int z) const;
