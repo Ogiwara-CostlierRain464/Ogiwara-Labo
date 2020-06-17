@@ -3,6 +3,7 @@
 #include "input/toggle_key.h"
 #include <SFML/Graphics.hpp>
 #include "../minecraft/event/player_input_event.h"
+#include "../minecraft/event/block_break_event.h"
 #include "../render/renderer/level_renderer.h"
 #include "../render/builder/level_mesh_builder.h"
 #include "../math/ray.h"
@@ -13,6 +14,7 @@ using sf::Time;
 using labo::render::Camera;
 using labo::render::CameraConfig;
 using labo::minecraft::PlayerInputEvent;
+using labo::minecraft::BlockBreakEvent;
 using labo::render::tryRender;
 using labo::render::LevelMeshBuilder;
 using labo::math::Ray;
@@ -155,7 +157,10 @@ void labo::app::Application::handleMouseInput(sf::Vector2i  &mouseMove) {
 
     if(block != Air && block != Water){
       if(timer.getElapsedTime().asSeconds() > 0.2){
-        ///
+        if(sf::Mouse::isButtonPressed(sf::Mouse::Left)){
+          timer.restart();
+          level.addEvent<BlockBreakEvent>(ray.getEnd(), &player);
+        }
       }
     }
 
