@@ -12,10 +12,6 @@
 namespace labo::render{
 class RenderMaster {
 public:
-  RenderMaster(){
-    textRenderer.add();
-  }
-
   void drawChunk(const ChunkMeshCollection &collection);
   void finish(sf::Window &window, const Camera &camera);
 
