@@ -45,6 +45,7 @@ struct ChunkMeshCollection{
   ChunkMesh solidMesh;
   ChunkMesh waterMesh;
   ChunkMesh floraMesh;
+  ChunkMesh entityMesh;
 };
 
 }
