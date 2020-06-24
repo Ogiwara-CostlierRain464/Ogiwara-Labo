@@ -17,6 +17,18 @@ public:
 
   glm::vec3 acceleration{0};
   bool isOnGround = false;
+
+
+  bool getFlying(){
+    return flying;
+  }
+
+  void setFlying(bool flying_){
+    flying = flying_;
+  }
+
+private:
+  bool flying = true;
 };
 
 }
