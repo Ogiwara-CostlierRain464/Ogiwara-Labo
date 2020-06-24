@@ -52,7 +52,6 @@ private:
   std::vector<SubChunk> subChunks;
   math::Array2D<int, CHUNK_SIZE> highestBlocks;
   sf::Vector2i location;
-  std::vector<std::shared_ptr<Entity>> entities;
 
   Level *level;
 
