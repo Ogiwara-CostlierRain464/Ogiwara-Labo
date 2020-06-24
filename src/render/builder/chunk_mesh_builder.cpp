@@ -94,7 +94,7 @@ namespace {
 
 labo::render::ChunkMeshBuilder::ChunkMeshBuilder(
   labo::minecraft::SubChunk *subChunk,
-  labo::render::ChunkMeshCollection *collection)
+  labo::render::SubChunkMeshCollection *collection)
   : subChunk(subChunk)
   , collection(collection)
 {}

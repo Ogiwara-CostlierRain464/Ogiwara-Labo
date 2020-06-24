@@ -45,7 +45,7 @@ void labo::render::LevelMeshBuilder::drawChunks(
   const Camera &camera) {
   for(auto &subChunk: chunk.getSubChunks()){
     if(meshCollections.count(subChunk.getLocation()) == 0){
-      auto ptr = std::make_unique<ChunkMeshCollection>();
+      auto ptr = std::make_unique<SubChunkMeshCollection>();
       meshCollections.emplace(subChunk.getLocation(), std::move(ptr));
     }
 

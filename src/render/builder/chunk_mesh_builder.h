@@ -10,14 +10,14 @@
 namespace labo::render{
 
 class ChunkMesh;
-class ChunkMeshCollection;
+class SubChunkMeshCollection;
 
 /**
  * Create Mesh of SubChunk
  */
 class ChunkMeshBuilder {
 public:
-  ChunkMeshBuilder(labo::minecraft::SubChunk *subChunk, ChunkMeshCollection *collection);
+  ChunkMeshBuilder(labo::minecraft::SubChunk *subChunk, SubChunkMeshCollection *collection);
 
   void buildMesh();
 
@@ -48,7 +48,7 @@ private:
   int faces = 0;
   const labo::minecraft::Block *blockPtr = nullptr;
   labo::minecraft::SubChunk *subChunk = nullptr;
-  ChunkMeshCollection *collection = nullptr;
+  SubChunkMeshCollection *collection = nullptr;
   ChunkMesh *activeMesh = nullptr;
   const BlockAppearance *blockAppearPtr = nullptr;
 };

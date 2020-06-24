@@ -22,7 +22,7 @@ public:
 private:
   std::unordered_map<
     sf::Vector3i,
-    std::unique_ptr<ChunkMeshCollection>
+    std::unique_ptr<SubChunkMeshCollection>
     > meshCollections;
 
   void drawChunks(

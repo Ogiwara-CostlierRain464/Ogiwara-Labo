@@ -5,7 +5,7 @@
 
 
 void labo::render::RenderMaster::drawChunk(
-  const ChunkMeshCollection &collection) {
+  const SubChunkMeshCollection &collection) {
   const auto &solidMesh = collection.solidMesh;
   const auto &waterMesh = collection.waterMesh;
   const auto &floraMesh = collection.floraMesh;

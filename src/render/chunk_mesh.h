@@ -41,7 +41,7 @@ private:
   GLuint indexOffset = 0;
 };
 
-struct ChunkMeshCollection{
+struct SubChunkMeshCollection{
   ChunkMesh solidMesh;
   ChunkMesh waterMesh;
   ChunkMesh floraMesh;

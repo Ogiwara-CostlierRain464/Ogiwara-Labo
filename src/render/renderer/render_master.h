@@ -17,7 +17,7 @@ public:
   /**
    * Chunkを描画する
    */
-  void drawChunk(const ChunkMeshCollection &collection);
+  void drawChunk(const SubChunkMeshCollection &collection);
 
   void addEntity(){};
   void removeEntity(){};
