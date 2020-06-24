@@ -4,7 +4,6 @@
 #include <SFML/Graphics.hpp>
 #include "../minecraft/event/player_input_event.h"
 #include "../minecraft/event/block_break_event.h"
-#include "../render/renderer/level_renderer.h"
 #include "../render/builder/level_mesh_builder.h"
 #include "../math/ray.h"
 #include "../minecraft/block/block.h"
@@ -15,7 +14,6 @@ using labo::render::Camera;
 using labo::render::CameraConfig;
 using labo::minecraft::PlayerInputEvent;
 using labo::minecraft::BlockBreakEvent;
-using labo::render::tryRender;
 using labo::render::LevelMeshBuilder;
 using labo::math::Ray;
 using labo::minecraft::Air;
