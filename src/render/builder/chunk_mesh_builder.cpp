@@ -104,6 +104,8 @@ void labo::render::ChunkMeshBuilder::buildMesh() {
   blockPtr = subChunk->blocksFirstPtr();
   faces = 0;
   for(int i =0; i < CHUNK_VOLUME; i++){
+
+    // In-chunk, local coordinate
     int x = i % CHUNK_SIZE;
     int y = i / (CHUNK_SIZE * CHUNK_SIZE);
     int z = (i / CHUNK_SIZE) % CHUNK_SIZE;
@@ -182,6 +184,8 @@ void labo::render::ChunkMeshBuilder::buildMesh() {
     );
 
   }
+
+  buildEntityMesh();
 }
 
 void labo::render::ChunkMeshBuilder::setActiveMesh(
@@ -272,5 +276,58 @@ bool labo::render::ChunkMeshBuilder::shouldMakeLayer(int y) {
          || (!adjIsSolid(0,1))
          || (!adjIsSolid(-1, 0))
          || (!adjIsSolid(0, -1));
+}
+
+void labo::render::ChunkMeshBuilder::buildEntityMesh() {
+  BlockAppearance appear = BlockDatabase::get()
+    .getBlockAppearance(math::Id<minecraft::Block>{2});
+
+  auto texCoords = BlockDatabase::get().textureAtlas.getTexture(appear.texBottomCoord);
+
+  collection->entityMesh.addFace(
+    bottomFace,
+    texCoords,
+    subChunk->getLocation(),
+    {10, 10, 10},
+    LIGHT_BOT
+    );
+
+  collection->entityMesh.addFace(
+    topFace,
+    texCoords,
+    subChunk->getLocation(),
+    {10, 10, 10},
+    LIGHT_BOT
+  );
+  collection->entityMesh.addFace(
+    leftFace,
+    texCoords,
+    subChunk->getLocation(),
+    {10, 10, 10},
+    LIGHT_BOT
+  );
+  collection->entityMesh.addFace(
+    rightFace,
+    texCoords,
+    subChunk->getLocation(),
+    {10, 10, 10},
+    LIGHT_BOT
+  );
+
+  collection->entityMesh.addFace(
+    frontFace,
+    texCoords,
+    subChunk->getLocation(),
+    {10, 10, 10},
+    LIGHT_BOT
+  );
+
+  collection->entityMesh.addFace(
+    backFace,
+    texCoords,
+    subChunk->getLocation(),
+    {10, 10, 10},
+    LIGHT_BOT
+  );
 }
 

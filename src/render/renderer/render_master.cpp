@@ -9,10 +9,13 @@ void labo::render::RenderMaster::drawChunk(
   const auto &solidMesh = collection.solidMesh;
   const auto &waterMesh = collection.waterMesh;
   const auto &floraMesh = collection.floraMesh;
+  const auto &entityMesh = collection.entityMesh;
 
   if(solidMesh.faces > 0){
     chunkRenderer.add(solidMesh);
   }
+  chunkRenderer.add(entityMesh);
+
   if(waterMesh.faces > 0){
     waterRenderer.add(waterMesh);
   }

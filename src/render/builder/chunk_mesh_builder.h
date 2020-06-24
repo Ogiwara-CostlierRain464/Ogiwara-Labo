@@ -12,6 +12,9 @@ namespace labo::render{
 class ChunkMesh;
 class ChunkMeshCollection;
 
+/**
+ * Create Mesh of SubChunk
+ */
 class ChunkMeshBuilder {
 public:
   ChunkMeshBuilder(labo::minecraft::SubChunk *subChunk, ChunkMeshCollection *collection);
@@ -39,6 +42,8 @@ private:
   );
 
   bool shouldMakeLayer(int y);
+
+  void buildEntityMesh();
 
   int faces = 0;
   const labo::minecraft::Block *blockPtr = nullptr;
