@@ -110,6 +110,8 @@ void labo::app::Application::handleGUIInput() {
 
 void labo::app::Application::handleKeyboardInput(std::vector<sf::Keyboard::Key> &keys) {
 
+  static ToggleKey flyKey(sf::Keyboard::F);
+
   if(keyboard.isKeyDown(sf::Keyboard::W)){
     keys.push_back(sf::Keyboard::W);
   }
@@ -121,6 +123,9 @@ void labo::app::Application::handleKeyboardInput(std::vector<sf::Keyboard::Key> 
   }
   if(keyboard.isKeyDown(sf::Keyboard::D)){
     keys.push_back(sf::Keyboard::D);
+  }
+  if(flyKey.isKeyPressed()){
+    keys.push_back(sf::Keyboard::F);
   }
   if(keyboard.isKeyDown(sf::Keyboard::Space)) {
     keys.push_back(sf::Keyboard::Space);

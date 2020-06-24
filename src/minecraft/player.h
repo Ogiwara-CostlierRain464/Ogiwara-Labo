@@ -16,19 +16,27 @@ public:
   void collide(Level &level, const glm::vec3 &vel, float deltaTime);
 
   glm::vec3 acceleration{0};
-  bool isOnGround = false;
 
 
-  bool getFlying(){
+  bool isFlying(){
     return flying;
   }
 
-  void setFlying(bool flying_){
-    flying = flying_;
+  void toggleFlying(){
+    flying = !flying;
+  }
+
+  bool isOnGround(){
+    return onGround;
+  }
+
+  void setOnGround(bool onGround_){
+    onGround = onGround_;
   }
 
 private:
   bool flying = true;
+  bool onGround = false;
 };
 
 }

@@ -18,16 +18,14 @@ labo::minecraft::Player::Player(vec3 spawnPoint)
 }
 
 void labo::minecraft::Player::update(float deltaTime, Level &level) {
-  bool isFlying = false;
-
   velocity += acceleration;
   acceleration = {0,0,0};
 
-  if(!isFlying){
-    if(!isOnGround){
+  if(!flying){
+    if(!onGround){
       velocity.y -= 40 * deltaTime;
     }
-    isOnGround = false;
+    onGround = false;
   }
 
   position.x += velocity.x * deltaTime;
@@ -41,9 +39,10 @@ void labo::minecraft::Player::update(float deltaTime, Level &level) {
 
   box.updatePosition(position);
   velocity.x *= 0.95;
-  //velocity.y *= 0.95;
   velocity.z *= 0.95;
-
+  if(flying){
+    velocity.y *= 0.95;
+  }
 }
 
 void labo::minecraft::Player::collide(
@@ -64,7 +63,7 @@ void labo::minecraft::Player::collide(
             velocity.y = 0;
           }
           else if (vel.y < 0) {
-            isOnGround = true;
+            onGround = true;
             position.y = y + box.dimensions.y + 1;
             velocity.y = 0;
           }

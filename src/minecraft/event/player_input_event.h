@@ -14,18 +14,26 @@ using glm::radians;
 
 namespace labo::minecraft{
 
+/**
+ * Playerからの入力時に発火するイベント
+ */
 class PlayerInputEvent: public Event{
 public:
   PlayerInputEvent(std::vector<sf::Keyboard::Key> &keys, sf::Vector2i &mouseMove)
     : keys(std::move(keys))
     , mouseMove(std::move(mouseMove))
-  {
-    // NOTE: manage keys as bit mask is good idea.
+  {}
+
+  /**
+   * 入力に応じて位置のアップデートや視点の移動等を行う
+   */
+  void handle(Level &level) override {
+    handleKeyboard(level);
+    handleMouse(level);
   }
 
-  void handle(Level &level) override {
-    // Handle input form player, like WASD, digging
-    // キーボードの入力とマウスの動きをコンストラクターにし、それをPlayer objectに反映
+private:
+  void handleKeyboard(Level &level){
     auto &player = level.getPlayer();
 
     float speed = 0.2;
@@ -47,18 +55,26 @@ public:
       player.acceleration.x += cos(radians(player.rotation.y)) * speed;
       player.acceleration.z += sin(radians(player.rotation.y)) * speed;
     }
-    if(std::count(keys.begin(), keys.end(), sf::Keyboard::Space)){
-      //player.acceleration.y += speed * 3;
-      if(player.isOnGround){
-        player.isOnGround = false;
-        player.acceleration.y += speed * 50;
-      }
-    }
-    if(std::count(keys.begin(), keys.end(), sf::Keyboard::LShift)){
-      player.acceleration.y -= speed * 2;
+    if(std::count(keys.begin(), keys.end(), sf::Keyboard::F)){
+      player.toggleFlying();
     }
 
-    //handle mouse
+    if(std::count(keys.begin(), keys.end(), sf::Keyboard::Space)){
+      if(!player.isFlying()){
+        if(player.isOnGround()){
+          player.setOnGround(false);
+          player.acceleration.y += speed * 50;
+        }
+      }else{
+        player.acceleration.y += speed * 3;
+      }
+    } else if(std::count(keys.begin(), keys.end(), sf::Keyboard::LShift) && player.isFlying()){
+      player.acceleration.y -= speed * 3;
+    }
+  }
+  void handleMouse(Level &level){
+    auto &player = level.getPlayer();
+
     static float const BOUND = 89.f;
     static float const MOUSE_SPEED = 0.4;
 
@@ -78,7 +94,8 @@ public:
     }
   }
 
-private:
+
+
   const std::vector<sf::Keyboard::Key> keys;
   const sf::Vector2i mouseMove;
 };

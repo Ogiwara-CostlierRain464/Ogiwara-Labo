@@ -10,6 +10,7 @@ namespace labo::minecraft{
 struct Entity: public labo::math::NonCopyable{
   glm::vec3 position;
   // オイラー角の姿勢
+  // pitch, yaw, roll
   glm::vec3 rotation;
   // 速度
   glm::vec3 velocity;
