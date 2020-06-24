@@ -17,6 +17,7 @@
 namespace labo::minecraft{
 
 class SubChunk;
+class Entity;
 
 // In Minecraft, World is called Level
 class Level: public labo::math::NonCopyable {
@@ -56,6 +57,8 @@ public:
     return chunkManager;
   }
 
+  std::vector<std::shared_ptr<Entity>> &getEntities();
+
 private:
   /**
    * チャンクを読み込む(別スレッドで実行される)
@@ -71,6 +74,8 @@ private:
   bool isRunning = true;
   std::mutex mainMutex;
   std::vector<std::thread> chunkLoadThreads;
+
+  std::vector<std::shared_ptr<Entity>> entities;
 };
 }
 

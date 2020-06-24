@@ -5,6 +5,7 @@
 #include "format/chunk.h"
 #include <thread>
 #include <chrono>
+#include "../entity/entity.h"
 
 using glm::vec3;
 using std::unique_lock;
@@ -208,6 +209,10 @@ void labo::minecraft::Level::updateSubChunks() {
     c.second->isUpdated = true;
   }
   chunkUpdates.clear();
+}
+
+std::vector<std::shared_ptr<labo::minecraft::Entity>> &labo::minecraft::Level::getEntities() {
+  return entities;
 }
 
 

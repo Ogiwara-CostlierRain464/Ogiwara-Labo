@@ -6,12 +6,12 @@
 namespace labo::render{
 class EntityMeshBuilder {
 public:
-  explicit EntityMeshBuilder(labo::minecraft::Chunk &chunk);
+  explicit EntityMeshBuilder(labo::minecraft::Level &level);
 
   void buildMesh();
 
 private:
-  labo::minecraft::Chunk &chunk;
+  labo::minecraft::Level &level;
 };
 }
 
