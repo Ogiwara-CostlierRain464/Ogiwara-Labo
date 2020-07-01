@@ -56,7 +56,7 @@ void labo::app::Application::mainLoop() {
   Clock dtTimer;
 
   labo::render::RenderMaster renderMaster;
-  LevelMeshBuilder levelMeshBuilder;
+  LevelMeshBuilder levelMeshBuilder(level, renderMaster);
 
   while(window.isOpen()){
     auto deltaTime = dtTimer.restart();
@@ -69,8 +69,8 @@ void labo::app::Application::mainLoop() {
     level.update(timeElapsed);
     camera.update();
 
-    levelMeshBuilder.buildAndPushToRenderer(
-      level,renderDistance, camera, renderMaster);
+    levelMeshBuilder
+    .buildAndPushToRenderer(renderDistance, camera);
     renderMaster.finish(window, camera, timeElapsed);
   }
 }

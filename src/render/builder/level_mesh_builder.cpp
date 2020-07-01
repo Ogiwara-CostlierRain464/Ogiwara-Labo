@@ -2,11 +2,20 @@
 #include "../../minecraft/level/level.h"
 #include "chunk_mesh_builder.h"
 
-void labo::render::LevelMeshBuilder::buildAndPushToRenderer(
+labo::render::LevelMeshBuilder::LevelMeshBuilder(
   labo::minecraft::Level &level,
-  int renderDistance,
-  Camera &camera,
-  RenderMaster &renderMaster) {
+  RenderMaster &renderMaster)
+: level(level)
+, renderMaster(renderMaster)
+, entityMeshBuilder(level)
+{
+}
+
+void labo::render::LevelMeshBuilder::buildAndPushToRenderer(
+  int renderDistance,Camera &camera) {
+  // draw Entities
+  entityMeshBuilder.buildMesh(renderMaster);
+
   auto &chunkManager = level.getChunkManager();
   auto &chunkMap = chunkManager.getChunks();
 
@@ -31,7 +40,7 @@ void labo::render::LevelMeshBuilder::buildAndPushToRenderer(
       continue;
     }else{
       // render chunk
-      drawChunks(chunk, renderMaster, camera);
+      drawChunks(chunk, camera);
 
       itr++;
     }
@@ -41,7 +50,6 @@ void labo::render::LevelMeshBuilder::buildAndPushToRenderer(
 
 void labo::render::LevelMeshBuilder::drawChunks(
   labo::minecraft::Chunk &chunk,
-  RenderMaster &renderMaster,
   const Camera &camera) {
   for(auto &subChunk: chunk.getSubChunks()){
     if(meshCollections.count(subChunk.getLocation()) == 0){
@@ -64,3 +72,4 @@ void labo::render::LevelMeshBuilder::drawChunks(
     }
   }
 }
+

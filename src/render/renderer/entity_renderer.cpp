@@ -22,6 +22,7 @@ void labo::render::EntityRenderer::render(
   BlockDatabase::get().textureAtlas.bindTexture();
 
   for(auto &renderInfo: entityRenderInfos){
+
     shader.loadPosition(renderInfo.position);
     shader.loadRotation(renderInfo.rotation);
 

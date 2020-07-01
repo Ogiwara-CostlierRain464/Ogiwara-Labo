@@ -7,30 +7,36 @@
 #include "../../math/vector_xz.h"
 #include "../renderer/render_master.h"
 #include "../../minecraft/level/format/chunk.h"
+#include "entity_mesh_builder.h"
 
 
 namespace labo::render{
 
 class LevelMeshBuilder {
 public:
+  LevelMeshBuilder(labo::minecraft::Level &level, RenderMaster &renderMaster);
+
   void buildAndPushToRenderer(
-    labo::minecraft::Level &level,
     int renderDistance,
-    Camera &camera,
-    RenderMaster &renderMaster);
+    Camera &camera);
 
 private:
+  labo::minecraft::Level &level;
+  RenderMaster &renderMaster;
+  EntityMeshBuilder entityMeshBuilder;
+
   std::unordered_map<
     sf::Vector3i,
     std::unique_ptr<SubChunkMeshCollection>
     > meshCollections;
 
+
   void drawChunks(
     labo::minecraft::Chunk &chunk,
-    RenderMaster &renderMaster,
     const Camera &camera
     );
 };
+
 
 }
 

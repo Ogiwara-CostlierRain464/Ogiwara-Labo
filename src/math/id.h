@@ -25,11 +25,10 @@ struct Id{
 namespace std{
   template <typename T>
   struct hash<labo::math::Id<T>>{
-    size_t operator()(const labo::math::Id<T> &id) const
-    {
+    size_t operator()(const labo::math::Id<T> &id) const noexcept{
       std::hash<labo::math::Id<T>> hasher;
 
-      return hasher(id);
+      return hasher(id.value);
     }
   };
 }
