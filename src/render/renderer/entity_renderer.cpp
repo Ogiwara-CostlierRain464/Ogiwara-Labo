@@ -25,6 +25,9 @@ void labo::render::EntityRenderer::render(
 
     glm::mat4 model = glm::mat4(1.0f);
     model = glm::translate(model,renderInfo.position);
+    model = glm::rotate(model, renderInfo.rotation.x, {1,0,0});
+    model = glm::rotate(model, renderInfo.rotation.y, {0,1,0});
+    model = glm::rotate(model, renderInfo.rotation.z, {0,0,1});
 
     shader.loadModel(model);
 

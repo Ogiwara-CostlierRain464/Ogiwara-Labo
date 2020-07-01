@@ -29,7 +29,6 @@ struct Entity: public labo::math::NonCopyable{
   , rotation(rotation)
   , velocity(velocity)
   , box(box) {}
-
 };
 
 }

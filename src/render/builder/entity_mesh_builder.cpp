@@ -70,7 +70,7 @@ void labo::render::EntityMeshBuilder::buildMesh(RenderMaster &renderMaster) {
 
       auto &entityMesh = meshes.at(entity->id);
 
-      auto appear = BlockDatabase::get().getBlockAppearance(6);
+      auto appear = BlockDatabase::get().getBlockAppearance(3);
       auto texCoords = BlockDatabase::get().textureAtlas.getTexture(appear.texTopCoord);
 
       // EntityのVAOの位置自体は0にしておく。

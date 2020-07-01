@@ -32,7 +32,7 @@ public:
       auto entity = std::make_shared<Entity>(
         level.getNextEntityId(),
         digSpot + glm::vec3(0,2,0),
-        glm::vec3(),
+        glm::vec3{0.5,0.5,1.4},
         glm::vec3(),
         physics::AABB{digSpot, {1,1,1}});
 
