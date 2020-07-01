@@ -43,8 +43,6 @@ private:
 
   bool shouldMakeLayer(int y);
 
-  void buildEntityMesh();
-
   int faces = 0;
   const labo::minecraft::Block *blockPtr = nullptr;
   labo::minecraft::SubChunk *subChunk = nullptr;
