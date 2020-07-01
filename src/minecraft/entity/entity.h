@@ -5,6 +5,7 @@
 #include "../../math/non_copyable.h"
 #include "../../physics/aabb.h"
 #include "../../math/id.h"
+#include "../level/level.h"
 
 namespace labo::minecraft{
 
@@ -21,6 +22,8 @@ public:
   , rotation(rotation)
   , velocity(velocity)
   , box(box) {}
+
+  virtual void update(float deltaTime, Level *level) = 0;
 
   math::Id<Entity> &getId(){
     return id;
