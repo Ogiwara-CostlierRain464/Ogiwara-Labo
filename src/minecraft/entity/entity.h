@@ -42,7 +42,7 @@ public:
     return box;
   }
 
-private:
+protected:
   math::Id<Entity> id;
   glm::vec3 position;
   // オイラー角の姿勢

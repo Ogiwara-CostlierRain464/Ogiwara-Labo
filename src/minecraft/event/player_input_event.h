@@ -40,20 +40,20 @@ private:
 
     // handle keyboard
     if(std::count(keys.begin(), keys.end(), sf::Keyboard::W)){
-      player.acceleration.x += -cos(radians(player.rotation.y + 90)) * speed;
-      player.acceleration.z += -sin(radians(player.rotation.y + 90)) * speed;
+      player.acceleration.x += -cos(radians(player.getRotation().y + 90)) * speed;
+      player.acceleration.z += -sin(radians(player.getRotation().y + 90)) * speed;
     }
     if(std::count(keys.begin(), keys.end(), sf::Keyboard::S)){
-      player.acceleration.x += cos(radians(player.rotation.y + 90)) * speed;
-      player.acceleration.z += sin(radians(player.rotation.y + 90)) * speed;
+      player.acceleration.x += cos(radians(player.getRotation().y + 90)) * speed;
+      player.acceleration.z += sin(radians(player.getRotation().y + 90)) * speed;
     }
     if(std::count(keys.begin(), keys.end(), sf::Keyboard::A)){
-      player.acceleration.x += -cos(radians(player.rotation.y)) * speed;
-      player.acceleration.z += -sin(radians(player.rotation.y)) * speed;
+      player.acceleration.x += -cos(radians(player.getRotation().y)) * speed;
+      player.acceleration.z += -sin(radians(player.getRotation().y)) * speed;
     }
     if(std::count(keys.begin(), keys.end(), sf::Keyboard::D)){
-      player.acceleration.x += cos(radians(player.rotation.y)) * speed;
-      player.acceleration.z += sin(radians(player.rotation.y)) * speed;
+      player.acceleration.x += cos(radians(player.getRotation().y)) * speed;
+      player.acceleration.z += sin(radians(player.getRotation().y)) * speed;
     }
     if(std::count(keys.begin(), keys.end(), sf::Keyboard::F)){
       player.toggleFlying();
@@ -78,19 +78,19 @@ private:
     static float const BOUND = 89.f;
     static float const MOUSE_SPEED = 0.4;
 
-    player.rotation.y += mouseMove.x * MOUSE_SPEED;
-    player.rotation.x += mouseMove.y * MOUSE_SPEED;
+    player.getRotation().y += mouseMove.x * MOUSE_SPEED;
+    player.getRotation().x += mouseMove.y * MOUSE_SPEED;
 
-    if(player.rotation.x > BOUND){
-      player.rotation.x = BOUND;
-    } else if(player.rotation.x < -BOUND){
-      player.rotation.x = -BOUND;
+    if(player.getRotation().x > BOUND){
+      player.getRotation().x = BOUND;
+    } else if(player.getRotation().x < -BOUND){
+      player.getRotation().x = -BOUND;
     }
 
-    if(player.rotation.y > 360){
-      player.rotation.y = 0;
-    } else if(player.rotation.y < 0){
-      player.rotation.y = 360;
+    if(player.getRotation().y > 360){
+      player.getRotation().y = 0;
+    } else if(player.getRotation().y < 0){
+      player.getRotation().y = 360;
     }
   }
 

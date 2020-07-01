@@ -65,10 +65,10 @@ void labo::render::EntityMeshBuilder::buildMesh(RenderMaster &renderMaster) {
   // 頂点情報は変わらず、常に位置と回転情報を受け取る
 
   for(auto &entity: level.getEntities()){
-    if(meshes.count(entity->id) == 0){
-      meshes.emplace(entity->id, EntityMesh());
+    if(meshes.count(entity->getId()) == 0){
+      meshes.emplace(entity->getId(), EntityMesh());
 
-      auto &entityMesh = meshes.at(entity->id);
+      auto &entityMesh = meshes.at(entity->getId());
 
       auto appear = BlockDatabase::get().getBlockAppearance(3);
       auto texCoords = BlockDatabase::get().textureAtlas.getTexture(appear.texTopCoord);
@@ -116,12 +116,12 @@ void labo::render::EntityMeshBuilder::buildMesh(RenderMaster &renderMaster) {
       entityMesh.bufferMesh();
     }
 
-    auto &entityMesh = meshes.at(entity->id);
+    auto &entityMesh = meshes.at(entity->getId());
 
     EntityRenderInfo info{
       entityMesh.getContainer().getRenderInfo(),
-      entity->position,
-      entity->rotation
+      entity->getPosition(),
+      entity->getRotation()
     };
 
     renderMaster.drawEntity(info);

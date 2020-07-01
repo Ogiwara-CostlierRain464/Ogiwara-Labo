@@ -18,7 +18,7 @@ public:
   explicit Camera(CameraConfig conf);
 
   void update();
-  void hookPlayer(const labo::minecraft::Player *player);
+  void hookPlayer(labo::minecraft::Player *player);
 
   [[nodiscard]]
   const glm::mat4 &getViewMatrix() const noexcept{
@@ -49,7 +49,7 @@ private:
   glm::mat4 makeProjectionMat();
   glm::mat4 makeViewMat();
 
-  const labo::minecraft::Player *hookedPlayer = nullptr;
+  minecraft::Player *hookedPlayer = nullptr;
   glm::vec3 position;
   // オイラー角
   glm::vec3 rotation;

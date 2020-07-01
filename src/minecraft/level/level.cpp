@@ -188,8 +188,8 @@ void labo::minecraft::Level::loadChunks() {
     // playerの移動に合わせてロードする
     // configのRender distanceと同期し、いらないChunkはちゃんとUnloadする必要がある
 
-    int cameraChunkX = (int) player.position.x / CHUNK_SIZE;
-    int cameraChunkZ = (int) player.position.z / CHUNK_SIZE;
+    int cameraChunkX = (int) player.getPosition().x / CHUNK_SIZE;
+    int cameraChunkZ = (int) player.getPosition().z / CHUNK_SIZE;
 
     for(int i = 0; i < 4; i++){
       std::this_thread::sleep_for(std::chrono::milliseconds(1));

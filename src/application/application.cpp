@@ -147,9 +147,9 @@ void labo::app::Application::handleMouseInput(sf::Vector2i  &mouseMove) {
   auto &player = level.getPlayer();
 
   for(Ray ray(
-    {player.position.x,
-     player.position.y + player.height,
-     player.position.z},player.rotation);
+    {player.getPosition().x,
+     player.getPosition().y + labo::minecraft::Player::height,
+     player.getPosition().z},player.getRotation());
      ray.getLength() < 6;
      ray.step(0.05f)){
     int x = static_cast<int>(ray.getEnd().x);

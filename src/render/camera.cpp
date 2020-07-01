@@ -35,18 +35,18 @@ void labo::render::Camera::update() {
   assert(hookedPlayer);
 
   position = {
-    hookedPlayer->position.x,
-    hookedPlayer->position.y + Player::height,
-    hookedPlayer->position.z
+    hookedPlayer->getPosition().x,
+    hookedPlayer->getPosition().y + Player::height,
+    hookedPlayer->getPosition().z
   };
 
-  rotation = hookedPlayer->rotation;
+  rotation = hookedPlayer->getRotation();
   viewMatrix = makeViewMat();
   projViewMatrix = projectionMatrix * viewMatrix;
 
   frustum.update(projViewMatrix);
 }
 
-void labo::render::Camera::hookPlayer(const labo::minecraft::Player *player) {
+void labo::render::Camera::hookPlayer(labo::minecraft::Player *player) {
   hookedPlayer = player;
 }
