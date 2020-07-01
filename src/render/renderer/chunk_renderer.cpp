@@ -7,11 +7,6 @@ void labo::render::ChunkRenderer::add(
 
   chunks.push_back(mesh.getContainer().getRenderInfo());
 
-  // How to render Entity
-  // なんとかEntityの動きをChunkRendererに送る必要がある
-  // addEntityMesh(<Buffered ChunkMesh, Position, Orientation>)
-  // あとはbase positionに、positionとorientationの変更を加える
-
 }
 
 void labo::render::ChunkRenderer::render(

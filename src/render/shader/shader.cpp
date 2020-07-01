@@ -6,16 +6,16 @@ labo::render::Shader::Shader(
   const std::string &vertexFile,
   const std::string &fragmentFile)
 {
-  id = loadShaders(vertexFile, fragmentFile);
+  programId = loadShaders(vertexFile, fragmentFile);
   useProgram();
 }
 
 labo::render::Shader::~Shader() {
-  glDeleteProgram(id);
+  glDeleteProgram(programId);
 }
 
 void labo::render::Shader::useProgram() {
-  glUseProgram(id);
+  glUseProgram(programId);
 }
 
 void labo::render::Shader::loadInt(GLuint location, int value) {

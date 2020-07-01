@@ -6,13 +6,14 @@
 #include "../../minecraft/entity/entity.h"
 #include "../../math/id.h"
 #include "../mesh/entity_mesh.h"
+#include "../renderer/render_master.h"
 
 namespace labo::render{
 class EntityMeshBuilder {
 public:
   explicit EntityMeshBuilder(labo::minecraft::Level &level);
 
-  void buildMesh();
+  void buildMesh(RenderMaster &renderMaster);
 
 private:
   labo::minecraft::Level &level;

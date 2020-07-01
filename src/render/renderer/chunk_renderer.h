@@ -13,7 +13,6 @@ public:
 
 private:
   std::vector<MeshContainer::RenderInfo> chunks;
-  std::vector<MeshContainer::RenderInfo> entityRenderInfos;
 
   ChunkShader shader;
 };

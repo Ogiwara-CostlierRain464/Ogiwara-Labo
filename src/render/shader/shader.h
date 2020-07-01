@@ -25,8 +25,7 @@ public:
   void loadVector4(GLuint location, const glm::vec4 &vec);
   void loadMatrix4(GLuint location, const glm::mat4 &matrix);
 
-  // not shaderId, program id.
-  GLuint id;
+  GLuint programId;
 protected:
   virtual void getUniforms() = 0;
 //  GLuint id;

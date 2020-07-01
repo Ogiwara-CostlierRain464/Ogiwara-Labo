@@ -9,12 +9,10 @@ void labo::render::RenderMaster::drawChunk(
   const auto &solidMesh = collection.solidMesh;
   const auto &waterMesh = collection.waterMesh;
   const auto &floraMesh = collection.floraMesh;
-  const auto &entityMesh = collection.entityMesh;
 
   if(solidMesh.faces > 0){
     chunkRenderer.add(solidMesh);
   }
-  chunkRenderer.add(entityMesh);
 
   if(waterMesh.faces > 0){
     waterRenderer.add(waterMesh);
@@ -22,6 +20,11 @@ void labo::render::RenderMaster::drawChunk(
   if(floraMesh.faces > 0){
     floraRenderer.add(floraMesh);
   }
+}
+
+void labo::render::RenderMaster::drawEntity(
+  const labo::render::EntityRenderInfo &renderInfo) {
+  entityRenderer.add(renderInfo);
 }
 
 
@@ -38,6 +41,7 @@ void labo::render::RenderMaster::finish(
   //textRenderer.render();
 
   chunkRenderer.render(camera);
+  entityRenderer.render(camera);
   waterRenderer.render(camera, elapsedTime);
   floraRenderer.render(camera, elapsedTime);
 

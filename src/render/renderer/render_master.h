@@ -10,6 +10,8 @@
 #include "chunk_renderer.h"
 #include "flora_renderer.h"
 #include "water_renderer.h"
+#include "../mesh/entity_mesh.h"
+#include "entity_renderer.h"
 
 namespace labo::render{
 class RenderMaster {
@@ -19,14 +21,15 @@ public:
    */
   void drawChunk(const SubChunkMeshCollection &collection);
 
-  void addEntity(){};
-  void removeEntity(){};
+  void drawEntity(const EntityRenderInfo &renderInfo);
+
   void finish(sf::Window &window, const Camera &camera, float elapsedTime);
 
 
 private:
   MovingTriangleRenderer movingTriangleRenderer;
   ChunkRenderer chunkRenderer;
+  EntityRenderer entityRenderer;
   FloraRenderer floraRenderer;
   WaterRenderer waterRenderer;
   SkyBoxRenderer skyBoxRenderer;

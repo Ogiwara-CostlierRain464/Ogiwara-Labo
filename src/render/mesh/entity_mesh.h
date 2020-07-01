@@ -20,6 +20,11 @@ public:
 
   void clean();
 
+  [[nodiscard]]
+  const MeshContainer &getContainer(){
+    return meshContainer;
+  }
+
 private:
   int faces = 0;
   Mesh mesh;
@@ -27,6 +32,15 @@ private:
   std::vector<GLfloat> light;
   GLuint indexOffset = 0;
 
+};
+
+/**
+ * Entityの描画に必要な情報を格納
+ */
+struct EntityRenderInfo{
+  MeshContainer::RenderInfo renderInfo;
+  glm::vec3 position;
+  glm::vec3 rotation;
 };
 
 }
