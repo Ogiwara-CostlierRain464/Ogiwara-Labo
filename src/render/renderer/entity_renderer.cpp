@@ -19,11 +19,12 @@ void labo::render::EntityRenderer::render(
   shader.useProgram();
   shader.loadProjViewMatrix(camera.getProjectionViewMatrix());
 
-  // load position and rotation
-
   BlockDatabase::get().textureAtlas.bindTexture();
 
   for(auto &renderInfo: entityRenderInfos){
+    shader.loadPosition(renderInfo.position);
+    shader.loadRotation(renderInfo.rotation);
+
     glBindVertexArray(renderInfo.renderInfo.vao);
     glDrawElements(GL_TRIANGLES, renderInfo.renderInfo.indicesCount, GL_UNSIGNED_INT, nullptr);
   }
