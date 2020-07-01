@@ -12,7 +12,7 @@ public:
   static constexpr float height = 0.7;
 
   explicit Player(glm::vec3 spawnPoint);
-  void update(float deltaTime, Level &level);
+  void update(float deltaTime, Level &level) override;
   void collide(Level &level, const glm::vec3 &vel, float deltaTime);
 
   glm::vec3 acceleration{0};

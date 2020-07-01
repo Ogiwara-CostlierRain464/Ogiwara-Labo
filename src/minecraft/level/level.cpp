@@ -58,9 +58,8 @@ void labo::minecraft::Level::update(float deltaTime) {
 
   // update entities
   for(auto &entity: entities){
-
+    entity->update(deltaTime, *this);
   }
-
 
   for(auto &event: events){
     event->handle(*this);

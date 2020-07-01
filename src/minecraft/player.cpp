@@ -16,7 +16,7 @@ labo::minecraft::Player::Player(vec3 spawnPoint)
   }
 {}
 
-void labo::minecraft::Player::update(float deltaTime, Level &level) {
+void labo::minecraft::Player::update(float deltaTime, Level &level){
   velocity += acceleration;
   acceleration = {0,0,0};
 

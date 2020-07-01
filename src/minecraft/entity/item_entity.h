@@ -9,18 +9,17 @@ class ItemEntity: public Entity{
 public:
   ItemEntity(
     const math::Id<Entity> &id,
-    const glm::vec3 &position)
+    const glm::vec3 &position,
+    const glm::vec3 &rotation = {0,0,0},
+    const glm::vec3 &velocity = {0,0,0})
   : Entity(
     id,
     position,
-    {0,0,0},
-    {0,0,0},
+    rotation,
+    velocity,
     physics::AABB{position, {1,1,1}}){}
 
-  void update(float deltaTime, Level *level) override {
-    velocity += acceleration;
-    acceleration = {0,0,0};
-
+  void update(float deltaTime, Level &level) override {
     position += velocity * deltaTime;
   }
 
