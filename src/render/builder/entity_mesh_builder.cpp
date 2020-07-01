@@ -66,7 +66,7 @@ void labo::render::EntityMeshBuilder::buildMesh(RenderMaster &renderMaster) {
 
   for(auto &entity: level.getEntities()){
     if(meshes.count(entity->id) == 0){
-      meshes.emplace(EntityMesh());
+      meshes.emplace(entity->id, EntityMesh());
 
       auto &entityMesh = meshes.at(entity->id);
 

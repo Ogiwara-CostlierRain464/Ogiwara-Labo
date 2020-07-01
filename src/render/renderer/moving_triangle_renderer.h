@@ -24,7 +24,7 @@ public:
 private:
   void getUniforms()override {
     locationProjViewMat =
-      glGetUniformLocation(id, "projViewMatrix");
+      glGetUniformLocation(programId, "projViewMatrix");
   }
 
   GLuint locationProjViewMat = 0;
