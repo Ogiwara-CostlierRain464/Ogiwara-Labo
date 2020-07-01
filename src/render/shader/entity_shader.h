@@ -15,27 +15,20 @@ public:
     loadMatrix4(locationProjViewMat, pvMat);
   }
 
-  void loadPosition(const glm::vec3 &pos){
-    loadVector3(locationPosition, pos);
-  }
-
-  void loadRotation(const glm::vec3 &rot){
-    loadVector3(locationRotation, rot);
+  void loadModel(const glm::mat4 &model){
+    loadMatrix4(locationModel, model);
   }
 
 private:
   void getUniforms() override{
     locationProjViewMat =
       glGetUniformLocation(programId, "projViewMatrix");
-    locationPosition =
-      glGetUniformLocation(programId, "position");
-    locationRotation =
-      glGetUniformLocation(programId, "rotation");
+    locationModel =
+      glGetUniformLocation(programId, "model");
   }
 
   GLuint locationProjViewMat = 0;
-  GLuint locationPosition = 0;
-  GLuint locationRotation = 0;
+  GLuint locationModel = 0;
 };
 }
 

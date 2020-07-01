@@ -14,7 +14,7 @@ void labo::render::EntityRenderer::render(
   }
 
   glDisable(GL_BLEND);
-  //glEnable(GL_CULL_FACE);
+  glEnable(GL_CULL_FACE);
 
   shader.useProgram();
   shader.loadProjViewMatrix(camera.getProjectionViewMatrix());
@@ -23,8 +23,10 @@ void labo::render::EntityRenderer::render(
 
   for(auto &renderInfo: entityRenderInfos){
 
-    shader.loadPosition(renderInfo.position);
-    shader.loadRotation(renderInfo.rotation);
+    glm::mat4 model = glm::mat4(1.0f);
+    model = glm::translate(model,renderInfo.position);
+
+    shader.loadModel(model);
 
     glBindVertexArray(renderInfo.renderInfo.vao);
     glDrawElements(GL_TRIANGLES, renderInfo.renderInfo.indicesCount, GL_UNSIGNED_INT, nullptr);
