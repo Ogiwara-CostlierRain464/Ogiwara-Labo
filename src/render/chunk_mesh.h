@@ -41,11 +41,13 @@ private:
   GLuint indexOffset = 0;
 };
 
+/**
+ * SubChunk事に
+ */
 struct SubChunkMeshCollection{
   ChunkMesh solidMesh;
   ChunkMesh waterMesh;
   ChunkMesh floraMesh;
-  ChunkMesh entityMesh;
 };
 
 }
