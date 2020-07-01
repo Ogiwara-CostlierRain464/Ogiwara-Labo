@@ -24,9 +24,9 @@ protected:
   GLuint locationProjViewMat;
 
   void getUniforms() override {
-    time = glGetUniformLocation(id, "globalTime");
+    time = glGetUniformLocation(programId, "globalTime");
     locationProjViewMat =
-      glGetUniformLocation(id, "projViewMatrix");
+      glGetUniformLocation(programId, "projViewMatrix");
   }
 };
 

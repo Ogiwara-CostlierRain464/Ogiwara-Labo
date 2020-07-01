@@ -26,8 +26,8 @@ public:
 
 private:
   void getUniforms() override{
-    locationProjection = glGetUniformLocation(id, "projectionMatrix");
-    locationView = glGetUniformLocation(id, "viewMatrix");
+    locationProjection = glGetUniformLocation(programId, "projectionMatrix");
+    locationView = glGetUniformLocation(programId, "viewMatrix");
   }
 
   GLuint locationProjection;
