@@ -1,5 +1,5 @@
 #include "flora_renderer.h"
-#include "../chunk_mesh.h"
+#include "../mesh/chunk_mesh.h"
 #include "../camera.h"
 
 void labo::render::FloraRenderer::add(

@@ -3,7 +3,7 @@
 
 #include <unordered_map>
 #include <memory>
-#include "../chunk_mesh.h"
+#include "../mesh/chunk_mesh.h"
 #include "../../math/vector_xz.h"
 #include "../renderer/render_master.h"
 #include "../../minecraft/level/format/chunk.h"

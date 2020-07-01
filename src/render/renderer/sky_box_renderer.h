@@ -2,7 +2,7 @@
 #define LABO_SKY_BOX_RENDERER_H
 
 #include "../camera.h"
-#include "../mesh.h"
+#include "../mesh/mesh.h"
 #include "../shader/sky_box_shader.h"
 #include "../texture/cube_texture.h"
 

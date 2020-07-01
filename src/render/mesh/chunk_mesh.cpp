@@ -1,5 +1,5 @@
 #include "chunk_mesh.h"
-#include "../minecraft/level/const.h"
+#include "../../minecraft/level/const.h"
 
 using labo::minecraft::CHUNK_SIZE;
 

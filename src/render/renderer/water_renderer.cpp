@@ -1,5 +1,5 @@
 #include "water_renderer.h"
-#include "../chunk_mesh.h"
+#include "../mesh/chunk_mesh.h"
 #include "../camera.h"
 #include "../opengl_debug.h"
 

@@ -3,7 +3,7 @@
 
 #include <glad/glad.h>
 #include <vector>
-#include "../mesh.h"
+#include "../mesh/mesh.h"
 #include "../shader/triangle_shader.h"
 
 namespace labo::render{

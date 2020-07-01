@@ -4,7 +4,7 @@
 #include "../../block/block.h"
 #include "../const.h"
 #include "../../../physics/aabb.h"
-#include "../../../render/chunk_mesh.h"
+#include "../../../render/mesh/chunk_mesh.h"
 #include <SFML/Graphics.hpp>
 #include <array>
 

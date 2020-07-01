@@ -56,7 +56,6 @@ void labo::render::LevelMeshBuilder::drawChunks(
       ptr->solidMesh.bufferMesh();
       ptr->waterMesh.bufferMesh();
       ptr->floraMesh.bufferMesh();
-      ptr->entityMesh.bufferMesh();
       subChunk.isUpdated = false;
     }
 

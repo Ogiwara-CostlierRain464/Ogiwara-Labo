@@ -2,7 +2,7 @@
 #define LABO_WATER_RENDERER_H
 
 #include <vector>
-#include "../mesh.h"
+#include "../mesh/mesh.h"
 #include "../shader/water_shader.h"
 
 namespace labo::render{

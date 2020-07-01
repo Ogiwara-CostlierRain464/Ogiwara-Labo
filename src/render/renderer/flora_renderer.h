@@ -2,7 +2,7 @@
 #define LABO_FLORA_RENDERER_H
 
 #include <vector>
-#include "../mesh.h"
+#include "../mesh/mesh.h"
 #include "../shader/flora_shader.h"
 
 namespace labo::render{

@@ -3,7 +3,7 @@
 
 #include <glad/glad.h>
 #include <vector>
-#include "../math/non_copyable.h"
+#include "../../math/non_copyable.h"
 
 
 namespace labo::render{
