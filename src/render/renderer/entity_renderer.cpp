@@ -14,7 +14,7 @@ void labo::render::EntityRenderer::render(
   }
 
   glDisable(GL_BLEND);
-  glEnable(GL_CULL_FACE);
+  //glEnable(GL_CULL_FACE);
 
   shader.useProgram();
   shader.loadProjViewMatrix(camera.getProjectionViewMatrix());

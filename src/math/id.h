@@ -26,9 +26,11 @@ namespace std{
   template <typename T>
   struct hash<labo::math::Id<T>>{
     size_t operator()(const labo::math::Id<T> &id) const noexcept{
-      std::hash<labo::math::Id<T>> hasher;
+      std::hash<decltype(id.value)> hasher;
 
-      return hasher(id.value);
+      auto hash1 = hasher(id.value);
+
+      return std::hash<decltype(id.value)>{}(hash1 >> 2);
     }
   };
 }
