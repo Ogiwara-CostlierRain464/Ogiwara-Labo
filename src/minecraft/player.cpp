@@ -7,15 +7,14 @@ using glm::vec3;
 using labo::physics::AABB;
 
 labo::minecraft::Player::Player(vec3 spawnPoint)
-  : Entity{}
-{
-  position = spawnPoint;
-  rotation = {0,0,0};
-  velocity = {0,0,0};
-  acceleration = {0,0,0};
-  box = AABB{spawnPoint, {0.3, 1, 0.3}};
-
-}
+  : Entity{
+    math::Id<Entity>(0),
+    spawnPoint,
+    {0,0,0},
+    {0,0,0},
+    AABB{spawnPoint, {0.3, 1, 0.3}}
+  }
+{}
 
 void labo::minecraft::Player::update(float deltaTime, Level &level) {
   velocity += acceleration;

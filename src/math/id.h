@@ -8,6 +8,10 @@ template <typename T>
 struct Id{
   size_t value;
 
+  Id(size_t id){
+    value = id;
+  }
+
   bool operator==(const Id<T> &id)const{
     return value == id.value;
   }

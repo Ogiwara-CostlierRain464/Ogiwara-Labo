@@ -5,6 +5,7 @@
 #include "../../minecraft/level/format/chunk.h"
 #include "../../minecraft/entity/entity.h"
 #include "../../math/id.h"
+#include "../mesh/entity_mesh.h"
 
 namespace labo::render{
 class EntityMeshBuilder {
@@ -15,7 +16,8 @@ public:
 
 private:
   labo::minecraft::Level &level;
-  std::unordered_map<math::Id<minecraft::Entity>, >
+  std::unordered_map<
+  math::Id<minecraft::Entity>,EntityMesh> meshes;
 };
 }
 
