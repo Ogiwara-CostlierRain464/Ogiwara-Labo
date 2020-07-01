@@ -5,6 +5,8 @@
 #include "../../math/glm.h"
 #include "../player.h"
 #include "../level/level.h"
+#include "../entity/item_entity.h"
+#include <memory>
 
 namespace labo::minecraft{
 
@@ -26,6 +28,15 @@ public:
 
     if(level.getChunkManager().isChunkLoadedAt(chunkLocation.x, chunkLocation.z)){
       dig(level);
+
+      auto entity = std::make_shared<Entity>(
+        level.getNextEntityId(),
+        digSpot,
+        glm::vec3(),
+        glm::vec3(),
+        physics::AABB{digSpot, {1,1,1}});
+
+      level.addEntity(entity);
     }
   }
 

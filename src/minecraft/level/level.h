@@ -28,6 +28,8 @@ public:
   Block getBlock(int x, int y, int z);
   void setBlock(int x, int y, int z, const Block &block);
 
+  void addEntity(const std::shared_ptr<Entity>& entity);
+
   void update(float deltaTime);
   /**
    * ブロックの設置などによって更新が必要になったChunkにマークをする
@@ -58,6 +60,10 @@ public:
   }
 
   std::vector<std::shared_ptr<Entity>> &getEntities();
+
+  math::Id<Entity> getNextEntityId(){
+    return entities.size() + 1;
+  }
 
 private:
   /**

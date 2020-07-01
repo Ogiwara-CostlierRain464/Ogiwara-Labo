@@ -48,6 +48,10 @@ void labo::minecraft::Level::setBlock(int x, int y, int z, const labo::minecraft
   .setBlock(bp.x, y, bp.z, block);
 }
 
+void labo::minecraft::Level::addEntity(const std::shared_ptr<Entity> &entity) {
+  entities.push_back(entity);
+}
+
 void labo::minecraft::Level::update(float deltaTime) {
 
   player.update(deltaTime, *this);
@@ -214,7 +218,6 @@ void labo::minecraft::Level::updateSubChunks() {
 std::vector<std::shared_ptr<labo::minecraft::Entity>> &labo::minecraft::Level::getEntities() {
   return entities;
 }
-
 
 
 
