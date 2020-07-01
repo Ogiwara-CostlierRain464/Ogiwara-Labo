@@ -8,16 +8,8 @@
 
 namespace labo::minecraft{
 
-struct Entity: public labo::math::NonCopyable{
-  math::Id<Entity> id;
-  glm::vec3 position;
-  // オイラー角の姿勢
-  // pitch, yaw, roll
-  glm::vec3 rotation;
-  // 速度
-  glm::vec3 velocity;
-  labo::physics::AABB box;
-
+class Entity: public labo::math::NonCopyable{
+public:
   Entity(
     const math::Id<Entity> &id,
     const glm::vec3 &position,
@@ -29,6 +21,36 @@ struct Entity: public labo::math::NonCopyable{
   , rotation(rotation)
   , velocity(velocity)
   , box(box) {}
+
+  math::Id<Entity> &getId(){
+    return id;
+  }
+
+  glm::vec3 &getPosition(){
+    return position;
+  }
+
+  glm::vec3 &getRotation(){
+    return rotation;
+  }
+
+  glm::vec3 &getVelocity(){
+    return velocity;
+  }
+
+  labo::physics::AABB &getBox(){
+    return box;
+  }
+
+private:
+  math::Id<Entity> id;
+  glm::vec3 position;
+  // オイラー角の姿勢
+  // pitch, yaw, roll
+  glm::vec3 rotation;
+  // 速度
+  glm::vec3 velocity;
+  labo::physics::AABB box;
 };
 
 }
