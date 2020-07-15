@@ -49,13 +49,17 @@ void labo::minecraft::Level::setBlock(int x, int y, int z, const labo::minecraft
   .setBlock(bp.x, y, bp.z, block);
 }
 
-bool isActive_ = false;
 
 void labo::minecraft::Level::addEntity(const std::shared_ptr<Entity> &entity) {
   entities.push_back(entity);
-  physics::addCube(entity->getPosition(), isActive_);
+  physics::addCube(entity->getPosition());
 
-  isActive_ = !isActive_;
+}
+
+void labo::minecraft::Level::addStaticEntity(const std::shared_ptr<Entity> &entity) {
+  entities.push_back(entity);
+  physics::addStaticCube(entity->getPosition());
+
 }
 
 void labo::minecraft::Level::update(float deltaTime) {

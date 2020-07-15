@@ -92,7 +92,8 @@ void applySimulationResult(std::vector<std::shared_ptr<minecraft::Entity>> &enti
 
     auto &target = entities.at(i);
 
-    target->setPosition(states[i].position - vec3(0.25, 0.25, 0.25));
+    float size = 0.5;
+    target->setPosition(states[i].position /*+ vec3(size, size, size)*/ );
 //    target->setRotation(glm::eulerAngles(states[i].orientation) * 3.14159f / 180.f);
     target->setRotation(glm::eulerAngles(states[i].orientation));
   }
@@ -153,16 +154,19 @@ void addCube2(glm::vec3 &pos, bool static_) {
   collidables[id].finish();
 }
 
-void addCube(glm::vec3 &position, bool static_) {
+void addStaticCube(glm::vec3 &pos){
+  addCube(pos, true, 0.5);
+}
+
+void addCube(glm::vec3 &position, bool static_, float size) {
   State state{
-    position + vec3(0.25, 0.25, 0.25),
+    position /*- vec3(size, size, size)*/,
     glm::quat(),
     vec3(),
     vec3(),
     static_ ? Static : Active
   };
 
-  float size = 0.5;
   float diag = (1.f / 12) * (2 * powf(size, 2));
 
   RigidBody body{

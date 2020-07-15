@@ -78,14 +78,20 @@ private:
       math::Ray ray(player.getPosition(), player.getRotation());
       auto placeAt = ray.getEnd();
 
-      int x = static_cast<int>(placeAt.x);
-      int y = static_cast<int>(placeAt.y);
-      int z = static_cast<int>(placeAt.z);
-
       auto entity = std::make_shared<ItemEntity>(
         level.getNextEntityId(),placeAt);
 
       level.addEntity(entity);
+    }
+
+    if(std::count(keys.begin(), keys.end(), sf::Keyboard::R)){
+      math::Ray ray(player.getPosition(), player.getRotation());
+      auto placeAt = ray.getEnd();
+
+      auto entity = std::make_shared<ItemEntity>(
+        level.getNextEntityId(),placeAt);
+
+      level.addStaticEntity(entity);
     }
   }
   void handleMouse(Level &level){

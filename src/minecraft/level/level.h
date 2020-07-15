@@ -29,6 +29,11 @@ public:
   void setBlock(int x, int y, int z, const Block &block);
 
   void addEntity(const std::shared_ptr<Entity>& entity);
+  /**
+   * 物理エンジンで動かないEntityを追加
+   */
+  void addStaticEntity(const std::shared_ptr<Entity>& entity);
+
 
   void update(float deltaTime);
   /**

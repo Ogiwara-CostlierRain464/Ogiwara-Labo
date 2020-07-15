@@ -20,8 +20,8 @@ using labo::minecraft::Air;
 using labo::minecraft::Water;
 
 namespace {
-  constexpr float windowX = 1200;
-  constexpr float windowY = 800;
+  constexpr float windowX = 1600;
+  constexpr float windowY = 1200;
   constexpr float fov = 90;
   constexpr int renderDistance = 8;
 }
@@ -110,6 +110,7 @@ void labo::app::Application::handleKeyboardInput(std::vector<sf::Keyboard::Key> 
 
   static ToggleKey flyKey(sf::Keyboard::F);
   static ToggleKey itemPopKey(sf::Keyboard::Q);
+  static ToggleKey staticItemPopKey(sf::Keyboard::R);
 
   if(keyboard.isKeyDown(sf::Keyboard::W)){
     keys.push_back(sf::Keyboard::W);
@@ -134,6 +135,9 @@ void labo::app::Application::handleKeyboardInput(std::vector<sf::Keyboard::Key> 
   }
   if(itemPopKey.isKeyPressed()) {
     keys.push_back(sf::Keyboard::Q);
+  }
+  if(staticItemPopKey.isKeyPressed()){
+    keys.push_back(sf::Keyboard::R);
   }
 }
 
