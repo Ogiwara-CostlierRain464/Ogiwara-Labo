@@ -21,6 +21,7 @@ public:
 
   void update(float deltaTime, Level &level) override {
     position += velocity * deltaTime;
+    rotation += velocity * deltaTime;
   }
 
 private:

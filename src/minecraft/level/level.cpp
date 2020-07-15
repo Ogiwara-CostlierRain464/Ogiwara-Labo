@@ -13,7 +13,7 @@ using std::mutex;
 
 labo::minecraft::Level::Level()
  : chunkManager(*this)
- , player(Player({0,110,0}))
+ , player(Player({2000,110,2000}))
 {
   std::this_thread::sleep_for(std::chrono::milliseconds(50));
   chunkLoadThreads.emplace_back([&](){ loadChunks(); });
