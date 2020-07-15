@@ -31,6 +31,8 @@ void labo::physics::solveConstrains(
   assert(bodies);
   assert(pairs);
 
+  // P239の実装を確認
+
   auto *solverBodies = (SolverBody*) allocator->allocate(sizeof(SolverBody) * numRigidBodies);
   assert(solverBodies);
 
@@ -83,6 +85,7 @@ void labo::physics::solveConstrains(
 
       vec3 tangent1, tangent2;
 
+      // 衝突点の座標系の取得、P242
       calcTangentVector(cp.normal, tangent1, tangent2);
 
       float restitution = pair.type == New ? 0.5f * (bodyA.restitution + bodyB.restitution) : 0.0f;
@@ -126,7 +129,7 @@ void labo::physics::solveConstrains(
     }
   }
 
-  // Warm starting (optional)
+  // Warm startingで挙動を安定化
   for(size_t i=0;i<numPairs;i++) {
     const Pair &pair = pairs[i];
 
@@ -163,6 +166,7 @@ void labo::physics::solveConstrains(
 
          // 反発方向
          {
+           // cf. P238 (18),(19)
            auto &constraint = cp.constraints[0];
            float deltaImpulse = constraint.rhs;
            vec3 deltaVelocityA = solverBodyA.deltaLinearVelocity + cross(solverBodyA.deltaAngularVelocity, rA);

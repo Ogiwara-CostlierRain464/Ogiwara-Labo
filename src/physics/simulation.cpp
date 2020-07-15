@@ -20,12 +20,14 @@ using glm::mat3;
 
 namespace {
   constexpr int maxRigidBodies = 500;
-  constexpr int maxJoints = 100;
+  // 最大の衝突ペア数
   constexpr int maxPairs = 5000;
   constexpr float timeStep = 0.016f;
   constexpr float contactBias = 0.1f;
   constexpr float contactSlop = 0.001f;
+  // 反復計算の試行数
   constexpr int iteration = 10;
+  // 重力
   constexpr vec3 gravity(0.f, -9.8f, 0.f);
 }
 

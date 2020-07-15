@@ -6,6 +6,9 @@ using glm::mat3;
 using glm::dot;
 using glm::cross;
 
+/**
+ * エッジ対エッジの最近接点検出(P223)
+ */
 void labo::physics::getClosestTwoSegments(
   const glm::vec3 &segmentPointA0,
   const glm::vec3 &segmentPointA1,
@@ -122,5 +125,6 @@ void labo::physics::getClosestPointTriangle(
     return;
   }
 
+  // shouldn't reach here.
   //assert(false);
 }

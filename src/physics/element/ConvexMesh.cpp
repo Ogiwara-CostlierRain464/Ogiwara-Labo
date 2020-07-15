@@ -84,6 +84,7 @@ bool labo::physics::createConvexMesh(
       auto vertId1 = std::max(facet.vertId[e%3], facet.vertId[(e+1)%3]);
       auto tableId = vertId1 * (vertId1-1)/2 + vertId0;
       if(edgeIdTable[tableId] == 0xff){
+        // 初回時は登録のみ
         convexMesh->edges[ne].facetId[0] = i;
         convexMesh->edges[ne].facetId[1] = i;
         convexMesh->edges[ne].vertId[0] = (uint8_t) vertId0;

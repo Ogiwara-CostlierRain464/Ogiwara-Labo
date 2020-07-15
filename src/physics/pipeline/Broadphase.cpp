@@ -14,6 +14,13 @@ static inline bool intersectAABB(
   const vec3 &centerB,
   const vec3 &halfB
   ){
+  /**
+   * """
+   * 座標のいくつかの値が最小値より小さい、または最大値よりも大きければ、軸並行Bounding Box内には存在しない
+   * """
+   *
+   * cf. P65
+   */
   if(fabs(centerA[0] - centerB[0]) > halfA[0] + halfB[0]) return false;
   if(fabs(centerA[1] - centerB[1]) > halfA[1] + halfB[1]) return false;
   if(fabs(centerA[2] - centerB[2]) > halfA[2] + halfB[2]) return false;
@@ -39,6 +46,11 @@ void labo::physics::broadPhase(
 
   numNewPairs = 0;
 
+  /**
+   * AABB交差ペアを全探索で見つける
+   *
+   * TODO: AABB treeで実装
+   */
   for(size_t i = 0; i < numRigidBodies; i++){
     for(size_t j = i+1; j < numRigidBodies; j++){
       const auto &stateA = states[i];

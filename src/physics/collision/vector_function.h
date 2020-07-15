@@ -16,6 +16,7 @@ inline void calcTangentVector(
   if(glm::length(n) < EPSILON){
     vec = glm::vec3(0, 1, 0);
   }
+  // 衝突点の座標系の算出(P242)
   tangent1 = glm::normalize(glm::cross(normal, vec));
   tangent2 = glm::normalize(glm::cross(tangent1, normal));
 }

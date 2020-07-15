@@ -31,11 +31,13 @@ void labo::physics::detectionCollision(
     for(size_t j = 0; j < collA.numShapes; j++){
       const Shape &shapeA = collA.shapes[j];
       auto offsetTransformA = math::Transform3::from(shapeA.offsetOrientation, shapeA.offsetPosition);
+      // shapeAをworld座標に変換 P206 (7)
       auto worldTransformA = transformA * offsetTransformA;
 
       for(size_t k=0; k < collB.numShapes; k++){
         const Shape &shapeB = collB.shapes[k];
         auto offsetTransformB = math::Transform3::from(shapeB.offsetOrientation, shapeB.offsetPosition);
+        // shapeBをworld座標に変換 P206 (7)
         auto worldTransformB = transformB * offsetTransformB;
 
         vec3 contactPointA;
@@ -50,6 +52,7 @@ void labo::physics::detectionCollision(
           contactPointA, contactPointB
           ) && penetrationDepth < 0.f){
 
+          // 衝突点を剛体の座標系へ変換し、コンタクトへ追加
           pair.contact->addContact(
             penetrationDepth, normal,
             offsetTransformA.getTranslation() + offsetTransformA.getUpper3x3() * contactPointA,

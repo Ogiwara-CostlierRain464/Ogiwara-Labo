@@ -22,6 +22,9 @@ enum SatType{
   EdgeEdge
 };
 
+/**
+ * P216の図より
+ */
 #define CHECK_MINMAX(axis, AMin, AMax, BMin, BMax, type) \
 {\
   satCount++;\
@@ -59,10 +62,12 @@ bool convexConvexContactLocal(
   mat3 matrixAB, matrixBA;
   vec3 offsetAB, offsetBA;
 
+  // B local -> A local 座標への変換 P207 (8)
   transformAB = transformA.inverse() * transformB;
   matrixAB = transformAB.getUpper3x3();
   offsetAB = transformAB.getTranslation();
 
+  // A local -> B local 座標への変換 P207 (8)
   transformBA = transformAB.inverse();
   matrixBA = transformBA.getUpper3x3();
   offsetBA = transformBA.getTranslation();
@@ -153,8 +158,6 @@ bool convexConvexContactLocal(
   vec3 closestPointA, closestPointB;
   vec3 separation = 1.1f * abs(distanceMin) * axisMin;
 
-  BENCH_START
-
   for(size_t fA = 0; fA < convexA.numFacets; fA++){
     const auto &facetA = convexA.facets[fA];
 
@@ -164,6 +167,7 @@ bool convexConvexContactLocal(
     }
 
     if(checkA < 0.f){
+      // 衝突面と逆に向いている面は判定しない(P221)
       continue;
     }
 
@@ -246,7 +250,6 @@ bool convexConvexContactLocal(
 
   }
 
-  BENCH_END
 
   normal = transformA.getUpper3x3() * axisMin;
   penetrationDepth = distanceMin;
@@ -267,6 +270,7 @@ bool labo::physics::convexConvexContact(
   glm::vec3 &contactPointA,
   glm::vec3 &contactPointB
 ){
+  // 座標系変換の回数を減らすため、面数の多い方を座標系の基準に(P204)
 
   bool ret;
   if(convexA.numFacets >= convexB.numFacets){

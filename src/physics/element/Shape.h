@@ -6,8 +6,11 @@
 namespace labo::physics{
 
 struct Shape{
+  // 凸メッシュ
   ConvexMesh geometry;
+  // オフセットの位置
   glm::vec3 offsetPosition;
+  // オフセットの姿勢
   glm::quat offsetOrientation;
   void *userData;
 

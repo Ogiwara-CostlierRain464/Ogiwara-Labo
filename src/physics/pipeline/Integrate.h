@@ -8,7 +8,10 @@
 namespace labo::physics{
 
 
-// 外力を与える
+/**
+ * 重力や、ゲームから与えられる力とトルクを外力として
+ * 加速度に変換し、剛体に加える
+ */
 void applyExternalForce(
   State &state,
   const RigidBody &body,
