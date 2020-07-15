@@ -34,8 +34,16 @@ public:
     return position;
   }
 
+  void setPosition(const glm::vec3 &vec){
+    position = vec;
+  }
+
   glm::vec3 &getRotation(){
     return rotation;
+  }
+
+  void setRotation(const glm::vec3 &vec){
+    rotation = vec;
   }
 
   glm::vec3 &getVelocity(){
