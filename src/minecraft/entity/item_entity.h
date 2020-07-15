@@ -20,8 +20,8 @@ public:
     physics::AABB{position, {1,1,1}}){}
 
   void update(float deltaTime, Level &level) override {
-    position += velocity * deltaTime;
-    rotation += velocity * deltaTime;
+    //position += velocity * deltaTime;
+    //rotation += velocity * deltaTime;
   }
 
 private:

@@ -28,14 +28,6 @@ public:
 
     if(level.getChunkManager().isChunkLoadedAt(chunkLocation.x, chunkLocation.z)){
       dig(level);
-
-      auto entity = std::make_shared<ItemEntity>(
-        level.getNextEntityId(),
-        digSpot + glm::vec3(0,2,0),
-        glm::vec3{0.3,0.4,0},
-        glm::vec3{0,-0.98,0});
-
-      level.addEntity(entity);
     }
   }
 

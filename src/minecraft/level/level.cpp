@@ -6,6 +6,7 @@
 #include <thread>
 #include <chrono>
 #include "../entity/entity.h"
+#include "../../physics/simulation.h"
 
 using glm::vec3;
 using std::unique_lock;
@@ -48,18 +49,21 @@ void labo::minecraft::Level::setBlock(int x, int y, int z, const labo::minecraft
   .setBlock(bp.x, y, bp.z, block);
 }
 
+bool isActive_ = false;
+
 void labo::minecraft::Level::addEntity(const std::shared_ptr<Entity> &entity) {
   entities.push_back(entity);
+  physics::addCube(entity->getPosition(), isActive_);
+
+  isActive_ = !isActive_;
 }
 
 void labo::minecraft::Level::update(float deltaTime) {
 
   player.update(deltaTime, *this);
 
-  // update entities
-  for(auto &entity: entities){
-    entity->update(deltaTime, *this);
-  }
+  physics::physicsSimulate();
+  physics::applySimulationResult(entities);
 
   for(auto &event: events){
     event->handle(*this);

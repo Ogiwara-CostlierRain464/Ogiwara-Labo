@@ -4,46 +4,48 @@
 
 // At first use same faces as chunk_mesh_builder
 namespace{
+  constexpr float SIZE = 0.5;
+
   const std::array<GLfloat, 12> frontFace{
-    0,0,1,
-    1,0,1,
-    1,1,1,
-    0,1,1
+    0,0,SIZE,
+    SIZE,0,SIZE,
+    SIZE,SIZE,SIZE,
+    0,SIZE,SIZE
   };
 
   const std::array<GLfloat, 12> backFace{
-    1, 0, 0,
+    SIZE, 0, 0,
     0, 0, 0,
-    0, 1, 0,
-    1, 1, 0,
+    0, SIZE, 0,
+    SIZE, SIZE, 0,
   };
 
   const std::array<GLfloat, 12> leftFace{
     0, 0, 0,
-    0, 0, 1,
-    0, 1, 1,
-    0, 1, 0,
+    0, 0, SIZE,
+    0, SIZE, SIZE,
+    0, SIZE, 0,
   };
 
   const std::array<GLfloat, 12> rightFace{
-    1, 0, 1,
-    1, 0, 0,
-    1, 1, 0,
-    1, 1, 1,
+    SIZE, 0, SIZE,
+    SIZE, 0, 0,
+    SIZE, SIZE, 0,
+    SIZE, SIZE, SIZE,
   };
 
   const std::array<GLfloat, 12> topFace{
-    0, 1, 1,
-    1, 1, 1,
-    1, 1, 0,
-    0, 1, 0,
+    0, SIZE, SIZE,
+    SIZE, SIZE, SIZE,
+    SIZE, SIZE, 0,
+    0, SIZE, 0,
   };
 
   const std::array<GLfloat, 12> bottomFace{
     0, 0, 0,
-    1, 0, 0,
-    1, 0, 1,
-    0, 0, 1
+    SIZE, 0, 0,
+    SIZE, 0, SIZE,
+    0, 0, SIZE
   };
 }
 

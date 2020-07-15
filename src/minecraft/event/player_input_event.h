@@ -3,6 +3,8 @@
 
 #include "event.h"
 #include "../level/level.h"
+#include "../../math/ray.h"
+#include "../entity/item_entity.h"
 #include <utility>
 #include <vector>
 #include <SFML/Graphics.hpp>
@@ -70,6 +72,20 @@ private:
       }
     } else if(std::count(keys.begin(), keys.end(), sf::Keyboard::LShift) && player.isFlying()){
       player.acceleration.y -= speed * 3;
+    }
+
+    if(std::count(keys.begin(), keys.end(), sf::Keyboard::Q)){
+      math::Ray ray(player.getPosition(), player.getRotation());
+      auto placeAt = ray.getEnd();
+
+      int x = static_cast<int>(placeAt.x);
+      int y = static_cast<int>(placeAt.y);
+      int z = static_cast<int>(placeAt.z);
+
+      auto entity = std::make_shared<ItemEntity>(
+        level.getNextEntityId(),placeAt);
+
+      level.addEntity(entity);
     }
   }
   void handleMouse(Level &level){
